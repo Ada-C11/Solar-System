@@ -11,9 +11,13 @@ class SolarSystem
   end
 
   def list_planets
-    return "Planets orbiting #{@star_name}",
-           @planets.map!.each_with_index do |planet, index|
-             "#{index + 1}. #{planet}"
-           end
+    output = "Planets orbiting #{@star_name}\n"
+    tracker = 1
+    @planets.each do |planet|
+      output += "#{tracker}" + ". " + planet.name + "\n"
+      tracker += 1
+    end
+
+    return output
   end
 end
