@@ -8,8 +8,10 @@ class Planet
         @mass_kg = mass_kg
         @distance_from_sun_km = distance_from_sun_km
         @fun_fact = fun_fact
-        unless @mass_kg > 0 || @distance_from_sun_km > 0
-            raise ArgumentError, 'You must provide a postive numeric argument to this method.'
+        if @mass_kg <= 0 || @distance_from_sun_km <= 0
+            raise ArgumentError, 'You must provide a postive value for mass and distance from the sun.'
+        end
+
     end
 
     def summary
