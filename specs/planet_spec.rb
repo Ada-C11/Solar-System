@@ -34,7 +34,7 @@ describe "Planet" do
 
   describe "summary" do
     it "returns a string" do
-      expect(earth.summry).must_be_a_kind_of String
+      expect(earth.summary).must_be_kind_of String
     end
   end
 end
