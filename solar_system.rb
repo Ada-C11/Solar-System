@@ -11,6 +11,16 @@ class SolarSystem
   def add_planet(planet)
     @planets.push(planet)
   end
+
+  def list_planets
+    planet_list = "Planets orbiting #{star_name}: "
+    i = 0
+    @planets.each do
+      planet_list += "\n#{i + 1}. #{@planets[i].name}"
+      i += 1
+    end
+    return planet_list
+  end
 end
 
 earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "The densest planet in the solar system")
@@ -21,5 +31,4 @@ sun = SolarSystem.new("sun", nil)
 sun.add_planet(earth)
 sun.add_planet(venus)
 
-puts sun.star_name
-puts sun.planets
+puts sun.list_planets
