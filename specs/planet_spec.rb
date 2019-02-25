@@ -29,12 +29,16 @@ describe "Planet" do
   end
 
   it "has a fun fact" do
-    expect(earth.fun_fact).must_equal "Only planet known to support life"
+    expect(earth.fun_fact).must_equal "only planet known to support life"
   end
 
   describe "summary" do
     it "returns a string" do
       expect(earth.summary).must_be_kind_of String
+    end
+
+    it "returns a summary of planet's attributes" do
+      expect(earth.summary).must_equal "#{earth.name} is a #{earth.color} planet that is #{earth.distance_from_sun_km} km from it's sun. It has a mass of #{earth.mass_kg} kg and is known for #{earth.fun_fact}."
     end
   end
 end
