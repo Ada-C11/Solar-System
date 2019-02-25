@@ -1,5 +1,6 @@
 #main.rb
 require_relative "planet"
+require_relative "solar_system"
 
 def main
   earth = Planet.new(name: "Earth", color: "blue-green", mass_kg: 5.972e24, distance_from_sun_km: 1.496e8, fun_fact: "It has llamas living on it")
@@ -11,6 +12,11 @@ def main
   puts earth.summary
   puts mars.summary
   puts super_hot_planet.summary
+
+  solar_system = SolarSystem.new("Sol")
+  solar_system.add_planet(earth)
+  solar_system.add_planet(mars)
+  puts solar_system.list_planets
 end
 
 main
