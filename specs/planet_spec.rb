@@ -31,4 +31,10 @@ describe "Planet" do
   it "has a fun fact" do
     expect(earth.fun_fact).must_equal "Only planet known to support life"
   end
+
+  describe "summary" do
+    it "returns a string" do
+      expect(earth.summry).must_be_a_kind_of String
+    end
+  end
 end
