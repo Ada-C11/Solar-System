@@ -5,4 +5,11 @@ class SolarSystem
     @star_name = star_name
     @planets = []
   end
+
+  def add_planet(planet)
+    @planets << planet 
+  end
 end
+
+milky_way = SolarSystem.new("milky_way")
+milky_way.add_planet
