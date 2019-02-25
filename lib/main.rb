@@ -17,6 +17,13 @@ def main
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
   puts solar_system.list_planets
+
+  found_planet = solar_system.find_planet_by_name("EarTh")
+  puts found_planet
+
+  puts found_planet.summary
+
+  puts solar_system.distance_between(earth, mars)
 end
 
 main
