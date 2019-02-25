@@ -26,7 +26,7 @@ def main
 
   #   puts solar_system.distance_between(earth, super_hot_planet)
 
-  puts "What would you like to do next (\"list planets\", \"planet details\", or \"exit\")? "
+  puts "What would you like to do next (\"list planets\", \"planet details\", \"add planet\", or \"exit\")? "
   while input = gets.chomp
     case input
     when "list planets"
@@ -36,11 +36,25 @@ def main
       planet = gets.chomp
       found_planet = solar_system.find_planet_by_name(planet)
       puts found_planet.summary
+    when "add planet"
+      print "Planet name: "
+      planet_name = gets.chomp
+      print "Planet color: "
+      planet_color = gets.chomp
+      print "Mass in kg: "
+      planet_mass = gets.chomp.to_i
+      print "Distance from the sun in km: "
+      planet_distance = gets.chomp.to_i
+      print "Fun fact about the planet: "
+      planet_fact = gets.chomp
+      user_planet = Planet.new(name: planet_name, color: planet_color, mass_kg: planet_mass, distance_from_sun_km: planet_distance, fun_fact: planet_fact)
+      solar_system.add_planet(user_planet)
+      puts user_planet.summary
     when "exit"
       exit
     end
 
-    puts "What would you like to do next (\"list planets\", \"planet details\", or \"exit\")? "
+    puts "What would you like to do next (\"list planets\", \"planet details\", \"add planet\", or \"exit\")? "
   end
 end
 
