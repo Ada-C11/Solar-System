@@ -56,6 +56,12 @@ def main
 
     puts "What would you like to do next (\"list planets\", \"planet details\", \"add planet\", or \"exit\")? "
   end
+rescue NameError => error1
+  puts "Error: #{error1.message}"
+  main
+rescue ArgumentError => error2
+  puts "Error: #{error2.message}"
+  main
 end
 
 main
