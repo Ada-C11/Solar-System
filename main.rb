@@ -22,8 +22,20 @@ def main
   solar_system.add_planet(uranus)
   solar_system.add_planet(neptune)
 
-  list = solar_system.list_planets
-  puts list
+  puts "What would you like to do next? [list planets] [planet details] [exit]"
+  user_input = gets.chomp
+  until user_input == "exit"
+    case user_input
+    when "list planets"
+      puts solar_system.list_planets
+    when "planet details"
+      print "What planet would you like to learn about? > "
+      planet_choice = gets.chomp
+      puts solar_system.find_planet_by_name(planet_choice).summary
+    end
+    puts "What would you like to do next? [list planets] [planet details] [exit]"
+    user_input = gets.chomp
+  end
 
   found_planet = solar_system.find_planet_by_name("Venus")
   puts found_planet.summary
