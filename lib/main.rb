@@ -9,21 +9,34 @@ def main
 
   super_hot_planet = Planet.new(name: "Ignis", color: "white", mass_kg: 100, distance_from_sun_km: 10, fun_fact: "It's wayyyy too close to the sun")
 
-  puts earth.summary
-  puts mars.summary
-  puts super_hot_planet.summary
+  #   puts earth.summary
+  #   puts mars.summary
+  #   puts super_hot_planet.summary
 
   solar_system = SolarSystem.new("Sol")
   solar_system.add_planet(earth)
   solar_system.add_planet(mars)
-  puts solar_system.list_planets
+  solar_system.add_planet(super_hot_planet)
+  #   puts solar_system.list_planets
 
-  found_planet = solar_system.find_planet_by_name("EarTh")
-  puts found_planet
+  #   found_planet = solar_system.find_planet_by_name("mars")
+  #   puts found_planet
 
-  puts found_planet.summary
+  #   puts found_planet.summary
 
-  puts solar_system.distance_between(earth, mars)
+  #   puts solar_system.distance_between(earth, super_hot_planet)
+
+  puts "What would you like to do next (\"list planets\" or \"exit\")? "
+  while input = gets.chomp
+    case input
+    when "list planets"
+      puts solar_system.list_planets
+    when "exit"
+      exit
+    else
+    end
+    puts "What would you like to do next (\"list planets\" or \"exit\")? "
+  end
 end
 
 main
