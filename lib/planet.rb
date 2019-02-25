@@ -13,10 +13,10 @@ class Planet
   end
 
   def summary
-    return "\nname: #{@name}" +
-             "\ncolor: #{@color}" +
-             "\nmass: #{@mass_kg} kg" +
-             "\ndistance from sun : #{distance_from_sun} km" +
-             "\nfun fact: #{fun_fact}"
+    return "\nName: #{@name}" +
+             "\nColor: #{@color}" +
+             "\nMass: #{@mass_kg} kg" +
+             "\nDistance from sun : #{distance_from_sun} km" +
+             "\nFun fact: #{fun_fact}"
   end
 end
