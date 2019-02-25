@@ -7,6 +7,12 @@ class SolarSystem
   end
 
   def add_planet(planet_instance)
-    star_name << planet_instance
+    planets << planet_instance
+  end
+
+  def list_planets
+    planets.each_with_index do |planet, index|
+      puts "#{index + 1}: #{planet.name}"
+    end
   end
 end
