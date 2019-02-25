@@ -23,3 +23,4 @@ end
 # instantiate each planet here:
 earth = Planet.new(name: "Earth", color: 'blue-green', mass_kg: '5.972e24', distance_from_sun_km: '1.496e8', fun_fact: 'Only planet known to support life')
 
+earth.name
