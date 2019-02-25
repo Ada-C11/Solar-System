@@ -41,4 +41,18 @@ describe "Planet" do
       expect(earth.summary).must_equal "#{earth.name} is a #{earth.color} planet that is #{earth.distance_from_sun_km} km from it's sun. It has a mass of #{earth.mass_kg} kg and is known for #{earth.fun_fact}."
     end
   end
+
+  describe "test edge case for distance and mass" do
+    it "0 mass will raise argument error" do
+      expect {
+        Planet.new("Invisible", "clear", 0, 234230, " located everywhere, but nowhere")
+      }.must_raise ArgumentError
+    end
+
+    it "0 distance will raise argument error" do
+      expect {
+        Planet.new("Rock", "jelly", 34535555, 0, " located everywhere, but nowhere")
+      }.must_raise ArgumentError
+    end
+  end
 end
