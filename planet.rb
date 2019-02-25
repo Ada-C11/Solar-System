@@ -16,12 +16,10 @@ class Planet
   end
 
   def summary
-    return "The planet #{self.name} is #{self.color} in color, has a mass of #{self.mass_kg}, is #{self.distance_from_sun_km}km from the sun. A fun fact about your planet: #{self.fun_fact}"
+    return "The planet #{self.name} is #{self.color} in color, has a mass of #{self.mass_kg}kg, and is #{self.distance_from_sun_km}km from the sun. A fun fact about your planet: #{self.fun_fact}"
   end
 end
 
 # instantiate each planet here:
 earth = Planet.new(name: "Earth", color: 'blue-green', mass_kg: '5.972e24', distance_from_sun_km: '1.496e8', fun_fact: 'Only planet known to support life')
-
-p earth.mass_kg
 
