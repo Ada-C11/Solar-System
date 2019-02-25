@@ -8,4 +8,8 @@ class Planet
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
   end
+
+  def summary
+    # return ""
+  end
 end
