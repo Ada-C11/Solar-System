@@ -8,4 +8,8 @@ class Planet
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
   end
+
+  def summary
+    return "#{@name} is #{@color}, weighs #{@mass_kg} kg, and is #{@distance_from_sun_km} km from the sun.  It is #{@fun_fact.downcase}."
+  end
 end
