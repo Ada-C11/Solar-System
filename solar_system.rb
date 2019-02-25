@@ -10,7 +10,7 @@ class SolarSystem
     @planets.push(planet_instance)
   end
 
-  def list_planets #need to fix formatting with returns
+  def list_planets
     return "Planets orbiting #{@star_name}",
            @planets.map!.each_with_index do |planet, index|
              "#{index + 1}. #{planet}"
