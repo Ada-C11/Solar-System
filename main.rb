@@ -5,7 +5,7 @@ def main
 
   saturn = Planet.new("Saturn", "multi-colored striped", 39435845, 222343, "This planet has rings of gas, dust and rock.")
 
-  return "#{jupiter.name} is #{jupiter.color}. #{jupiter.fun_fact} #{saturn.name} is #{saturn.color}. #{saturn.fun_fact} "
+  return "#{jupiter.summary} #{saturn.summary}"
 end
 
 puts main
