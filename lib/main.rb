@@ -1,3 +1,4 @@
+require "awesome_print"
 require_relative "planet"
 require_relative "solar_system"
 
@@ -9,6 +10,13 @@ def main
   solar_system.add_planet(arrakis)
   list = solar_system.list_planets
   puts list
+
+  puts "So you want to find a planet, mmm... tell me the name, please?"
+  planet_name = gets.chomp.capitalize
+  found_planet = solar_system.find_planet_by_name(planet_name)
+
+  puts found_planet
+  puts found_planet.summary
 
   #   puts arrakis.name
   #   puts cybertron.fun_fact

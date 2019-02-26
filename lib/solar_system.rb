@@ -29,6 +29,11 @@ class SolarSystem
     return string
   end
 
-  def find_planet_by_name
+  def find_planet_by_name(planet_name)
+    var = ""
+    @planets.each do |planet|
+      return planet if planet.name == planet_name
+    end
+    # return planet_name if @planets.include?(planet_name)
   end
 end
