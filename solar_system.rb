@@ -22,12 +22,15 @@ class SolarSystem
 
   def find_planet_by_name(planet_name)
     planet_name = planet_name.downcase.capitalize
+    # puts "This is user input: #{planet_name}"
     @planets.each do |planet|
+      # puts "This is planet.name: #{planet.name}"
       if planet.name == planet_name
         return planet
       else
-        raise ArgumentError, "You must input an existing planet name."
+        object = planet
       end
     end
+    return nil
   end
 end
