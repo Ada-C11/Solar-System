@@ -1,5 +1,7 @@
 require_relative "planet.rb"
 require_relative "solar_system.rb"
+require 'terminal-table'
+
 def main 
   solar_system = SolarSystem.new('Sol')
   earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
@@ -8,6 +10,8 @@ def main
   solar_system.add_planet(mars)
   venus = Planet.new('Venus', "yellow-white", 4.867e24, 1.082e8,'Venus is the second brightest natural object in the sky')
   solar_system.add_planet(venus)
+  venus2 = Planet.new('Venus', "green-white", 4.867e24, 1.082e8,'Venus2 is the second brightest natural object in the sky')
+  solar_system.add_planet(venus2)
 
   while true
     puts "What would you like to do? You can get planet details, list planets, add planet or exit."
@@ -23,7 +27,6 @@ def main
       puts "What is the name of the planet you wish to learn about?"
       name = gets.chomp
       found_planet = solar_system.find_planet_by_name(name)
-      puts found_planet
       puts found_planet.summary if found_planet.is_a? Planet
    
     elsif user_input == "add planet"

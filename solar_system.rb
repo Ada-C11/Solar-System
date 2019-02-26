@@ -1,3 +1,6 @@
+require 'terminal-table'
+require 'colorize'
+
 class SolarSystem
   attr_reader :star_name, :planets
   def initialize(star_name)
@@ -11,12 +14,16 @@ class SolarSystem
 
   def list_planets
     counter = 0
-    all_planets = ""
+    rows = []
     @planets.each do |planet|
-       all_planets += "#{counter += 1}.#{planet.name} "
+       rows << ["#{counter += 1}".colorize(:light_blue), "#{planet.name} ".colorize(:light_green)]
     end
-    puts  "Planets orbiting #{@star_name}"
-    return all_planets.split(' ')
+    table = Terminal::Table.new do |t|
+      t.title = "Planets orbiting #{@star_name}".colorize(:color => :red) 
+      t.rows = rows
+      t.style = {:width => 30, :padding_left => 3, :border_x => "=", :border_i => "x"}  
+    end
+    return table
   end
 
   def find_planet_by_name(name)
@@ -32,13 +39,5 @@ class SolarSystem
     if found == false 
       return "#{name} is not a planet!"
     end
-
-    
   end
 end
-
-# solar_system = SolarSystem.new('Sol')
-# puts solar_system.star_name
-# solar_system.add_planet('earth')
-# solar_system.add_planet('mars')
-# puts "#{solar_system.planets}"
