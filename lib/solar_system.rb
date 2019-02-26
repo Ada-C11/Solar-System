@@ -24,7 +24,11 @@ class SolarSystem
         return planet
       end
     end
-    puts "No planet named #{@planet} is currently in this solar system. " \
+    puts "There is currently no planet with that name in this solar system. " \
          "Please add planet to the solar system using add_planet."
+  end
+
+  def distance_between(planet1, planet2)
+    return (planet1.distance_from_sun_km - planet2.distance_from_sun_km).abs
   end
 end

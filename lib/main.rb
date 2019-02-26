@@ -9,13 +9,15 @@ def main
   solar_system.add_planet(venus)
   puts "What do you want to do?"
   user_selection = get_user_selection
-  while user_selection == "1" || user_selection == "2" || user_selection == "3"
+  while user_selection == "1" || user_selection == "2" || user_selection == "3" || user_selection == "4"
     if user_selection == "1"
       puts solar_system.list_planets
     elsif user_selection == "2"
       planet_details(solar_system)
     elsif user_selection == "3"
       add_planet(solar_system)
+    elsif user_selection == "4"
+      distance_between(solar_system)
     end
     user_selection = get_user_selection
   end
@@ -23,8 +25,8 @@ end
 
 def get_user_selection
   user_selection = nil
-  until user_selection == "1" || user_selection == "2" || user_selection == "3" || user_selection == "4"
-    print "Enter 1 to list planets, 2 to get details on a planet, 3 to add a planet, or 4 to exit: "
+  until user_selection == "1" || user_selection == "2" || user_selection == "3" || user_selection == "4" || user_selection == "5"
+    print "Enter 1 to list planets, 2 to get details on a planet, 3 to add a planet, 4 to get the distance between two planets, or 5 to exit: "
     user_selection = gets.chomp
   end
   return user_selection
@@ -58,6 +60,18 @@ def add_planet(solar_system)
   fact = gets.chomp
   new_planet = Planet.new(name, color, mass, distance, fact)
   solar_system.add_planet(new_planet)
+end
+
+def distance_between(solar_system)
+  print "What is the first planet? "
+  planet1 = gets.chomp
+  planet1 = solar_system.find_planet_by_name(planet1)
+  return if planet1 == nil
+  print "What is the second planet? "
+  planet2 = gets.chomp
+  planet2 = solar_system.find_planet_by_name(planet2)
+  return if planet2 == nil
+  puts solar_system.distance_between(planet1, planet2)
 end
 
 def get_positive_number(name, value)
