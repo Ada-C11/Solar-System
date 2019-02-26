@@ -3,6 +3,8 @@ require 'pry'
 
 def main
 
+    solar_system = SolarSystem.new('Sol')
+
     elvis = Planet.new('Elvis', 'shiny', 159, 20, 'recorded more than 600 songs, but did not write any of them', 3.5, 85)
     hank_sr = Planet.new('Hank Sr', 'white as hell', 72, 30, 'recorded 14 songs as his alter ego, Luke the Drifter', 4.5, 10)
     dolly = Planet.new ('Dolly', 'canary yellow', 52, 18, 'once entered a Dolly look-alike drag queen contest and lost', 4.8, 90)
@@ -12,6 +14,14 @@ def main
     reba = Planet.new ('Reba', 'red', 60, 'is the only country female solo act to have a No. 1 hit in four straight decades: the 1980s, 90s, 00s and 10s', 5.0, 70)
     willie = Planet.new ('Willie', 'old', 70, 7, 'ran into a burning house to save his pound of Columbian grass', 3.8, 15)
 
+    solar_system.add_planet(elvis)
+    solar_system.add_planet(hank_sr)
+    solar_system.add_planet(dolly)
+    solar_system.add_planet(patsy)
+    solar_system.add_planet(garth)
+    solar_system.add_planet(johnny)
+    solar_system.add_planet(reba)
+    
 end
 
 main
