@@ -40,4 +40,20 @@ class SolarSystem
 
     return (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
   end
+
+  def create_new_planet
+    puts "Tell me a little bit about the planet you would like to add.\n What is the planet's name?"
+      new_name = gets.chomp.to_s
+      puts "What color is this planet?"
+      new_color = gets.chomp.to_s
+      puts "What is the mass of this planet in kilograms?"
+      new_mass = gets.chomp.to_f
+      puts "What is this planet's distance from the sun in kilometers?"
+      new_distance = gets.chomp.to_f
+      puts "What is a fun fact about this planet?"
+      new_fact = gets.chomp.to_s
+
+      new_planet = Planet.new(new_name, new_color, new_mass, new_distance, new_fact)
+      add_planet(new_planet)
+  end
 end

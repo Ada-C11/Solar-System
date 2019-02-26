@@ -23,16 +23,38 @@ def main
 
   fisher = Planet.new('Fisher', 'grey', 43.3e2, 14.56e17, 'all animals on this planet come when called')
   solar_system.add_planet(fisher)
-  # list = solar_system.list_planets
-  # puts list
 
-
-  # found_planet = solar_system.find_planet_by_name('VEnus')
-
-  # puts found_planet
-  # puts found_planet.summary
-
-
+  puts "What would you like to do? 'list planets', 'planet details', 'add planet', 
+  'find distance between two planets', or 'exit'?"
+  answer = gets.chomp.to_s
+  
+  until answer == "exit"
+    if answer == 'list planets'
+      puts solar_system.list_planets
+    elsif answer == 'planet details'
+      puts "Which planet would you like to learn about?"
+      planet_detail = gets.chomp.to_s
+      found_planet = solar_system.find_planet_by_name(planet_detail)
+      puts found_planet.summary
+    elsif answer == 'add planet'
+      solar_system.create_new_planet
+    elsif answer == 'find distance between two planets'
+      puts "Which two planets would you like to use in your calculation?"
+      puts "Planet 1"
+      planet_1 = gets.chomp.to_s
+      puts "Planet 2\t"
+      planet_2 = gets.chomp.to_s
+      puts "The distance between #{planet_1} and #{planet_2} is #{solar_system.distance_between(planet_1, planet_2)}km"
+    else 
+      puts "I'm sorry, I didn't understand that command."
+    end
+    puts "What would you like to do? 'list planets', 'planet details', 'add planet', 'find distance between to planets', or 'exit'?"
+    answer = gets.chomp.to_s
+  end
+  
+  if answer == "exit"
+    puts "Thanks for visiting!"
+  end
 
 end
 
