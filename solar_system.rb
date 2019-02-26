@@ -44,4 +44,13 @@ class SolarSystem
     end
     return list
   end
+
+  def find_planet_by_name
+    @planets.each do |planet|
+      if planet.name == name.capitalize
+        return planet
+      end
+    end
+    return raise ArgumentError, "Planet not in solar system"
+  end
 end
