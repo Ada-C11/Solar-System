@@ -59,7 +59,6 @@ class SolarSystem
     return find_planet_by_name(planet)
   end
 
-  # need to do method for finding planet distance from sun
   def get_planet_distance(name)
     @planets.each do |planet|
       if planet.name == name.capitalize
@@ -69,7 +68,6 @@ class SolarSystem
     return raise ArgumentError, "Planet not in solar system"
   end
 
-  # need to do method for finding distance between planets
   def find_distance_between
     planet1 = get_planet_name
     planet2 = get_planet_name
