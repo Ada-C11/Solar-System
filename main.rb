@@ -25,7 +25,11 @@ def main
       puts "Which planet would you like to learn more about?"
       user_planet = gets.chomp
       found_planet = food_way.find_planet_by_name(user_planet)
-      puts found_planet.summary
+      if found_planet == nil
+        puts "Sorry, that planet does not exist in the Food Way Solar System. Check your spelling or try a different planet."
+      else
+        puts found_planet.summary
+      end
     elsif next_step == "add planet"
       puts "What planet would you like to add?"
       new_planet = gets.chomp.capitalize
@@ -43,24 +47,4 @@ def main
   end
 end
 
-### OLD CODE #####
-# earth = Planet.new("Earth", "blue-green", 5.972e24, 1.49638, "houses these things called humans")
-# mars = Planet.new("Mars", "scary-red", 4.930e24, 0.43523, "a day in Mars lasts 24 hours and 39 minutes long")
-
-# puts earth
-# puts mars.summary
-
-# # checking for accurate formatting and list of planets
-# solar_system = SolarSystem.new("Brittny")
-# solar_system.add_planet(earth)
-# solar_system.add_planet(mars)
-# list = solar_system.list_planets
-# puts list
-
-# # checking for accurate found_planet
-# found_planet = solar_system.find_planet_by_name("earth")
-# puts found_planet
-# puts found_planet.summary
-
 main
-# puts main.summary
