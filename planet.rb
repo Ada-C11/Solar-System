@@ -10,7 +10,7 @@ class Planet
   end
 
   def summary
-    return "Planet: #{name}
+    return "Planet name: #{name}
     Color: #{color}
     Mass in kg: #{mass_kg}
     Distance from the sun: #{distance_from_sun_km}
