@@ -7,7 +7,6 @@ class Planet
     else
       @mass_kg = mass_kg
     end
-    # @distance_from_the_sun_km = distance_from_the_sun_km
     if distance_from_the_sun_km != Integer || distance_from_the_sun_km < 0
       @distance_from_the_sun_km = 0
     else
@@ -23,9 +22,4 @@ class Planet
 
     return summary
   end
-
-  # add if we want to return puts "a #{planet}" as summary
-  #   def to_s
-  #     return summary
-  #   end
 end
