@@ -12,9 +12,12 @@ def main
   solar_system.add_planet(pluto)
   solar_system.add_planet(saturn)
 
+  puts "Testing distance between (should be 300)"
+  puts solar_system.distance_between(pluto, saturn)
+
   # TODO: Error handling on user input
   # TODO: Try using class for this part
-  puts "What do you want to do next? Enter: \nList planets, \nPlanet details, \nAdd planet or \nExit"
+  puts "What do you want to do next? \nEnter one: \nList planets, \nPlanet details, \nAdd planet or \nExit"
   answer = gets.chomp
 
   until answer == "exit"

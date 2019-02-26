@@ -1,4 +1,3 @@
-# solar_system.rb
 require_relative "planet.rb"
 
 class SolarSystem
@@ -30,5 +29,15 @@ class SolarSystem
       end
     end
     return "That's not a planet I have information for"
+  end
+
+  def distance_between(planet1, planet2)
+    if planet1.distance_from_sun_km > planet2.distance_from_sun_km
+      return planet1.distance_from_sun_km - planet2.distance_from_sun_km
+    elsif planet2.distance_from_sun_km > planet1.distance_from_sun_km
+      return planet2.distance_from_sun_km - planet1.distance_from_sun_km
+    elsif planet1.distance_from_sun_km == planet2.distance_from_sun_km
+      return "There is no distance between these planets"
+    end
   end
 end
