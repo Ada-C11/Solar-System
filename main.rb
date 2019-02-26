@@ -19,11 +19,16 @@ def main
   jupiter = Planet.new("Jupiter", "red, white, and brown", 1.898e27, 7.785e8, "The planet with the shortest day in the solar system")
   solar_system.add_planet(jupiter)
 
-  list = solar_system.list_planets
-  puts list
-
-  found_planet = solar_system.find_planet_by_name("earth")
-  puts found_planet.summary
+  response = nil
+  while response != "exit"
+    puts "Please enter what you would like to do: "
+    response = gets.chomp
+    if response == "list planets"
+      puts solar_system.list_planets
+    end
+    puts "Please enter what you would like to do: "
+    response = gets.chomp
+  end
 end
 
 main
