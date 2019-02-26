@@ -11,7 +11,7 @@ class SolarSystem
   end
 
   def find_planet_by_name(name)
-    #raise ArgumentError if @planet.include?(name.capitalize)
+    #raise ArgumentError unless @planet.include?(name.capitalize)
     @planets.find { |planet| planet.name.downcase == name.downcase }
   end
 
