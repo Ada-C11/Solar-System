@@ -1,6 +1,13 @@
 require_relative "planet"
 require_relative "solar_system"
 
+#welcome message
+puts "Welcome to our Solar System! You can do the following with this program."
+puts "1. List Planets"
+puts "2. Planet Details"
+puts "3. Add Planet"
+puts "4. Exit"
+
 def main
   #initialize solar system and planets
   food_way = SolarSystem.new("Pad Thai Star")
@@ -16,7 +23,7 @@ def main
   # control loop for program next steps
   next_step = ""
   until next_step == "exit"
-    puts "What would you like to do next? Options - 'list planets', 'planet details', 'add planet', or 'exit'"
+    puts "What would you like to do? Options - 'list planets', 'planet details', 'add planet', or 'exit'"
     next_step = gets.chomp.downcase
     if next_step == "list planets"
       list = food_way.list_planets
@@ -43,6 +50,8 @@ def main
       planet_fun = gets.chomp
       adding_planet = Planet.new(new_planet, planet_color, planet_mass, planet_distance, planet_fun)
       food_way.add_planet(adding_planet)
+    else
+      puts "This is not an option. Try again."
     end
   end
 end
