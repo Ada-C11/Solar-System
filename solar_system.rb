@@ -15,7 +15,7 @@ class SolarSystem
   def list_planets
     list_of_planets = "Planets orbiting #{@star_name} \n"
     @planets.each_with_index do |planet, index|
-      # Concatenate string each loop
+      # Concatenate output each loop
       list_of_planets += "#{index+1}. #{planet.name} \n"
     end
     return list_of_planets
@@ -26,7 +26,7 @@ class SolarSystem
     if matching_planets.length == 1
       return matching_planets[0]
     elsif matching_planets.length > 1
-      return matching_planets
+      puts "There is a duplicate in our planets' names!"
     else
       puts "There is no such planet!"
     end
