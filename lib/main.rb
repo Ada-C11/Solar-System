@@ -1,27 +1,27 @@
 require_relative "planet"
 require_relative "solar-system"
+
 require "faker"
-require "lolcat"
 require "colorize"
 require "table_flipper"
 
 def add_planet(solar_system)
   # Get user input for new planet's attributes
   puts "\nLet's get some details about the planet you want to add."
-  puts "First, what color is your planet?"
+  puts "First, what color is your planet?".colorize(:blue)
   color = gets.chomp
-  puts "Okay, what is the mass of your planet in kilograms?"
+  puts "Okay, what is the mass of your planet in kilograms?".colorize(:blue)
   mass_kg = gets.chomp.to_f
-  puts "Great! How far is your planet from the sun in kilometers?"
+  puts "Great! How far is your planet from the sun in kilometers?".colorize(:blue)
   distance_from_sun = gets.chomp.to_f
-  puts "Next, enter a fun fact about your planet!"
+  puts "Next, enter a fun fact about your planet!".colorize(:blue)
   fun_fact = gets.chomp
-  puts "Finally, what is your planet's name?"
+  puts "Finally, what is your planet's name?".colorize(:blue)
   name = gets.chomp
   # This while loop ensures that planet names are unique.
-  # If you're naming two planets the exact same thing, go back to astronomy school :P
+  # If you're naming two planets the exact same thing, go back to astronomy school (jk)
   while solar_system.planets.any? { |planet| planet.name.downcase == name.downcase }
-    puts "That name is taken! Try entering another name."
+    puts "That name is taken! Try entering another name.".colorize(:red)
     name = gets.chomp
   end
 
@@ -30,44 +30,44 @@ def add_planet(solar_system)
     new_planet = Planet.new(name, color, mass_kg, distance_from_sun, fun_fact)
     solar_system.add_planet(new_planet)
   rescue ArgumentError => e
-    puts "\nFailed to add your planet. Try again."
+    puts "\nFailed to add your planet. Try again.".colorize(:red)
     puts e.message
   else
-    puts "\nSuccessfully added your planet!"
+    puts "\nSuccessfully added your planet!".colorize(:green)
   end
 end
 
 def measure_distance(solar_system)
   # Get the names of planets and store the planet objects in variables
-  puts "\nWhat is the first planet?"
+  puts "\nWhat is the first planet?".colorize(:blue)
   planet1_name = gets.chomp
   planet1 = solar_system.find_planet_by_name(planet1_name)
-  puts "What is the second planet?"
+  puts "What is the second planet?".colorize(:blue)
   planet2_name = gets.chomp
   planet2 = solar_system.find_planet_by_name(planet2_name)
 
   # If both planet objects exist, calculate the distance, otherwise print error messages
   if planet1 && planet2
     distance = solar_system.distance_between(planet1_name, planet2_name)
-    puts "\nThe distance between #{planet1_name} and #{planet2_name} is #{distance} km."
+    puts "\nThe distance between #{planet1_name} and #{planet2_name} is #{distance} km.".colorize(:green)
   elsif !planet1 && !planet2
-    puts "\n#{planet1_name} and #{planet2_name} are not in the solar system. Try again."
+    puts "\n#{planet1_name} and #{planet2_name} are not in the solar system. Try again.".colorize(:red)
   elsif !planet1
-    puts "\n#{planet1_name} is not in the solar system. Try again"
+    puts "\n#{planet1_name} is not in the solar system. Try again".colorize(:red)
   elsif !planet2
-    puts "\n#{planet2_name} is not in the solar system. Try again"
+    puts "\n#{planet2_name} is not in the solar system. Try again".colorize(:red)
   end
 end
 
 def display_details(solar_system)
   # Get a planet name as user input and use find_planet_by_name to retrieve the planet object
-  puts "\nWhich planet do you want to learn about?"
+  puts "\nWhich planet do you want to learn about?".colorize(:blue)
   planet_name = gets.chomp
   planet = solar_system.find_planet_by_name(planet_name)
   if planet
-    puts planet.summary
+    puts planet.summary.colorize(:green)
   else
-    puts "#{planet_name} is not in the solar system! Try again."
+    puts "#{planet_name} is not in the solar system! Try again.".colorize(:red)
   end
 end
 
@@ -82,16 +82,14 @@ def control_loop(solar_system)
                     }
 
   while input != "q"
-    puts "What would you like to do?"
-    possible_inputs.each do |key, value|
-      puts "Press #{key} to #{value}"
-    end
+    puts "What would you like to do?".colorize(:blue)
+    possible_inputs.each { |key, value| puts "Press #{key.to_s.colorize(:blue)} to #{value.to_s.colorize(:blue)}" }
 
     input = gets.chomp.downcase.to_sym
 
     case input
     when :l
-      puts solar_system.list_planets
+      puts solar_system.list_planets.colorize(:green)
     when :d
       display_details(solar_system)
     when :a
@@ -101,7 +99,7 @@ def control_loop(solar_system)
     when :q
       return
     else
-      puts "\n#{input} is not one of the options. Try again!"
+      puts "\n#{input} is not one of the options. Try again!".colorize(:red)
     end
 
     puts "\n"
@@ -109,14 +107,12 @@ def control_loop(solar_system)
 end
 
 def main
-
   # Make a solar system
   solar_system = SolarSystem.new(Faker::Space.star)
 
   # Make some planets and add them to the solar system
-  puts "Loading planets...."
   4.times do
-    new_planet = Planet.new(Faker::Movies::HitchhikersGuideToTheGalaxy.planet,
+    new_planet = Planet.new(Faker::Movies::HitchhikersGuideToTheGalaxy.unique.planet,
                             Faker::Color.color_name,
                             (Faker::Number.decimal(1, 3)).to_f * 10 ** (rand(22..24)),
                             (Faker::Number.decimal(1, 3)).to_f * 10 ** (rand(7..9)),
@@ -127,7 +123,7 @@ def main
   end
 
   # Start the control loop.
-  puts "Welcome to the solar system program."
+  puts "Welcome to the solar system program.".colorize(:blue)
   control_loop(solar_system)
 end
 
