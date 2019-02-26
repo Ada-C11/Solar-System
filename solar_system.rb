@@ -10,28 +10,25 @@ class SolarSystem
   end
 
   def add_planet(planet) # takes an instance of planet
-    planets << planet.name # add it to list of planets
+    planets << planet # add it to list of planets
   end
 
   def list_planets
-    # planets.each do |planet|
-    # puts planets
     list_num = 1
-    # array_index = 0
     list_string = "Planets orbiting #{star_name}\n"
     planets.each do |planet|
-      list_string << "#{list_num}. #{planet}\n"
+      list_string << "#{list_num}. #{planet.name}\n"
       list_num += 1
     end
     return list_string
   end
-end
 
-# def list_planets
-#     puts "Planets orbiting #{star_name}:"
-#     planets.each do |planet|
-#       index = 1
-#       return "#{index}. #{planet.name}"
-#       index += 1
-#     end
-#   end
+  def find_planet_by_name(planet_name)
+    planets.each do |planet|
+      if planet.name.downcase == planet_name.downcase
+        return planet
+      end
+    end
+    return nil
+  end
+end
