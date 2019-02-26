@@ -65,4 +65,25 @@ describe "SolarSystem" do
       }.must_raise ArgumentError
     end
   end
+
+  describe "SolarSystem#distance_between" do
+    it "returns an integer" do
+      expect(sol_system.distance_between(earth, mars)).must_be_instance_of Integer
+    end
+
+    it "returns positive value" do
+      expect(sol_system.distance_between(mars, earth) >= 0).must_equal true
+      expect(sol_system.distance_between(earth, mars) >= 0).must_equal true
+    end
+
+    it "raises ArgumentError if args not type Planet" do
+      expect {
+        sol_system.distance_between(mars, "earth")
+      }.must_raise ArgumentError
+
+      expect {
+        sol_system.distance_between("earth", mars)
+      }.must_raise ArgumentError
+    end
+  end
 end
