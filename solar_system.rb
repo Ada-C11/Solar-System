@@ -30,4 +30,22 @@ class SolarSystem
     end
     return "Invalid planet."
   end
+
+  def find_planet_distance_by_name(a_planet)
+    @planets.each do |each_planet|
+      if each_planet.name.casecmp(a_planet) == 0
+        return each_planet.distance_from_sun_km
+      end
+    end
+    return "Invalid planet."
+  end
+
+  def distance_between(planet1_name, planet2_name)
+    planet1_position = find_planet_distance_by_name(planet1_name)
+    planet2_position = find_planet_distance_by_name(planet2_name)
+    if planet1_position.is_a?(Float) == false || planet2_position.is_a?(Float) == false
+      return "Invalid planet entered."
+    end
+    return "#{(planet2_position - planet1_position).abs} kilometers"
+  end
 end

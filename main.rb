@@ -8,8 +8,16 @@ def add_new_planet
   color = gets.chomp
   puts "What about its mass in kilograms?"
   mass_kg = gets.chomp
+  until mass_kg.to_f > 0
+    puts "Must be a number greater than zero."
+    mass_kg = gets.chomp
+  end
   puts "Now I need its distance from the sun in kilometers."
   distance_from_sun_km = gets.chomp
+  until distance_from_sun_km.to_f > 0
+    puts "Must be a number greater than zero."
+    distance_from_sun_km = gets.chomp
+  end
   puts "And finally, what's a fun fact about this planet?"
   fun_fact = gets.chomp
 
@@ -48,7 +56,7 @@ def main
 
   while continue == true
     puts "What would you like to do next?"
-    puts "list planets | planet details | add planet | exit"
+    puts "list planets | planet details | add planet | distance between planets | exit"
     get_input = gets.chomp
     if get_input == "exit"
       puts "See ya!"
@@ -60,51 +68,17 @@ def main
     elsif get_input == "add planet"
       solar_system.add_planet(add_new_planet)
       puts "Planet added to the solar system!"
+    elsif get_input == "distance between planets"
+      puts "What's the first planet you're interested in?"
+      planet1_name = gets.chomp
+      puts "Sweet, what's the second planet?"
+      planet2_name = gets.chomp
+      puts solar_system.distance_between(planet1_name, planet2_name)
     else
       puts "Invalid prompt."
     end
   end
 end
 
-#   unless the_input == "exit"
-#     if the_input == "list planets"
-#       puts solar_system.list_planets
-#       get_input
-#     elsif the_input == "planet details"
-#       puts solar_system.find_planet_by_name
-#       get_input
-#     elsif the_input == "add planet"
-#       add_new_planet
-#       puts solar_system.add_planet(add_new_planet)
-#       get_input
-#     else
-#       puts "Invalid prompt."
-#     end
-#   else puts "See ya!"   end
-
-#   puts "The farthest planet from Sol is #{neptune.name} at #{neptune.distance_from_sun_km} kilometers!"
-
-#   puts "The biggest planet by far is #{jupiter.name} at #{jupiter.mass_kg} kilograms!"
-
-#   puts saturn.summary
-
-#   list = solar_system.list_planets
-#   puts list
-
-#   found_planet = solar_system.find_planet_by_name("earth")
-#   puts found_planet
-#   puts found_planet.summary
-
 puts "Welcome to the solar system!"
 main
-
-#   def get_input
-#     puts "What would you like to do next?"
-#     puts "list planets | planet details | add planet | exit"
-#     return gets.chomp
-#     # return user_input
-#   end
-
-#   puts "What would you like to do next?"
-#   puts "list planets | planet details | add planet | exit"
-#   the_input = gets.chomp
