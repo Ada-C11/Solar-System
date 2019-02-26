@@ -3,7 +3,7 @@ class Planet
 
   def initialize(name, color, mass_kg, distance_from_sun, fun_fact)
     if mass_kg <= 0 || distance_from_sun <= 0
-      raise ArgumentError, "Mass and distance from sun must be greater than zero!"
+      raise ArgumentError, "Mass and distance from sun must be numbers greater than zero!"
     end
     @name = name
     @color = color

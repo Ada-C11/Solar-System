@@ -123,7 +123,7 @@ def main
   end
 
   # Start the control loop.
-  puts "Welcome to the solar system program.".colorize(:blue)
+  puts "Welcome to the solar system program."
   control_loop(solar_system)
 end
 
