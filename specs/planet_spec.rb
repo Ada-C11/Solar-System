@@ -3,6 +3,7 @@ require 'minitest/reporters'
 require 'minitest/pride'
 
 require_relative '../lib/planet'
+require_relative '../lib/solar_system'
 
 Minitest::Reporters.use!
 

@@ -17,7 +17,6 @@ class SolarSystem
     @planets.length.times do |index|
       list = list + "#{index + 1}.#{planets[index].name} \n"
     end
-     
     return "Planets orbiting #{@star_name}:\n #{list}"
   end
   # method for seaching planets
