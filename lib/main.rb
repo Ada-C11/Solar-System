@@ -54,7 +54,7 @@ def control_loop(solar_system)
         puts "\nSuccessfully added your planet!"
       end
     when :m
-      puts "What is the first planet?"
+      puts "\nWhat is the first planet?"
       planet1_name = gets.chomp
       planet1 = solar_system.find_planet_by_name(planet1_name)
       puts "What is the second planet?"
@@ -63,18 +63,18 @@ def control_loop(solar_system)
 
       if planet1 && planet2
         distance = solar_system.distance_between(planet1_name, planet2_name)
-        puts "The distance between #{planet1_name} and #{planet2_name} is #{distance} km."
+        puts "\nThe distance between #{planet1_name} and #{planet2_name} is #{distance} km."
       elsif !planet1 && !planet2
-        puts "#{planet1_name} and #{planet2_name} are not in the solar system. Try again."
+        puts "\n#{planet1_name} and #{planet2_name} are not in the solar system. Try again."
       elsif !planet1
-        puts "#{planet1_name} is not in the solar system. Try again"
+        puts "\n#{planet1_name} is not in the solar system. Try again"
       elsif !planet2
-        puts "#{planet2_name} is not in the solar system. Try again"
+        puts "\n#{planet2_name} is not in the solar system. Try again"
       end
     when :q
       return
     else
-      puts "#{input} is not one of the options. Try again!"
+      puts "\n#{input} is not one of the options. Try again!"
     end
     puts "\n"
   end
