@@ -23,7 +23,7 @@ class Planet
   end
 
   def summary
-    return "#{@name} is a planet in our solar system. It is #{@color}in color. #{@name}'s mass is #{@mass_kg} kg's. It's distance from the sun is #{@distance_from_the_sun_km} kilometers. Fun fact: #{@fun_fact}. Cool huh?!"
+    return "#{@name} is a planet in our Solar System. It is #{@color}in color. #{@name}'s mass is #{@mass_kg} kg's. It's distance from Tamriel is #{@distance_from_the_sun_km} kilometers. Fun fact: #{@fun_fact}. Cool huh?!"
   end
 
 end

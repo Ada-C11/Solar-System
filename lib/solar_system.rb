@@ -20,15 +20,11 @@ class SolarSystem
     return "Planets orbiting #{@star_name}:\n #{list}"
   end
   # method for seaching planets
-  def find_planet_by_name(name)
-    @planets.length.times do |index|
-        if @planets[index].name.upcase == name.upcase
-            return @planets[index]
-        end
-    end
+  def find_planet_by_name(planet_name)
+    return @planets.find {|planet| planet.name.upcase == planet_name.upcase}
   end
 
-  def distance_between(planet1, planet2)
+  def distance_between(planet1="", planet2="")
     planet1 = find_planet_by_name(name1)
     planet2 = find_planet_by_name(name2)
     return (distance_betweenplanet1.distance_from_sun_km - planet2.distance_from_sun_km)
