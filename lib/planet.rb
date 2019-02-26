@@ -1,5 +1,5 @@
 class Planet
-  def initialize(name: nil, color: nil, mass_kg: nil, distance_from_sun_km: nil, fun_fact: nil)
+  def initialize(name: nil, color: nil, mass_kg: 1, distance_from_sun_km: 1, fun_fact: nil)
     if mass_kg <= 0
       raise ArgumentError, "Mass must be greater than 0: given #{mass_kg}"
     elsif distance_from_sun_km <= 0
