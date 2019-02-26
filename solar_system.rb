@@ -16,5 +16,11 @@ class SolarSystem
       puts "#{index+1}. #{planet.name}" 
     end 
   end
+
+  def find_planet_by_name(planet)
+    selected_planet = @planet.select { |other_planet| other_planet.name.downcase == planet.downcase }
+    # selected_planet.each { |each_planet| each_planet.summary }
+    
+  end
 end
 
