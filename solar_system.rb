@@ -13,10 +13,6 @@ class SolarSystem
     @planets << planet
   end
 
-  def planet_array
-    return @planets
-  end
-
   def list_planets
     table = Terminal::Table.new do |t|
       @planets.each_with_index do |planet, index|

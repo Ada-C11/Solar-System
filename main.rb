@@ -3,53 +3,53 @@ require "pry"
 require_relative "planet.rb"
 require_relative "solar_system.rb"
 
+# option menu
+def options
+  return "Options available to you...
+  1. See a LIST of all the planets on file
+  2. See a specific planet's DETAILS
+  3. ADD a planet
+  4. Quit\n
+  Please enter your option:"
+end
+
 def main
   solar_system = SolarSystem.new("Omicron")
 
-  # planets
   vulcan = Planet.new("Vulcan", "brown & reddish", 546700, 8426000, "Has no moon")
-  shoreleave = Planet.new("Shore Leave Planet", "green", 492600, 8634000, "Created as an amusement park")
-  nibiru = Planet.new("Nibiru", "reddish & green", 734500, 3264000, "Home to chalk-skinned aliens")
-  vendikar = Planet.new("Vendikar", "red & grey", 236300, 284200, "Very rocky!")
-
   solar_system.add_planet(vulcan)
+  shoreleave = Planet.new("Shore Leave Planet", "green", 492600, 8634000, "Created as an amusement park")
   solar_system.add_planet(shoreleave)
+  nibiru = Planet.new("Nibiru", "reddish & green", 734500, 3264000, "Home to chalk-skinned aliens")
   solar_system.add_planet(nibiru)
+  vendikar = Planet.new("Vendikar", "red & grey", 236300, 284200, "Very rocky!")
   solar_system.add_planet(vendikar)
 
-  found_planet = solar_system.find_planet_by_name("vuLcAN")
+  # Welcome message
+  puts "Welcome to the PlanetDex!"
 
   # user input time
-  option = ""
-  # option should be 1 or 0
-  # 0 to exit
-  
-  until option.include?("list") || option == "exit" || option.include?("detail") || option.include?("add")
-    puts "You can LIST planets, see planet DETAILS, ADD a planet, or EXIT"
-    puts "What would you like to do?"
-    option = gets.chomp.downcase
-  end
+  puts options
+  option = gets.chomp
 
-  choice = ""
-  if option.include?("list")
+  case
+  when option.include?("list"), "1"
     puts solar_system.list_planets
-  elsif option.include?("detail")
+  when option.include?("detail"), "2"
     puts "Which planet would you like to learn about?"
     choice = gets.chomp.downcase
-  end
 
-  case choice
-  when "1", "vulcan"
-    puts solar_system.planets[0].summary
-  when "2", "shore leave planet"
-    puts solar_system.planets[1].summary
-  when "3", "nibiru"
-    puts solar_system.planets[2].summary
-  when "4", "vendikar"
-    puts solar_system.planets[3].summary
-  end
-
-  if option.include?("add")
+    case choice
+    when "1", "vulcan"
+      puts solar_system.planets[0].summary
+    when "2", "shore leave planet"
+      puts solar_system.planets[1].summary
+    when "3", "nibiru"
+      puts solar_system.planets[2].summary
+    when "4", "vendikar"
+      puts solar_system.planets[3].summary
+    end
+  when option.include?("add")
     puts "What is the planet's name?"
     name = gets.chomp
     puts "What is the planet's color?"
@@ -63,6 +63,11 @@ def main
 
     name = Planet.new(name, color, mass, sun_distance, fun_fact)
     add_planet(name)
+  when option.include?("exit"), "4"
+    puts "Thank you for using the PlanetDex!"
+  else
+    puts "That is not a valid option."
+    puts "Please re-enter your option:"
   end
 end
 
