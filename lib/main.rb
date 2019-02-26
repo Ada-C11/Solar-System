@@ -62,8 +62,11 @@ end
 def display_details(solar_system)
   # Get a planet name as user input and use find_planet_by_name to retrieve the planet object
   puts "\nWhich planet do you want to learn about?".colorize(:blue)
+  puts "Enter a name or a planet number from the list!".colorize(:blue)
   planet_name = gets.chomp
+  planets = solar_system.planets
   planet = solar_system.find_planet_by_name(planet_name)
+  planet = planets[(planet_name.to_i) - 1] if !planet
   if planet
     puts planet.summary.colorize(:green)
   else
@@ -116,7 +119,7 @@ def main
     fun_fact = ""
     case rand(1..3)
     when 1
-      fun_fact = "Discovered by #{Faker::FunnyName.name_with_initial} on " +
+      fun_fact = "Discovered by #{Faker::Name.name_with_middle} on " +
                  "#{Faker::Date.forward}, this planet is home to the rare " +
                  "#{Faker::Movies::HitchhikersGuideToTheGalaxy.specie}."
     when 2
