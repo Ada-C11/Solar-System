@@ -36,6 +36,12 @@ class SolarSystem
     print "\nGenerating new data"
   end
 
-  # create list of planets
-
+  def list_planets
+    list = "\nPlanets in the Country Music Universe:\n"
+    @planets.each_with_index do |planet, index|
+      index += 1
+      list += "#{index}. #{planet.name}\n"
+    end
+    return list
+  end
 end
