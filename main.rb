@@ -15,9 +15,7 @@ def main
   puts "Testing distance between (should be 300)"
   puts solar_system.distance_between(pluto, saturn)
 
-  # TODO: Error handling on user input
-  # TODO: Try using class for this part
-  puts "What do you want to do next? \nEnter one: \nList planets, \nPlanet details, \nAdd planet or \nExit"
+  puts "What do you want to do next? \nEnter one: \nLIST (List planets), \nDETAILS (Get planet details), \nDISTANCE (Distance between 2 planets)  \nADD (Add planet) \nEXIT (Exit program)"
   answer = gets.chomp
 
   until answer == "exit"
@@ -30,6 +28,14 @@ def main
       puts "Which planet?"
       planet_answer = gets.chomp.downcase
       puts solar_system.find_planet_by_name(planet_answer)
+      puts "What do you want to do next?"
+      answer = gets.chomp.downcase
+    elsif answer == "distance"
+      puts "I need two planets to measure the distance between. What is the first planet?"
+      planet1 = gets.chomp
+      puts "What is the second planet?"
+      planet2 = gets.chomp
+      puts solar_system.distance_between(planet1, planet2)
       puts "What do you want to do next?"
       answer = gets.chomp.downcase
     elsif answer == "add planet"
