@@ -2,8 +2,17 @@ class Planet
   def initialize(name, color, mass_kg, distance_from_the_sun_km, fun_fact)
     @name = name
     @color = color
-    @mass_kg = mass_kg
-    @distance_from_the_sun_km = distance_from_the_sun_km
+    if mass_kg.class != Integer || mass_kg < 0
+      @mass_kg = 0
+    else
+      @mass_kg = mass_kg
+    end
+    # @distance_from_the_sun_km = distance_from_the_sun_km
+    if distance_from_the_sun_km != Integer || distance_from_the_sun_km < 0
+      @distance_from_the_sun_km = 0
+    else
+      @distance_from_the_sun_km = distance_from_the_sun_km
+    end
     @fun_fact = fun_fact
   end
 
