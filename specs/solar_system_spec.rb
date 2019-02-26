@@ -55,7 +55,7 @@ describe "SolarSystem" do
       expect(sol_system.find_planet_by_name("mArS")).must_be_instance_of Planet
     end
 
-    it "returns planet with same name" do
+    it "returns planet with same name, ignores mixed up/downcase" do
       expect(sol_system.find_planet_by_name("mArS").name).must_equal "Mars"
     end
 
