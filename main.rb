@@ -1,5 +1,4 @@
 require_relative "planet"
-require 'pry'
 
 def main
 

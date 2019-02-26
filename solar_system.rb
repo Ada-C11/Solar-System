@@ -1,6 +1,5 @@
 require_relative "planet"
 require_relative "solar_system"
-require "pry"
 
 class SolarSystem
   attr_reader :star_name, :planets
@@ -61,6 +60,20 @@ class SolarSystem
   end
 
   # need to do method for finding planet distance from sun
-  # need to do method for finding distance between planets
+  def get_planet_distance(name)
+    @planets.each do |planet|
+      if planet.name == name.capitalize
+        return planet.distance
+      end
+    end
+    return raise ArgumentError, "Planet not in solar system"
+  end
 
+  # need to do method for finding distance between planets
+  def find_distance_between
+    planet1 = get_planet_name
+    planet2 = get_planet_name
+    distance = planet1.distance_from_sun_km - planet2.distance_from_sun_km
+    puts "\nDistance between #{planet1.name} & #{planet2.name}: #{distance.abs} km."
+  end
 end
