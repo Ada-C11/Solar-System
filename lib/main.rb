@@ -63,7 +63,7 @@ def main
   continue = true
 
   while continue == true
-    puts "What would you like to do next (\"list planets\", \"planet details\", \"add planet\", \"find distance\", or \"exit\")? "
+    puts "What would you like to do (\"list planets\", \"planet details\", \"add planet\", \"find distance\", or \"exit\")? "
     input = gets.chomp
     case input
     when "list planets"
@@ -76,6 +76,8 @@ def main
       user_find_distance(solar_system)
     when "exit"
       continue = false
+    else
+      puts "Invalid input."
     end
   end
 rescue NameError => error1
