@@ -24,14 +24,19 @@ class SolarSystem
   end
   
   def find_planet_by_name name_query
-    search_name = name_query.downcase
+    not_found = false
+    query = []
     planets.each do |element|
-      if element.name.downcase.include?(search_name)
-      return element
-      else
-        return "This planet doesn't exist in our solar system!"
+      if element.name.downcase == name_query.downcase
+        not_found = true
+        query << element
       end
     end
-  end
 
+    if !not_found
+      raise ArgumentError, "This planet ain't here!"
+    end
+
+    return query
+  end
 end
