@@ -22,6 +22,34 @@ def main
     solar_system.add_planet(johnny)
     solar_system.add_planet(reba)
 
+    puts "Country Music Planetary Database Menu\n"
+    puts "1. List Planets\n"
+    puts "2. Planet Information\n"
+    puts "4. Distance Calculator\n"
+    puts "5. Exit\n"
+
+    loop do
+        print "\nEnter database selection: "
+        input = gets.chomp.to_s
+        case
+        when input == "1"
+            puts solar_system.list_planets
+        when input == "2"
+            planet = solar_system.get_planet_name
+            puts planet.summary
+        when input == "3"
+            solar_system.add_a_planet
+            puts "\n...Entered into system. Thank You."
+        when input == "4"
+            solar_system.find_distance_between
+        when input == "5"
+            exit
+        when input 
+            # need to find the best way to reject all letters
+            puts "\nError. Invalid input."
+    end
+  end
+
 end
 
 main
