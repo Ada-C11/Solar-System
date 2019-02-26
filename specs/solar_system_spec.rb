@@ -38,18 +38,31 @@ describe "SolarSystem" do
         sol_system.add_planet("Earther")
       }.must_raise ArgumentError
     end
+  end
 
-    describe "SolarSystem#list_planets" do
-      it "returns a string" do
-        expect(sol_system.list_planets).must_be_instance_of String
-      end
-
-      it "returns formatted list of sol_system" do
-        expect(sol_system.list_planets).must_equal "Planets orbiting Sol\n1. Earth\n2. Mars"
-      end
+  describe "SolarSystem#list_planets" do
+    it "returns a string" do
+      expect(sol_system.list_planets).must_be_instance_of String
     end
 
-    describe "SolarSystem#find_planet_by_name" do
+    it "returns formatted list of sol_system" do
+      expect(sol_system.list_planets).must_equal "Planets orbiting Sol\n1. Earth\n2. Mars"
+    end
+  end
+
+  describe "SolarSystem#find_planet_by_name" do
+    it "returns instance of planet" do
+      expect(sol_system.find_planet_by_name("mArS")).must_be_instance_of Planet
+    end
+
+    it "returns planet with same name" do
+      expect(sol_system.find_planet_by_name("mArS").name).must_equal "Mars"
+    end
+
+    it "raises argument error if no planet by that name" do
+      expect {
+        sol_system.find_planet_by_name("whamo")
+      }.must_raise ArgumentError
     end
   end
 end

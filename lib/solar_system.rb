@@ -23,6 +23,6 @@ class SolarSystem
     @planets.each do |planet|
       return planet if planet.name == name.capitalize
     end
-    return "Match not found."
+    raise ArgumentError.new("No planet by #{name} found.")
   end
 end
