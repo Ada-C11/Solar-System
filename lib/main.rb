@@ -29,7 +29,7 @@ def control_loop(solar_system)
       if planet
         puts planet.summary
       else
-        puts "That planet is not in the solar system! Try again."
+        puts "#{planet} is not in the solar system! Try again."
       end
     when :a
       puts "\nLet's get some details about the planet you want to add."
