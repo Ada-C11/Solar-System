@@ -15,12 +15,11 @@ class SolarSystem
   end
 
   def list_planets
-    intro = "Planets orbiting #{star_name}\n"
     n = 0
     listing = @planets.map do |planet|
     "#{n+=1}. #{planet.name}"
     end
-    return intro, listing
+    return listing
   end
   
   def find_planet_by_name name_query
