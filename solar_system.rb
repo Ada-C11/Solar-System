@@ -8,13 +8,14 @@ class SolarSystem
   def add_planet(planet)
     @planets << planet
   end
+
   def list_planets
-    puts "Planets orbiting #{@star_name}"
     counter = 0
     all_planets = ""
     @planets.each do |planet|
        all_planets += "#{counter += 1}.#{planet.name} "
     end
+    puts  "Planets orbiting #{@star_name}"
     return all_planets.split(' ')
   end
 
@@ -29,8 +30,10 @@ class SolarSystem
       end
     end
     if found == false 
-      return "This is not a planet!"
+      return "#{name} is not a planet!"
     end
+
+    
   end
 end
 
