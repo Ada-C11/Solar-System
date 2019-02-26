@@ -11,7 +11,7 @@ puts "4. Exit"
 def main
   #initialize solar system and planets
   food_way = SolarSystem.new("Pad Thai Star")
-  burger = Planet.new("Burger", "brown", 23423, 234, "Inhabitants of burger really like to eat meat.")
+  burger = Planet.new("Burger", "brown", 3453, 234, "Inhabitants of burger really like to eat meat.")
   salad = Planet.new("Salad", "green and others depending on time", 236, 235, "The planet Salad changes colors depending on the season.")
   pho = Planet.new("Pho", "white and brown", 75, 234854, "The planet Pho always smells delicious.")
 
