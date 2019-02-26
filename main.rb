@@ -32,10 +32,15 @@ def main
  #prompt to enter selection from above options
         case
         when input == "1"
+          puts solar_system.list_planets
         when input == "2"
+          planet = solar_system.get_planet_name
+          puts planet.summary
         when input == "3"
+          solar_system.add_a_planet
+          puts "\n...Entered into system. Thank You."
         when input == "4"
-        when input == "5"
+          exit
         # when input is exit 
         # when input is invalid
     end
