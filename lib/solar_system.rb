@@ -22,6 +22,7 @@ class SolarSystem
     # which will return (not puts) a string containing a list of all the
     # planets in the system. The string should be formatted in this style:
     # ________ somehow print the index and the name of the planet _______
+
     string = "Planets orbitting #{star_name}\n"
     @planets.each_with_index do |planet, index|
       string += "#{index + 1}.  #{planet.name}\n"
@@ -30,7 +31,7 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_name)
-    var = ""
+    # var = ""
     @planets.each do |planet|
       return planet if planet.name == planet_name
     end

@@ -3,21 +3,47 @@ require_relative "planet"
 require_relative "solar_system"
 
 def main
+  option = ""
+  # found_planet = []
+
+  solar_system_name = "Puppy Kingdom"
+  solar_system = SolarSystem.new(solar_system_name)
   cybertron = Planet.new("Cybertron", "Silver", 10234, 890890, "Autobots don't live there anymore - see Transformers")
-  arrakis = Planet.new("Arrakis", "Orange", 52345234, 1243123, "It's not a planet of arrays - see Dune")
-  solar_system = SolarSystem.new("sol")
+  arrakis = Planet.new("Arrakis", "Orange", 52345234, 1243123, "it is not a planet of arrays - see Dune")
+  pa = Planet.new("Pa", "Purple", 8999333, 555666890, "Apes RUlE!! - see... you know this one, don't you?")
+  planet_express = Planet.new("Planet-express", "Lot of them", 234, 12, "it is mailing company from the future.")
   solar_system.add_planet(cybertron)
   solar_system.add_planet(arrakis)
-  list = solar_system.list_planets
-  puts list
+  solar_system.add_planet(pa)
+  solar_system.add_planet(planet_express)
+  # list = solar_system.list_planets
+  #     puts list
 
-  puts "So you want to find a planet, mmm... tell me the name, please?"
-  planet_name = gets.chomp.capitalize
-  found_planet = solar_system.find_planet_by_name(planet_name)
+  # puts found_planet
 
-  puts found_planet
-  puts found_planet.summary
+  while option != "4"
+    puts "What would you like to do next?
+  1. List Planets
+  2. Planet Details
+  3. Add a Planet
+  4. Exit "
+    option = gets.chomp.capitalize
 
+    case option
+    when "1"
+      list = solar_system.list_planets
+      puts list
+      gets.chomp
+    when "2"
+      puts "So you want to find a planet, mmm... tell me the name, please?"
+      planet_name = gets.chomp.capitalize
+      found_planet = solar_system.find_planet_by_name(planet_name)
+      puts found_planet.summary
+    when "3"
+    when "4"
+      break
+    end
+  end
   #   puts arrakis.name
   #   puts cybertron.fun_fact
   #   puts cybertron.summary
