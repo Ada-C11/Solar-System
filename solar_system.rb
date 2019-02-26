@@ -12,19 +12,15 @@ class SolarSystem
 
   def list_planets
     output = "Planets orbiting #{@star_name}\n"
-    tracker = 1
-    @planets.each do |planet|
-      output += "#{tracker}" + ". " + planet.name + "\n"
-      tracker += 1
+    @planets.each_with_index do |planet, index|
+      output += "#{index + 1}" + ". " + planet.name + "\n"
     end
     return output
   end
 
   def find_planet_by_name(planet_name)
     planet_name = planet_name.downcase.capitalize
-    # puts "This is user input: #{planet_name}"
     @planets.each do |planet|
-      # puts "This is planet.name: #{planet.name}"
       if planet.name == planet_name
         return planet
       else
