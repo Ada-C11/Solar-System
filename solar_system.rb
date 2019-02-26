@@ -37,7 +37,6 @@ class SolarSystem
       raise ArgumentError, "This planet ain't here!"
     end
 
-    return query
+    return query #an array of elements...
   end
 end
-
