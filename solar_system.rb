@@ -26,9 +26,9 @@ class SolarSystem
   def find_planet_by_name(planet_name)
     planets.each do |planet|
       if planet.name.downcase == planet_name.downcase
-        return planet
+        return planet.summary
       end
     end
-    return nil
+    return nil #try adding a string
   end
 end
