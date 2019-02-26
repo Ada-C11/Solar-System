@@ -21,4 +21,14 @@ class SolarSystem
     end
     return planet_list
   end
+
+  def find_planet_by_name(name)
+    i = 0
+    @planets.each do
+      if @planets[i].name.downcase == name.downcase
+        return @planets[i]
+      end
+      i += 1
+    end
+  end
 end
