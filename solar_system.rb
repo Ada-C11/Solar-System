@@ -40,3 +40,4 @@ class SolarSystem
     return query
   end
 end
+

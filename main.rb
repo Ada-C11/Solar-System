@@ -12,7 +12,7 @@ def main
 
   #instantiate my new solar system named sol
   sol_system = SolarSystem.new('Sol') 
-
+  
   # adding planets to sol_sytem with add_planet method in solar_system.rb
   sol_system.add_planet(venus) 
   sol_system.add_planet(pluto)
@@ -22,24 +22,25 @@ def main
 
   learn = true
 
-  while true
-  puts "Hello and welcome to the \'#{sol_system.star_name}\' solar system."
+  while learn
 
-  puts list
+    puts "Hello and welcome to the \'#{sol_system.star_name}\' solar system."
 
-  puts "If you would like to see a list of planets enter \'list\' or \'l\'."
-
-  puts "If you would like to learn more about a planet"
-  
-  puts list
-
-  puts "What planet would you like to learn more about?"
-  
+    puts "If you would like to see a list of planets enter \'list\' or \'l\'.  If you would like to learn more about a planet enter enter it's name from the list of planets. If you want to abort the mission enter: exit or quit."
+    planet_ask = gets.chomp
+    
+    if ["list", "l"].include?(planet_ask)
+      puts list
+    elsif ["earth", "venus", "pluto"].include?(planet_ask)
+      find_planet = sol_system.find_planet_by_name(planet_ask)
+      puts find_planet.each { |name| puts name.summary}
+    end
+    #   puts planet_ask
+    # end
+    learn = false
   end
+
 end
 
 main
 
-# user_input = gets.chomp
-  # find_planet = sol_system.find_planet_by_name('pluto')
-  # find_planet.each { |name| puts name.summary }
