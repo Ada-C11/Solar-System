@@ -19,9 +19,21 @@ describe "Planet" do
             }.must_raise ArgumentError
     end
 
+    it "raises argument error if you input 0 for the planet's mass" do
+        expect {
+            Planet.new('Mars', 'red', 0, 2.29e8, 'Mars has two moons called Phobos and Deimos')
+        }.must_raise ArgumentError
+    end
+
     it "raises argument error if you input a negative number for the planet's distance from the Sun" do
         expect {
             Planet.new('Mars', 'red', 6.4171e23, -2, 'Mars has two moons called Phobos and Deimos')
+            }.must_raise ArgumentError
+    end
+
+    it "raises argument error if you input 0 for the planet's distance from the Sun" do
+        expect {
+            Planet.new('Mars', 'red', 6.4171e23, 0, 'Mars has two moons called Phobos and Deimos')
             }.must_raise ArgumentError
     end
 end

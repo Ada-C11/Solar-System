@@ -7,6 +7,7 @@ def main
     mercury = Planet.new('Mercury', 'white', 3.3022e23, 6.98169e7, 'Mercury is the smallest planet in the solar system')
     jupiter = Planet.new('Jupiter', 'orange', 1.8982e27, 7.79e8, 'Jupiter is the largest planet in the solar system')
     venus = Planet.new('Venus', 'yellow', 4.8675e24, 1.082e8, 'Venus has the longest rotation period of any planet in the Solar System')
+    uranus = Planet.new('Uranus', 'baby blue', 8.6810e25, 2.75e9, 'Uranus is named after the Greek mythological figure Ouranos, the God of the sky')
     # puts earth.summary
     # puts mars.summary
 
@@ -16,6 +17,7 @@ def main
     sun.add_planet(mercury)
     sun.add_planet(jupiter)
     sun.add_planet(venus)
+    sun.add_planet(uranus)
 
     list = sun.list_planets
     puts list

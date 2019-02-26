@@ -2,11 +2,11 @@ class Planet
     attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
 
     def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
-        if !mass_kg.is_a?(Numeric) || mass_kg < 0
+        if !mass_kg.is_a?(Numeric) || mass_kg <= 0
             raise ArgumentError.new("Planet mass has to be a positive number")
         end
 
-        if !distance_from_sun_km.is_a?(Numeric) || distance_from_sun_km < 0
+        if !distance_from_sun_km.is_a?(Numeric) || distance_from_sun_km <= 0
             raise ArgumentError.new("Distance from the sun has to be a postive number.")
         end
 
