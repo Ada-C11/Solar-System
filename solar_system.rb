@@ -17,7 +17,17 @@ class SolarSystem
       output += "#{tracker}" + ". " + planet.name + "\n"
       tracker += 1
     end
-
     return output
+  end
+
+  def find_planet_by_name(planet_name)
+    planet_name = planet_name.downcase.capitalize
+    @planets.each do |planet|
+      if planet.name == planet_name
+        return planet
+      else
+        raise ArgumentError, "You must input an existing planet name."
+      end
+    end
   end
 end
