@@ -10,6 +10,13 @@ class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_the_sun_km, :fun_fact
 
   def summary
-    return "Planet name: #{@name}", "Color: #{@color}", "Weight: #{@mass_kg}", "Distance from sun: #{@distance_from_the_sun_km}", "Fun Fact: #{@fun_fact}"
+    summary = "Planet name: #{@name} \nColor: #{@color} \nWeight: #{@mass_kg} \nDistance from sun: #{@distance_from_the_sun_km} \nFun Fact: #{@fun_fact}"
+
+    return summary
   end
+
+  # add if we want to return puts "a #{planet}" as summary
+  #   def to_s
+  #     return summary
+  #   end
 end
