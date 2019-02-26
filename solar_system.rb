@@ -30,4 +30,24 @@ class SolarSystem
   def distance_between(planet1, planet2)
     planet2.distance_from_sun_km - planet1.distance_from_sun_km
   end
+
+  def planet_details
+    print "What planet would you like to learn about? > "
+    planet_choice = gets.chomp
+    return find_planet_by_name(planet_choice).summary
+  end
+
+  def new_planet
+    print "Planet name > "
+    name = gets.chomp
+    print "Planet color > "
+    color = gets.chomp
+    print "Planet mass (in kg) > "
+    mass_km = gets.chomp
+    print "Distance from sun (in km) > "
+    distance_from_sun_km = gets.chomp
+    print "Fun fact about planet > "
+    fun_fact = gets.chomp
+    add_planet(Planet.new(name, color, mass_km, distance_from_sun_km, fun_fact))
+  end
 end

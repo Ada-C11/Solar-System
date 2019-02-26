@@ -22,25 +22,20 @@ def main
   solar_system.add_planet(uranus)
   solar_system.add_planet(neptune)
 
-  puts "What would you like to do next? [list planets] [planet details] [exit]"
+  puts "What would you like to do next? [list planets] [planet details] [add planet] [exit]"
   user_input = gets.chomp
   until user_input == "exit"
-    case user_input
+    case user_input.downcase
     when "list planets"
       puts solar_system.list_planets
     when "planet details"
-      print "What planet would you like to learn about? > "
-      planet_choice = gets.chomp
-      puts solar_system.find_planet_by_name(planet_choice).summary
+      puts solar_system.planet_details
+    when "add planet"
+      solar_system.new_planet
     end
-    puts "What would you like to do next? [list planets] [planet details] [exit]"
+    puts "What would you like to do next? [list planets] [planet details] [add planet] [exit]"
     user_input = gets.chomp
   end
-
-  found_planet = solar_system.find_planet_by_name("Venus")
-  puts found_planet.summary
-
-  puts solar_system.distance_between(mercury, venus)
 end
 
 main
