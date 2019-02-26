@@ -39,21 +39,10 @@ def main
     planet = gets.chomp.downcase
     puts solar_system.find_planet_by_name(planet).summary
   elsif option.include?("add") || option == "3"
-    puts "What is the planet's name?"
-    name = gets.chomp
-    puts "What is the planet's color?"
-    color = gets.chomp
-    puts "What is the planet's mass (kg)?"
-    mass = gets.chomp
-    puts "What is the planet's distance from the sun (km)?"
-    sun_distance = gets.chomp
-    puts "Please enter  a fun fact about the planet!"
-    fun_fact = gets.chomp
-
-    name = Planet.new(name, color, mass, sun_distance, fun_fact)
-    add_planet(name)
+    puts solar_system.new_planet
   elsif option.include?("exit") || option == "4"
     puts "Thank you for using the PlanetDex!"
+    exit
   else
     puts "That is not a valid option."
     puts "Please re-enter your option:"

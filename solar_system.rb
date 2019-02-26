@@ -23,6 +23,24 @@ class SolarSystem
     return table
   end
 
+  def new_planet
+    puts "What is the planet's name?"
+    name = gets.chomp
+    puts "What is the planet's color?"
+    color = gets.chomp
+    puts "What is the planet's mass (kg)?"
+    mass = gets.chomp
+    puts "What is the planet's distance from the sun (km)?"
+    sun_distance = gets.chomp
+    puts "Please enter  a fun fact about the planet!"
+    fun_fact = gets.chomp
+
+    name = Planet.new(name, color, mass, sun_distance, fun_fact)
+    add_planet(name)
+
+    return "Successfully added new planet!"
+  end
+
   def find_planet_by_name(planet_string)
     @planets.each do |planet|
       if planet.name.include?(planet_string.capitalize)
