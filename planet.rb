@@ -10,4 +10,11 @@ class Planet
     @twang_level = twang_level
     @likelihood_to_be_loved_by_yanks = likelihood_to_be_loved_by_yanks
   end
+
+  def summary
+    return "The planet #{@name} is the color #{@color} has a mass of #{@mass} kg, and is #{@distance_from_sun_km} km from the sun. 
+    It #{fun_fact}, is know to have a twang level of #{twang_level} out of 5, and is #{likelihood_to_be_loved_by_yanks}% likely 
+    to be loved by out-of-towners visiting the galaxy of Nashville for a bachelor or bachelorette party, never to return again.")
+end
+
 end
