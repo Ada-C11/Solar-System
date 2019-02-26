@@ -11,7 +11,7 @@ def main
     planet_niv = Planet.new("Planet Niv", "lavender", 510329, 6333, "Planet Niv is currently inhabited by aliens that are fiercly resisting human colonization by destroying all human satelites and spacecrafts.")
     solar_system.add_planet(planet_niv)
 
-    puts "Welcome to our solar system! Type 'list planets' if you would like to see a list of planets that orbit the #{solar_system.star_name}. Type 'add planet' to add a planet. Type 'exit' if you would like to exit. "
+    puts "Welcome to our solar system! Type 'list planets' if you would like to see a list of planets that orbit the #{solar_system.star_name}. Type 'planet details' if you would like to learn more about a planet. Type 'add planet' to add a planet. Type 'exit' if you would like to exit. "
     input = gets.chomp.to_s
     until input == "exit"
         if input == "list planets"
@@ -21,9 +21,14 @@ def main
                 planet_input = gets.chomp.to_s
                 until planet_input == "exit"
                     planet_of_interest = solar_system.find_planet_by_name(planet_input)
-                    puts planet_of_interest.summary
-                    puts "Please type in the name of another planet or type exit to return to previous options"
-                    planet_input = gets.chomp.to_s
+                    planet_names = solar_system.planets.map{|planet| planet.name.downcase}
+                    if planet_names.include?(planet_input.downcase) == true
+                        puts planet_of_interest.summary
+                        puts "Please type in the name of another planet or type exit to return to previous options"
+                    else
+                        puts "That planet is not in our solar system! Please type in a name of another planet or type 'exit' to return to previous options."
+                    end    
+                        planet_input = gets.chomp.to_s
                 end
         elsif input == "add planet"
             
@@ -33,8 +38,16 @@ def main
             new_planet_color = gets.chomp.to_s
             puts "What is the mass in kg of the planet?"
             new_planet_mass = gets.chomp.to_i
+            until new_planet_mass > 0
+                puts "Please enter a positve integer for mass!"
+                new_planet_mass = gets.chomp.to_i
+            end
             puts "What is the distance in km of the planet from the #{solar_system.star_name}?"
             new_planet_distance = gets.chomp.to_i
+            until new_planet_distance > 0
+                puts "Please enter a positve integer for distance!"
+                new_planet_distance = gets.chomp.to_i
+            end
             puts "What is a fun fact about the planet?"
             new_planet_fact = gets.chomp.to_s
 
