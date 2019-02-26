@@ -13,12 +13,16 @@ def main
     solar_system.add_planet(jupiter)
 
     list = solar_system.list_planets
+    puts list
 
-    puts "Planets orbiting"
-    list.each_with_index do |planet, index|
-        puts "#{index + 1}. #{planet}"
-    end
+    found_planet = solar_system.find_planet_by_name('Earth')
+
+    # found_planet is an instance of class Planet
+    puts found_planet
+    # => #<Planet:0x00007fe7c2868ee8>
+
+    puts found_planet.summary
+    # => Earth is a blue-green planet ...
 end
 
-# puts main.summary
 main
