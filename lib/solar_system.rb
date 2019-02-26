@@ -6,8 +6,8 @@ class SolarSystem
     @planets = Array.new
   end
 
-  def add_planet(instance_of_planet)
-    @planets.push(instance_of_planet)
+  def add_planet(planet)
+    planet.instance_of?(Planet) ? @planets << planet : (raise ArgumentError.new("Not a Planet"))
     return true
   end
 
@@ -17,5 +17,12 @@ class SolarSystem
       string_planets += "\n#{i + 1}. #{planet.name}"
     end
     return string_planets
+  end
+
+  def find_planet_by_name(name)
+    @planets.each do |planet|
+      return planet if planet.name == name.capitalize
+    end
+    return "Match not found."
   end
 end
