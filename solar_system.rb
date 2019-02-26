@@ -26,9 +26,10 @@ class SolarSystem
     if matching_planets.length == 1
       return matching_planets[0]
     elsif matching_planets.length > 1
-      puts "There is a duplicate in our planets' names!"
+      puts "/nThere is a duplicate in our planets' names. They should have unique names, don't you think?"
     else
-      puts "There is no such planet!"
+      puts "/nThere is no such planet. Please try again."
+      return false
     end
   end
 

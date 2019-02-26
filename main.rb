@@ -30,6 +30,12 @@ def main
       puts "\nPlease type the name of the planet you'd like to learn about"
       puts list
       selected_planet = gets.chomp.downcase
+      # Error handling for invalid planet name
+      while solar_system.find_planet_by_name(selected_planet) == false
+        puts "\nPlease type the name of the planet you'd like to learn about"
+        puts list
+        selected_planet = gets.chomp.downcase
+      end
       puts "\n#{solar_system.find_planet_by_name(selected_planet).summary}\n\n"
     when "c"
       puts "What is the name of the planet you'd like to add?"
@@ -38,8 +44,17 @@ def main
       usr_color = gets.chomp.downcase
       puts "What is its mass in kg?"
       usr_mass = gets.chomp.to_i
+      # If 0 or less, will reprompt (string.to_i returns 0)
+      while usr_mass < 1
+        puts "That was not a valid mass. Please try again. What is its mass in kg?"
+        usr_mass = gets.chomp.to_i
+      end
       puts "How far is it from the sun in km?"
       usr_dist = gets.chomp.to_i
+      while usr_dist < 1
+        puts "That was not a valid distance. Please try again. How far is it from the sun in km?"
+        usr_dist = gets.chomp.to_i
+      end
       puts "Tell us one fun fact about this planet."
       usr_fact = gets.chomp
       usr_planet = Planet.new(usr_name, usr_color, usr_mass, usr_dist, usr_fact)
@@ -49,23 +64,18 @@ def main
       puts "\nHere is a summary of planet #{usr_name}"
       puts "#{usr_planet.summary}\n\n"
     when "d"
-      puts "Please select the first planet out of this list:"
+      puts "\nPlease select the first planet out of this list:"
       puts list
       planet_one = gets.chomp.downcase
       puts "Please select the second planet:"
       planet_two = gets.chomp.downcase
       distance = solar_system.distance_between(planet_one, planet_two)
-      puts "\nDistance between #{planet_one} and #{planet_two} is #{distance} km\n\n"
+      puts "\nDistance between #{planet_one.capitalize} and #{planet_two.capitalize} is #{distance} km\n\n"
     when "e"
-      puts "Goodbye!"
+      puts "\nGoodbye!\n\n"
       break
     else
-      puts "That was not a valid input. Program will now terminate.\n"
-      break
-      # until input == 'a' || input == 'b' || input == 'c' || input == 'd' || input == 'e'
-      #   puts menu
-      #   input = gets.chomp.downcase
-      # end
+      puts "\nThat was not a valid input. Please try again.\n\n"
     end
   end
 end
