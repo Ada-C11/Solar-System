@@ -17,13 +17,21 @@ class SolarSystem
 
   # creating a method that returns a list of all planets in a given solar system
   def list_planets
-    planet_list = "Planets orbiting #{@star_name}: "
-    @planets.each_with_index { |planet, i| planet_list += "\n#{i + 1}. #{planet}" }
+    planet_list = "Doggos orbiting #{@star_name}: "
+    @planets.each_with_index { |planet, i| planet_list += "\n#{i + 1}. #{planet.name}" }
     return planet_list
+  end
+
+  def find_planet_by_name(planet_string)
+    @planets.each do |planet|
+      if planet.name.include?(planet_string.capitalize)
+        return planet
+      end
+    end
   end
 end
 
 # milky_way = SolarSystem.new("Twinkles")
-# milky_way.add_planet("Bear")
-# milky_way.add_planet("Whiskey")
+# milky_way.add_planet("Waffles")
+# milky_way.add_planet("Cuddles")
 # puts milky_way.list_planets
