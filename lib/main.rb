@@ -60,9 +60,11 @@ def main
   #   puts found_planet.summary
 
   #   puts solar_system.distance_between(earth, super_hot_planet)
+  continue = true
 
-  puts "What would you like to do (\"list planets\", \"planet details\", \"add planet\", \"find distance\", or \"exit\")? "
-  while input = gets.chomp
+  while continue == true
+    puts "What would you like to do next (\"list planets\", \"planet details\", \"add planet\", \"find distance\", or \"exit\")? "
+    input = gets.chomp
     case input
     when "list planets"
       puts solar_system.list_planets
@@ -73,10 +75,8 @@ def main
     when "find distance"
       user_find_distance(solar_system)
     when "exit"
-      exit
+      continue = false
     end
-
-    puts "What would you like to do next (\"list planets\", \"planet details\", \"add planet\", \"find distance\", or \"exit\")? "
   end
 rescue NameError => error1
   puts "Error: #{error1.message}"
