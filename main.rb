@@ -21,7 +21,7 @@ def main
     solar_system.add_planet(garth)
     solar_system.add_planet(johnny)
     solar_system.add_planet(reba)
-    
+
 end
 
 main
