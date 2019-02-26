@@ -22,20 +22,26 @@ def main
 
   answer = "list planets"
   while answer == "list planets"
-    print "What would you like to do next? (list planets, or exit): "
+    print "\nWhat would you like to do next? (list planets, planet details, or exit): "
     selection = gets.chomp.downcase
 
-    if selection == "list planets"
+    case selection
+    when "list planets"
       puts big_ol_pupper.list_planets
-    elsif selection == "exit"
+    when "planet details"
+      print "\nWhat planet would you like to see details for?: "
+      planet_details = gets.chomp.downcase
+      found_planet = big_ol_pupper.find_planet_by_name(planet_details)
+      puts found_planet.summary
+    when "exit"
       break
     end
   end
 
-  # list = solar_system.list_planets
+  # list = big_ol_pupper.list_planets
   # puts list
 
-  # found_planet = solar_system.find_planet_by_name("Cuddles")
+  # found_planet = big_ol_pupper.find_planet_by_name("Cuddles")
   # # found_planet is an instance of class Planet
   # puts found_planet
   # # => #<Planet:0x00007fe7c2868ee8>
