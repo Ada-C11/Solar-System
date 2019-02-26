@@ -17,7 +17,9 @@ class SolarSystem
     return "Planets orbiting #{@star_name}: \n#{list.join("\n")}"
   end
 
-  # def find_planet_by_name(planet)
-  #   planet
-  # end
+  def find_planet_by_name(planet_name)
+    return @planets.find do |planet|
+             planet.name == planet_name.capitalize
+           end
+  end
 end
