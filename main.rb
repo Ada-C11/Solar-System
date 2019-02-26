@@ -29,23 +29,27 @@ def main
   puts "Welcome to the PlanetDex!"
 
   # user input time
+  exit = "N"
+
   puts options
   option = gets.chomp
 
-  if option.include?("list") || option == "1"
-    puts solar_system.list_planets
-  elsif option.include?("detail") || option == "2"
-    puts "Which planet would you like to learn about?"
-    planet = gets.chomp.downcase
-    puts solar_system.find_planet_by_name(planet).summary
-  elsif option.include?("add") || option == "3"
-    puts solar_system.new_planet
-  elsif option.include?("exit") || option == "4"
-    puts "Thank you for using the PlanetDex!"
-    exit
-  else
-    puts "That is not a valid option."
-    puts "Please re-enter your option:"
+  while exit == "N"
+    if option.include?("list") || option == "1"
+      puts solar_system.list_planets
+    elsif option.include?("detail") || option == "2"
+      puts "Which planet would you like to learn about?"
+      planet = gets.chomp.downcase
+      puts solar_system.find_planet_by_name(planet).summary
+    elsif option.include?("add") || option == "3" # looping bug!
+      puts solar_system.new_planet
+    elsif option.include?("exit") || option == "4"
+      puts "Are you sure you want to quit? (Y/N) "
+      exit = gets.chomp.upcase
+    else
+      puts "That is not a valid option."
+      puts "Please re-enter your option:"
+    end
   end
 end
 
