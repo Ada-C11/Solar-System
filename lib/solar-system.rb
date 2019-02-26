@@ -1,3 +1,5 @@
+require_relative "planet"
+
 class SolarSystem
   attr_reader :star_name, :planets
 
@@ -30,7 +32,7 @@ class SolarSystem
     first_planet = find_planet_by_name(planet1)
     second_planet = find_planet_by_name(planet2)
     if first_planet && second_planet
-      distance = abs(first_planet.distance_from_sun - second_planet.distance_from_sun)
+      distance = (first_planet.distance_from_sun - second_planet.distance_from_sun).abs
       return distance
     else
       return nil

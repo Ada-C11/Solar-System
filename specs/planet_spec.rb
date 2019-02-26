@@ -9,7 +9,7 @@ require_relative "../lib/planet"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "planet" do
-  it "takes 5 parameters and initializes an instance." do
+  it "takes 5 parameters and initializes an instance of Planet." do
     my_planet = Planet.new("Earth",
                            "blue",
                            5.972e24,
@@ -17,6 +17,19 @@ describe "planet" do
                            "We live here! :)")
 
     expect(my_planet).must_be_instance_of Planet
+  end
+  it "correctly assigns attributes that can be accessed outside of class Planet" do
+    my_planet = Planet.new("Earth",
+                           "blue",
+                           5.972e24,
+                           1.496e8,
+                           "We live here! :)")
+
+    expect(my_planet.name).must_equal "Earth"
+    expect(my_planet.color).must_equal "blue"
+    expect(my_planet.mass_kg).must_be_close_to 5.972e24
+    expect(my_planet.distance_from_sun).must_be_close_to 1.496e8
+    expect(my_planet.fun_fact).must_equal "We live here! :)"
   end
 
   it "raises an argument error if mass or distance is not greater than zero" do
