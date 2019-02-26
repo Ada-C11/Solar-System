@@ -48,4 +48,8 @@ class SolarSystem
     puts "Thank you for adding #{name} to the solar system!"
     return new_planet
   end
+
+  def distance_between(planet1, planet2)
+    return (planet1.distance_from_sun_km - planet2.distance_from_sun_km).abs
+  end
 end

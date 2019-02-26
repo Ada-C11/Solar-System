@@ -31,6 +31,13 @@ def main
       puts selected_planet.summary
     elsif response == "add planet"
       solar_system.user_adds_planet
+    elsif response == "find distance"
+      puts "Please enter the two planets you would like to find the distance between:"
+      planet1 = gets.chomp
+      planet2 = gets.chomp
+      planet1 = solar_system.find_planet_by_name(planet1)
+      planet2 = solar_system.find_planet_by_name(planet2)
+      puts solar_system.distance_between(planet1, planet2)
     end
     puts "Please enter what you would like to do: "
     response = gets.chomp
