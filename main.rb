@@ -25,6 +25,11 @@ def main
     response = gets.chomp
     if response == "list planets"
       puts solar_system.list_planets
+    elsif response == "planet details"
+      puts "Please enter what planet you would like to learn about: "
+      planet_choice = gets.chomp
+      selected_planet = solar_system.find_planet_by_name(planet_choice)
+      puts selected_planet.summary
     end
     puts "Please enter what you would like to do: "
     response = gets.chomp
