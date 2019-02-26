@@ -1,5 +1,6 @@
 require_relative 'planets.rb'
 require_relative 'solar_system.rb'
+require 'colorize'
 
 def main
   # creating a new solar system and 5 planets to go into that solar system
@@ -34,13 +35,13 @@ def main
   until answer == "exit"
     # will list planets
     if answer == 'list planets'
-      puts solar_system.list_planets
+      puts solar_system.list_planets.colorize(:cyan)
     elsif answer == 'planet details'
       puts "Which planet would you like to learn about?"
       planet_detail = gets.chomp.to_s
       # will ask user for a specific planet, then list details. Will raise ArgumentError if planet doesn't exist
       found_planet = solar_system.find_planet_by_name(planet_detail)
-      puts found_planet.summary
+      puts found_planet.summary.colorize(:green)
     elsif answer == 'add planet'
       # adds a planet to the solar system. Will raise ArgumentError if mass or distance in km are < 0 or if the planet name already exists in the solar system
       solar_system.create_new_planet
@@ -51,20 +52,21 @@ def main
       planet_1 = gets.chomp.to_s
       puts "Planet 2"
       planet_2 = gets.chomp.to_s
-      puts "The distance between #{planet_1} and #{planet_2} is #{solar_system.distance_between(planet_1, planet_2)}km"
+      puts "The distance between #{planet_1} and #{planet_2} is #{solar_system.distance_between(planet_1, planet_2)}km".colorize(:blue)
     else 
       # if the user input is anything other than what is listed, the program will give this message
-      puts "I'm sorry, I didn't understand that command."
+      puts "I'm sorry, I didn't understand that command.".colorize(:red)
     end
     puts "What would you like to do? 'list planets', 'planet details', 'add planet', 'find distance between to planets', or 'exit'?"
     answer = gets.chomp.to_s
   end
   
   if answer == "exit"
-    puts "Thanks for visiting!"
+    puts "Thanks for visiting!".colorize(:blue)
   end
 
 end
 
 main
+
 
