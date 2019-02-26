@@ -1,4 +1,4 @@
-cdclass Planet
+class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
     @name = name
@@ -11,6 +11,8 @@ cdclass Planet
     @planetary_array = []
   end
   def summary
-    return "#{@name} has a #{@color} color and mass of #{@mass_kg}. It is #{@distance_from_sun_km} away from the sun and next time you're at a cool party, you should definitely mention that #{@fun_fact}"
+    puts "\n#{@name} has a #{@color} color and mass of #{@mass_kg}x10^24 kg."
+    puts "It is #{@distance_from_sun_km}x10^6 km away from the sun."
+    puts "#{@fun_fact}."
   end
 end
