@@ -26,7 +26,11 @@ class SolarSystem
     end
 
     def find_planet_by_name(search_name)
-        if !@planets.include?(search_name)
+        is_included = @planets.any? { |planet|
+            planet.name == search_name
+        }
+
+        if !is_included
             raise ArgumentError.new("There is no such planet")
         end
 
