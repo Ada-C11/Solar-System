@@ -16,7 +16,7 @@ describe "error handling" do
     expect { planet = Planet.new(mass_kg: 0) }.must_raise ArgumentError
   end
 
-  it "gives an error for distance >= 0" do
+  it "gives an error for distance <= 0" do
     expect { planet = Planet.new(distance_from_sun_km: -34) }.must_raise ArgumentError
   end
 end
