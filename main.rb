@@ -12,10 +12,12 @@ def main
   solar_system.add_planet(pluto)
   solar_system.add_planet(saturn)
 
-  puts "What do you want to do next? Enter: \'list planets\', \'planet details\', \'add planet\' or \'exit\'"
+  # TODO: Error handling on user input
+  # TODO: Try using class for this part
+  puts "What do you want to do next? Enter: \nList planets, \nPlanet details, \nAdd planet or \nExit"
   answer = gets.chomp
 
-  while answer == "list planets" || answer == "planet details" || answer == "add planet"
+  until answer == "exit"
     if answer == "list planets"
       list = solar_system.list_planets
       puts list
@@ -41,7 +43,7 @@ def main
       name = Planet.new(name, color, mass, distance, fun_fact)
       solar_system.add_planet(name)
       puts "What do you want to do next?"
-      answer = gets.chomp
+      answer = gets.chomp.downcase
     else
     end
   end
