@@ -29,6 +29,6 @@ class SolarSystem
         return planet.summary
       end
     end
-    return nil #try adding a string
+    return "That's not a planet I have information for"
   end
 end
