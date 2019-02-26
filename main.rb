@@ -22,7 +22,7 @@ def main
     solar_system.add_planet(johnny)
     solar_system.add_planet(reba)
 
-    puts "Country Music Planetary Database Menu\n"
+    puts "Country Music Planetary Menu\n"
     puts "1. List Planets\n"
     puts "2. Planet Information\n"
     puts "3. Distance Calculator\n"
@@ -41,8 +41,8 @@ def main
           puts "\n...Entered into system. Thank You."
         when input == "4"
           exit
-        # when input is exit 
-        # when input is invalid
+        when input =~ /[[:alpha:]]/
+          puts "\nError. Invalid input."
     end
   end
 

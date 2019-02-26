@@ -53,4 +53,14 @@ class SolarSystem
     end
     return raise ArgumentError, "Planet not in solar system"
   end
+
+  def get_planet_name
+    print "\nEnter planet name: "
+    planet = gets.chomp.to_s
+    return find_planet_by_name(planet)
+  end
+
+  # need to do method for finding planet distance from sun
+  # need to do method for finding distance between planets
+
 end
