@@ -16,7 +16,7 @@ def main
   # control loop for program next steps
   next_step = ""
   until next_step == "exit"
-    puts "What would you like to do next? Options - 'list planets', 'planet details', or 'exit'"
+    puts "What would you like to do next? Options - 'list planets', 'planet details', 'add planet', or 'exit'"
     next_step = gets.chomp.downcase
     if next_step == "list planets"
       list = food_way.list_planets
@@ -26,6 +26,19 @@ def main
       user_planet = gets.chomp
       found_planet = food_way.find_planet_by_name(user_planet)
       puts found_planet.summary
+    elsif next_step == "add planet"
+      puts "What planet would you like to add?"
+      new_planet = gets.chomp.capitalize
+      puts "What color is it?"
+      planet_color = gets.chomp
+      puts "How heavy is it - in kilograms?"
+      planet_mass = gets.chomp.to_i
+      puts "How far from the sun is it - in kilometers?"
+      planet_distance = gets.chomp.to_i
+      puts "Enter a fun fact!"
+      planet_fun = gets.chomp
+      adding_planet = Planet.new(new_planet, planet_color, planet_mass, planet_distance, planet_fun)
+      food_way.add_planet(adding_planet)
     end
   end
 end
