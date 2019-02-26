@@ -30,6 +30,20 @@ def main
       planet_choice = gets.chomp
       selected_planet = solar_system.find_planet_by_name(planet_choice)
       puts selected_planet.summary
+    elsif response == "add planet"
+      puts "Please complete the following information for the planet you would like added: \nName: "
+      name = gets.chomp
+      puts "Color: "
+      color = gets.chomp
+      puts "Mass in kg: "
+      mass = gets.chomp
+      puts "Distance from sun in km: "
+      distance = gets.chomp
+      puts "Fun fact: "
+      fact = gets.chomp
+      new_planet = Planet.new(name, color, mass, distance, fact)
+      solar_system.add_planet(new_planet)
+      puts "Thank you for adding #{name} to the solar system!"
     end
     puts "Please enter what you would like to do: "
     response = gets.chomp
