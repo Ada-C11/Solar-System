@@ -59,7 +59,7 @@ def display_details(solar_system)
   if planet
     puts planet.summary
   else
-    puts "#{planet} is not in the solar system! Try again."
+    puts "#{planet_name} is not in the solar system! Try again."
   end
 end
 
