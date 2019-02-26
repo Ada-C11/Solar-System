@@ -31,4 +31,21 @@ class SolarSystem
       i += 1
     end
   end
+
+  def user_adds_planet
+    puts "Please complete the following information for the planet you would like added: \nName: "
+    name = gets.chomp
+    puts "Color: "
+    color = gets.chomp
+    puts "Mass in kg: "
+    mass = gets.chomp
+    puts "Distance from sun in km: "
+    distance = gets.chomp
+    puts "Fun fact: "
+    fact = gets.chomp
+    new_planet = Planet.new(name, color, mass, distance, fact)
+    self.add_planet(new_planet)
+    puts "Thank you for adding #{name} to the solar system!"
+    return new_planet
+  end
 end
