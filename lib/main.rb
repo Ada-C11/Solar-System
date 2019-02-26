@@ -1,9 +1,13 @@
 require_relative "planet"
 require_relative "solar-system"
+require "faker"
+require "lolcat"
+require "colorize"
+require "table_flipper"
 
 def add_planet(solar_system)
+  # Get user input for new planet's attributes
   puts "\nLet's get some details about the planet you want to add."
-
   puts "First, what color is your planet?"
   color = gets.chomp
   puts "Okay, what is the mass of your planet in kilograms?"
@@ -14,7 +18,8 @@ def add_planet(solar_system)
   fun_fact = gets.chomp
   puts "Finally, what is your planet's name?"
   name = gets.chomp
-  # This while loop ensures that planet names are unique
+  # This while loop ensures that planet names are unique.
+  # If you're naming two planets the exact same thing, go back to astronomy school :P
   while solar_system.planets.any? { |planet| planet.name.downcase == name.downcase }
     puts "That name is taken! Try entering another name."
     name = gets.chomp
@@ -33,6 +38,7 @@ def add_planet(solar_system)
 end
 
 def measure_distance(solar_system)
+  # Get the names of planets and store the planet objects in variables
   puts "\nWhat is the first planet?"
   planet1_name = gets.chomp
   planet1 = solar_system.find_planet_by_name(planet1_name)
@@ -40,6 +46,7 @@ def measure_distance(solar_system)
   planet2_name = gets.chomp
   planet2 = solar_system.find_planet_by_name(planet2_name)
 
+  # If both planet objects exist, calculate the distance, otherwise print error messages
   if planet1 && planet2
     distance = solar_system.distance_between(planet1_name, planet2_name)
     puts "\nThe distance between #{planet1_name} and #{planet2_name} is #{distance} km."
@@ -53,6 +60,7 @@ def measure_distance(solar_system)
 end
 
 def display_details(solar_system)
+  # Get a planet name as user input and use find_planet_by_name to retrieve the planet object
   puts "\nWhich planet do you want to learn about?"
   planet_name = gets.chomp
   planet = solar_system.find_planet_by_name(planet_name)
@@ -103,36 +111,20 @@ end
 def main
 
   # Make a solar system
-  solar_system = SolarSystem.new("Sun")
+  solar_system = SolarSystem.new(Faker::Space.star)
 
-  # Make some planets
-  mercury = Planet.new("Mercury",
-                       "gray",
-                       3.285e23,
-                       5.791e7,
-                       "A year on Mercury is just 88 days long!")
-  venus = Planet.new("Venus",
-                     "yellow",
-                     4.867e24,
-                     1.082e8,
-                     "Venus is the closest to earth in size, mass, and surface gravity.")
-
-  earth = Planet.new("Earth",
-                     "blue",
-                     5.972e24,
-                     1.496e8,
-                     "About 71% of Earth's surface is water ")
-  mars = Planet.new("Mars",
-                    "red",
-                    6.39e23,
-                    2.279e8,
-                    "Opportunity explored the surface of Mars for 14 years!")
-
-  # Add some planets to the solar system
-  solar_system.add_planet(mercury)
-  solar_system.add_planet(venus)
-  solar_system.add_planet(earth)
-  solar_system.add_planet(mars)
+  # Make some planets and add them to the solar system
+  puts "Loading planets...."
+  4.times do
+    new_planet = Planet.new(Faker::Movies::HitchhikersGuideToTheGalaxy.planet,
+                            Faker::Color.color_name,
+                            (Faker::Number.decimal(1, 3)).to_f * 10 ** (rand(22..24)),
+                            (Faker::Number.decimal(1, 3)).to_f * 10 ** (rand(7..9)),
+                            "Discovered by #{Faker::FunnyName.name_with_initial} " +
+                            "on #{Faker::Date.forward}, this planet is home to the " +
+                            "rare #{Faker::Movies::HitchhikersGuideToTheGalaxy.specie}.")
+    solar_system.add_planet(new_planet)
+  end
 
   # Start the control loop.
   puts "Welcome to the solar system program."
