@@ -7,6 +7,14 @@ class Planet
     @mass_kg = mass_kg
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
+
+    unless mass_kg > 0
+      raise ArgumentError, "Mass must be greater than zero."
+    end
+
+    unless distance_from_sun_km > 0
+      raise ArgumentError, "Distance from Sun must be greater than zero."
+    end
   end
 
   def summary
