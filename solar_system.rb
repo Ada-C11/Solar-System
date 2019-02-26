@@ -25,17 +25,31 @@ class SolarSystem
   attr_reader :star_name, :planets
 
   def add_planet(planet)
-    @planets << planet.name
+    @planets << planet
   end
 
   def list_planets
     string = "Planets orbiting #{@star_name}\n"
     @planets.each_with_index do |planet, i|
-      string << "#{i + 1}. #{planet}\n"
+      string << "#{i + 1}. #{planet.name}\n"
     end
     return string
   end
 
-  def find_planet_by_name(found_planet)
+  # What should method do if there are MULTIPLE planets with the given name?
+  def find_planet_by_name(planet_name)
+    match = false
+    match_list = []
+    @planets.each do |planet|
+      if planet.name == planet_name.capitalize
+        match = true
+        match_list << planet
+      end
+    end
+    if !match
+      raise ArgumentError, "No match found for #{planet_name}!"
+    else
+      return match_list
+    end
   end
 end

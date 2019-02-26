@@ -21,3 +21,26 @@ def main
 end
 
 main
+
+solar_system = SolarSystem.new("Sol")
+
+earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
+earth2 = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
+mars = Planet.new("Mars", "red", 6.41693e23, 1.524, "Robots live here!")
+solar_system.add_planet(earth)
+solar_system.add_planet(mars)
+# Duplicate Earth for testing
+solar_system.add_planet(earth2)
+
+list = solar_system.list_planets
+puts list
+
+found_planet = solar_system.find_planet_by_name("Earth")
+
+# found_planet is an instance of class Planet
+puts
+puts found_planet
+found_planet.each { |planet| puts planet.summary }
+
+# There's no planet with a given name
+found_planet = solar_system.find_planet_by_name("Venus")
