@@ -32,24 +32,13 @@ def main
   puts options
   option = gets.chomp
 
-  case
-  when option.include?("list"), "1"
+  if option.include?("list") || option == "1"
     puts solar_system.list_planets
-  when option.include?("detail"), "2"
+  elsif option.include?("detail") || option == "2"
     puts "Which planet would you like to learn about?"
-    choice = gets.chomp.downcase
-
-    case choice
-    when "1", "vulcan"
-      puts solar_system.planets[0].summary
-    when "2", "shore leave planet"
-      puts solar_system.planets[1].summary
-    when "3", "nibiru"
-      puts solar_system.planets[2].summary
-    when "4", "vendikar"
-      puts solar_system.planets[3].summary
-    end
-  when option.include?("add")
+    planet = gets.chomp.downcase
+    puts solar_system.find_planet_by_name(planet).summary
+  elsif option.include?("add") || option == "3"
     puts "What is the planet's name?"
     name = gets.chomp
     puts "What is the planet's color?"
@@ -63,7 +52,7 @@ def main
 
     name = Planet.new(name, color, mass, sun_distance, fun_fact)
     add_planet(name)
-  when option.include?("exit"), "4"
+  elsif option.include?("exit") || option == "4"
     puts "Thank you for using the PlanetDex!"
   else
     puts "That is not a valid option."
