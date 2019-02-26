@@ -24,7 +24,7 @@ class SolarSystem
         return planet
       end
     end
-    return "No planet named #{planet} is currently in this solar system. " \
-           "Please add planet to the solar system using add_planet."
+    puts "No planet named #{@planet} is currently in this solar system. " \
+         "Please add planet to the solar system using add_planet."
   end
 end
