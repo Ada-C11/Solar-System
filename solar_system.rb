@@ -22,4 +22,8 @@ class SolarSystem
              planet.name == planet_name.capitalize
            end
   end
+
+  # Wave 2 optional step 6
+  # def distance_between(planet1, planet2)
+  #   value = @planets.name(planet1). - planet2
 end
