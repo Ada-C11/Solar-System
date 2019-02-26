@@ -1,5 +1,4 @@
 require_relative 'planet.rb'
-require "set"
 
 class SolarSystem
     attr_reader :star_name, :planets
@@ -7,16 +6,14 @@ class SolarSystem
     def initialize(star_name)
         @star_name = star_name
         @planets = Array.new
-        @name_set = Set.new
     end
 
     def add_planet(planet)
-        if @name_set.include?(planet)
+        if @planets.include?(planet)
             raise ArgumentError.new("Planet already exists")
         end
 
         @planets << planet
-        @name_set << planet.name
     end
 
     def list_planets
@@ -29,7 +26,7 @@ class SolarSystem
     end
 
     def find_planet_by_name(search_name)
-        if !@name_set.include?(search_name)
+        if !@planets.include?(search_name)
             raise ArgumentError.new("There is no such planet")
         end
 
