@@ -1,5 +1,6 @@
 require_relative 'planet'
 require_relative 'solar_system'
+require 'pry'
 
 def main
   #... making default planets in list...
@@ -17,8 +18,9 @@ def main
   sol_system.add_planet(venus) 
   sol_system.add_planet(pluto)
   sol_system.add_planet(earth)
-
+  
   list = sol_system.list_planets
+
 
   print "Hello and welcome to the \'#{sol_system.star_name}\' solar system."
   puts "\n 
@@ -33,12 +35,12 @@ def main
     planet_ask = gets.chomp.downcase
     #currently will only print out last valuse
     if running
-      if ["list", "l"].include?(planet_ask)
-        puts "Planets orbiting #{sol_system.star_name}\n"
-        puts list
-      elsif ["earth", "venus", "pluto"].include?(planet_ask)
+      if ["earth", "venus", "pluto"].include?(planet_ask)
         find_planet = sol_system.find_planet_by_name(planet_ask)
         puts find_planet[0].summary
+      elsif ["list", "l"].include?(planet_ask)
+        puts "Planets orbiting #{sol_system.star_name}\n"
+        puts sol_system.list_planets
       elsif planet_ask == 'generate'
         puts "Please enter the details of your new planet: "
         print "Name: " 
@@ -53,7 +55,7 @@ def main
         fun_deets = gets.chomp
         new_planet = Planet.new(name: new_name, color: new_color, mass_kg: mass, distance_from_sun_km: distance, fun_fact: fun_deets )
         sol_system.add_planet(new_planet)
-        p new_planet
+        puts "#{new_planet.name} has been added to Sol system"
       elsif ['exit', 'quit', 'n'].include?(planet_ask)
         puts "mission aborted!"
         running = false 
@@ -67,6 +69,7 @@ def main
     else
       running = false
     end
+    sol_system.add_planet(new_planet)
   end
 end
 
