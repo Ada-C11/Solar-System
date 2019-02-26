@@ -24,7 +24,7 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_name)
-    found_planet = @planets.find(ifnone = nil) { |planet| planet.name.downcase == planet_name.downcase }
+    found_planet = @planets.find(ifnone = nil) { |planet| (planet.name).downcase == planet_name.downcase }
     return found_planet
   end
 
@@ -33,9 +33,9 @@ class SolarSystem
     second_planet = find_planet_by_name(planet2)
     if first_planet && second_planet
       distance = (first_planet.distance_from_sun - second_planet.distance_from_sun).abs
-      return distance
     else
-      return nil
+      distance = nil
     end
+    return distance
   end
 end
