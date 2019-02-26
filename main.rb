@@ -1,6 +1,8 @@
 require_relative 'planet'
 require_relative 'solar_system'
-require 'pry'
+require 'awesome_print'
+
+
 
 def main
   #... making default planets in list...
@@ -19,18 +21,26 @@ def main
   sol_system.add_planet(pluto)
   sol_system.add_planet(earth)
   
-  list = sol_system.list_planets
-
+  # list = sol_system.list_planets
+ 
 
   print "Hello and welcome to the \'#{sol_system.star_name}\' solar system."
   puts "\n 
     - If you would like to see a list of planets enter \'list\' or \'l\'.  
     - If you would like to learn more about an existing planet, enter enter it's name from the list of planets. 
-    - If you would like to create a planet, enter 'generate'. 
+    - If you would like to create a planet, enter 'generate', or 'add'. 
     - Finally at any point if you want to abort the mission enter: exit or quit."
   
   running = true
+  loop_count = 0
+  
   while running
+    if loop_count > 0
+      t = Terminal::Table.new
+      puts "Your options are:"
+      t << ["enter a planet's name", "list", "l", "add", "generate", "exit", "quit"]
+      puts t
+    end
     print "Input here: "
     planet_ask = gets.chomp.downcase
     #currently will only print out last valuse
@@ -39,29 +49,17 @@ def main
         find_planet = sol_system.find_planet_by_name(planet_ask)
         puts find_planet[0].summary
       elsif ["list", "l"].include?(planet_ask)
-        puts "Planets orbiting #{sol_system.star_name}\n"
-        puts sol_system.list_planets
-      elsif planet_ask == 'generate'
-        puts "Please enter the details of your new planet: "
-        print "Name: " 
-        new_name = gets.chomp
-        print "Color: "
-        new_color = gets.chomp
-        print "Mass in kg: "
-        mass = gets.chomp
-        print "Distance from #{sol_system.star_name}: "
-        distance = gets.chomp
-        print "Cool facts about your planet: "
-        fun_deets = gets.chomp
-        new_planet = Planet.new(name: new_name, color: new_color, mass_kg: mass, distance_from_sun_km: distance, fun_fact: fun_deets )
-        sol_system.add_planet(new_planet)
-        puts "#{new_planet.name} has been added to Sol system"
+        puts "Planets orbiting #{sol_system.star_name}"
+        i = 0
+        sol_system.list_planets.each { |n| ap "#{i+=1} #{n.name}" }
+      elsif planet_ask == 'generate' || planet == 'add'
+        sol_system.user_adds_planet
       elsif ['exit', 'quit', 'n'].include?(planet_ask)
         puts "mission aborted!"
-        running = false 
+        break
       end
     end
-
+    loop_count += 1
     puts "Would you like to perform another inquiry? enter y/n" 
     question = gets.chomp
     if question == 'y'
@@ -69,7 +67,6 @@ def main
     else
       running = false
     end
-    sol_system.add_planet(new_planet)
   end
 end
 

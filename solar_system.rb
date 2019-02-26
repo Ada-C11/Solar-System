@@ -16,10 +16,27 @@ class SolarSystem
 
   def list_planets
     n = 0
-    listing = @planets.map do |planet|
+    listing = @planets.each do |planet|
     "#{n+=1}. #{planet.name}"
     end
     return listing
+  end
+
+  def user_adds_planet
+    puts "Please enter the details of your new planet: "
+        print "Name: " 
+        new_name = gets.chomp
+        print "Color: "
+        new_color = gets.chomp
+        print "Mass in kg: "
+        mass = gets.chomp
+        print "Distance from #{star_name}: "
+        distance = gets.chomp
+        print "Cool facts about your planet: "
+        fun_deets = gets.chomp
+        new_planet = Planet.new(name: new_name, color: new_color, mass_kg: mass, distance_from_sun_km: distance, fun_fact: fun_deets )
+        add_planet(new_planet)
+        puts "#{new_planet.name} has been added to Sol system"
   end
   
   def find_planet_by_name name_query
