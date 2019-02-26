@@ -16,11 +16,16 @@ def main
   # control loop for program next steps
   next_step = ""
   until next_step == "exit"
-    puts "What would you like to do next? Options - 'list planets', or 'exit'"
+    puts "What would you like to do next? Options - 'list planets', 'planet details', or 'exit'"
     next_step = gets.chomp.downcase
     if next_step == "list planets"
       list = food_way.list_planets
       puts list
+    elsif next_step == "planet details"
+      puts "Which planet would you like to learn more about?"
+      user_planet = gets.chomp
+      found_planet = food_way.find_planet_by_name(user_planet)
+      puts found_planet.summary
     end
   end
 end
