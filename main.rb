@@ -34,20 +34,27 @@ def main
       answer = gets.chomp.downcase
     elsif answer == "add planet"
       puts "What is the planet named?"
-      name = gets.chomp
+      name = gets.chomp.downcase
       puts "What color is the planet?"
-      color = gets.chomp
+      color = gets.chomp.downcase
       puts "What is the mass in kg of the planet?"
-      mass = gets.chomp
+      mass = gets.chomp.to_f
+      until mass.to_f > 0
+        puts "Enter a positive number"
+        mass = gets.chomp.to_f
+      end
       puts "What is the distance of the planet from the sun in km?"
-      distance = gets.chomp
+      distance = gets.chomp.to_f
+      until distance.to_f > 0
+        puts "Enter a positive number"
+        distance = gets.chomp.to_f
+      end
       puts "Enter a fun fact about the planet"
       fun_fact = gets.chomp
       name = Planet.new(name, color, mass, distance, fun_fact)
       solar_system.add_planet(name)
       puts "What do you want to do next?"
       answer = gets.chomp.downcase
-    else
     end
   end
 end
