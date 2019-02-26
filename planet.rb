@@ -9,6 +9,12 @@ class Planet
     @fun_fact = fun_fact
     @twang_level = twang_level
     @likelihood_to_be_loved_by_yanks = likelihood_to_be_loved_by_yanks
+    if mass <= 0
+        return raise ArgumentError, 'Planet mass must be larger than 0'
+    end
+    if distance <= 0
+        return raise ArgumentError, 'Planet distance must be larger than 0'
+    end
   end
 
   def summary
