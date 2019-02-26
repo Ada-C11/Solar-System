@@ -7,7 +7,7 @@ class SolarSystem
   end
 
   def add_planet(planet)
-    raise ArgumentError.new("#{planet.capitalize} is not a Planet") if !planet.instance_of?(Planet)
+    raise ArgumentError.new("#{planet.capitalize} is not a Planet") if !is_a_Planet?(planet)
     @planets << planet
     return true
   end
@@ -28,9 +28,13 @@ class SolarSystem
   end
 
   def distance_between(planet1, planet2)
-    if planet1.instance_of?(Planet) && planet2.instance_of?(Planet)
+    if is_a_Planet?(planet1) && is_a_Planet?(planet2)
       return (planet1.distance_from_sun_km - planet2.distance_from_sun_km).abs.to_i
     end
     raise ArgumentError.new("#{planet1} and/or #{planet2} not of type Planet")
+  end
+
+  def is_a_Planet?(planet)
+    return planet.instance_of?(Planet)
   end
 end
