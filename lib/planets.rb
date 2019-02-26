@@ -3,7 +3,7 @@ class Planet
   
   def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
 
-    # unless statement about mass size / km
+    # will raise argumenterrors if mass and distance are < 0
     unless mass_kg > 0
       raise ArgumentError.new("Mass size must be greater than 0")
     end
@@ -19,6 +19,7 @@ class Planet
     @fun_fact = fun_fact
   end
 
+  # returns a formatted summary of planet information
   def summary
     return "The planet's name is #{name}. Its color is #{color}. It has a mass of #{mass_kg}kg, and it is #{distance_from_sun_km}km from the sun. A fun fact is that #{name} is #{fun_fact}"
   end
