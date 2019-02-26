@@ -3,6 +3,7 @@ require_relative "solar-system"
 
 require "faker"
 require "colorize"
+require "terminal-table"
 require "table_flipper"
 
 def add_planet(solar_system)
@@ -19,7 +20,6 @@ def add_planet(solar_system)
   puts "Finally, what is your planet's name?".colorize(:blue)
   name = gets.chomp
   # This while loop ensures that planet names are unique.
-  # If you're naming two planets the exact same thing, go back to astronomy school (jk)
   while solar_system.planets.any? { |planet| planet.name.downcase == name.downcase }
     puts "That name is taken! Try entering another name.".colorize(:red)
     name = gets.chomp
@@ -80,11 +80,12 @@ def control_loop(solar_system)
                       m: "measure the distance between 2 planets",
                       q: "exit",
                     }
+  table_rows = possible_inputs.map { |key, value| [key.to_s.colorize(:blue), value.to_s.colorize(:blue)] }
+  table = Terminal::Table.new :rows => table_rows, :headings => ["Key".colorize(:blue), "Action".colorize(:blue)]
 
   while input != "q"
     puts "What would you like to do?".colorize(:blue)
-    possible_inputs.each { |key, value| puts "Press #{key.to_s.colorize(:blue)} to #{value.to_s.colorize(:blue)}" }
-
+    puts table
     input = gets.chomp.downcase.to_sym
 
     case input
@@ -112,13 +113,24 @@ def main
 
   # Make some planets and add them to the solar system
   4.times do
+    fun_fact = ""
+    case rand(1..3)
+    when 1
+      fun_fact = "Discovered by #{Faker::FunnyName.name_with_initial} on " +
+                 "#{Faker::Date.forward}, this planet is home to the rare " +
+                 "#{Faker::Movies::HitchhikersGuideToTheGalaxy.specie}."
+    when 2
+      fun_fact = "#{rand(100)}% of this planet's atmosphere tastes like " +
+                 "#{Faker::Dessert.flavor} and its surface is composed mainly of #{Faker::Food.ingredient}. "
+    when 3
+      fun_fact = "This planet was discovered accidentally by students at #{Faker::University.name} " +
+                 "and named for their pet #{Faker::Creature::Animal.name}."
+    end
     new_planet = Planet.new(Faker::Movies::HitchhikersGuideToTheGalaxy.unique.planet,
                             Faker::Color.color_name,
                             (Faker::Number.decimal(1, 3)).to_f * 10 ** (rand(22..24)),
                             (Faker::Number.decimal(1, 3)).to_f * 10 ** (rand(7..9)),
-                            "Discovered by #{Faker::FunnyName.name_with_initial} " +
-                            "on #{Faker::Date.forward}, this planet is home to the " +
-                            "rare #{Faker::Movies::HitchhikersGuideToTheGalaxy.specie}.")
+                            fun_fact)
     solar_system.add_planet(new_planet)
   end
 

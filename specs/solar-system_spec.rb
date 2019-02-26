@@ -29,6 +29,16 @@ describe "solar_system" do
     my_planet = "Earth"
     expect { my_solar_system.add_planet(my_planet) }.must_raise ArgumentError
   end
+  it "returns a string when list_planets is called" do
+    my_solar_system = SolarSystem.new("Sun")
+    my_planet = Planet.new("Earth",
+                           "blue",
+                           5.972e24,
+                           1.496e8,
+                           "We live here! :)")
+    my_solar_system.add_planet(my_planet)
+    expect(my_solar_system.list_planets).must_be_instance_of String
+  end
   it "finds a planet by name or returns nil if planet doesn't exist" do
     my_solar_system = SolarSystem.new("Sun")
 

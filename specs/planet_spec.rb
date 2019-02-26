@@ -44,4 +44,12 @@ describe "planet" do
                  "Prepare to be spaghettified")
     }.must_raise ArgumentError
   end
+  it "returns a string when the summary method is called" do
+    my_planet = Planet.new("Earth",
+                           "blue",
+                           5.972e24,
+                           1.496e8,
+                           "We live here! :)")
+    expect(my_planet.summary).must_be_instance_of String
+  end
 end
