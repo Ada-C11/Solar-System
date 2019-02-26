@@ -19,10 +19,17 @@ class SolarSystem
   end
 
   def find_planet_by_name(name)
+    found = false
     @planets.each do |planet|
       if planet.name.downcase == name.downcase
+        found = true
         return planet
+      else 
+        found = false
       end
+    end
+    if found == false 
+      return "This is not a planet!"
     end
   end
 end
