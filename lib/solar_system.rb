@@ -29,8 +29,3 @@ class SolarSystem
     end
   end
 end
-
-# milky_way = SolarSystem.new("milky_way")
-# milky_way.add_planet("Earth")
-
-# puts milky_way.planets

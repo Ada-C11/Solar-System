@@ -16,17 +16,8 @@ def main
 
   puts "Welcome to the Solar System Simulator!"
 
-  print "\nWhat would you like to do next? (list planets, exit): "
+  print "\nWhat would you like to do next? (list planets, planet details, exit): "
   user_choice = gets.chomp
-
-  #   if user_choice == "list planets"
-  #     puts list
-  #   elsif user_choice == "exit"
-  #     puts "Thanks for stopping by!"
-  #   else
-  #     print "\nWhat would you like to do next? (list planets, exit): "
-  #     user_choice = gets.chomp
-  #   end
 
   while user_choice = gets.chomp # loop while getting user input
     case user_choice
@@ -35,8 +26,13 @@ def main
     when "exit"
       puts "Thanks for stopping by!"
       break
+    when "planet details"
+      print "What planet would you like to know about?: "
+      planet_choice = gets.chomp
+      found_planet = solar_system.find_planet_by_name(planet_choice)
+      puts found_planet.summary
     else
-      print "What would you like to do next? (list planets, exit): "
+      print "What would you like to do next? (list planets, planet details, exit): "
     end
   end
 
