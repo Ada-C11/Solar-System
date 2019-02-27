@@ -3,12 +3,18 @@ require_relative "solar_system"
 
 def main
   solar_system = SolarSystem.new("Sol")
-  mercury = Planet.new("Mercury", "dark-gray", 3.285e23, 57.91e8, "The smallest planet in our solar system")
+  mercury = Planet.new("Mercury", "dark-gray", 3.285e23, 57.91e8, "The smallest planet in our solar system.")
   solar_system.add_planet(mercury)
-  venus = Planet.new("Venus", "reddish-brown", 4.867e24, 67.24e8, "The second largest terrestrial planet")
+  venus = Planet.new("Venus", "reddish-brown", 4.867e24, 67.24e8, "One day in Venus lasts 243 Earth days.")
   solar_system.add_planet(venus)
-  earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
+  earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life.")
   solar_system.add_planet(earth)
+  mars = Planet.new("Mars", "reddish", 6.39e23, 141.6e8, "The tallest mountain known in the solar system is on Mars.")
+  solar_system.add_planet(mars)
+  jupiter = Planet.new("Jupiter", "orange-white", 1.898e27, 483.8e8, "The fastest spinning planet in our solar system.")
+  solar_system.add_planet(jupiter)
+
+  solar_system.planets
 
   list = solar_system.list_planets
 
