@@ -6,40 +6,48 @@ require_relative "solar_system"
 #   1. Enter a control loop that repeatedly asks the user what to do next. The two options at this point are `list planets` and `exit`.
 
 def main
-  new_sol_sys = SolarSystem.new("Phunghoule")
-  bebop = Planet.new("Bebop", "gray", 5, 2.2, "Bebop's nickname is Mrs. Tubbins!")
-  ninou = Planet.new("Ninou", "black", 3, 2.2, "Ninou is the best planet ever!")
-  andrew = Planet.new("Andrew", "white", 91, 3, "Andrew is full of gas")
-  new_sol_sys.add_planet(bebop)
-  new_sol_sys.add_planet(ninou)
-  new_sol_sys.add_planet(andrew)
+  solar_system = SolarSystem.new("Phunghoule")
 
-  puts "What do you want to do next? Type either LIST PLANETS, or EXIT."
-  input = gets.chomp.downcase
-  if input.downcase == "list planets"
-    puts new_sol_sys.list_planets
-  elsif input.downcase == "exit"
-    break
-  else
-    puts "What do you want to do next? Type either LIST PLANETS, or EXIT."
+  bebop = Planet.new(name: "Bebop", color: "gray", mass_kg: 5, distance_from_sun_km: 2.2, fun_fact: "Bebop's nickname is Mrs. Tubbins!")
+  ninou = Planet.new(name: "Ninou", color: "black", mass_kg: 3, distance_from_sun_km: 2.2, fun_fact: "Ninou is the best planet ever!")
+  andrew = Planet.new(name: "Andrew", color: "white", mass_kg: 91, distance_from_sun_km: 3, fun_fact: "Andrew is full of gas")
+
+  solar_system.add_planet(bebop)
+  solar_system.add_planet(ninou)
+  solar_system.add_planet(andrew)
+
+  loop do
+    puts "Choose your next adventure: "
+    puts "\ntype LIST to see a list of all planets, "
+    puts "type LEARN to learn about the planets,"
+    puts "type ADD to create your own planet, or"
+    puts "type EXIT to quit"
+
+    selection = gets.chomp.downcase
+
+    case selection
+    when "exit"
+      puts "Goodbye."
+      exit
+    when "list"
+      puts "#{solar_system.list_planets}"
+    when "learn"
+      case learn_choice
+      when "bebop"
+        puts "#{solar_system.planets[0].summary}"
+      when "ninou"
+        puts "#{solar_system.planets[1].summary}"
+      when "andrew"
+        puts "#{solar_system.planets[2].summary}"
+      else puts "Error: not a valid selection. Try again: "
+learn_choice = gets.chomp.downcase
+      end
+    when "add"
+      solar_system.add_planet_details
+      puts "Thanks! Your planet has been added to the solar system: "
+      puts "#{solar_system.list_planets}"
+    end
   end
 end
 
 main
-
-# solar_system = SolarSystem.new("Sol")
-
-# earth = Planet.new("Earth", "red", 12345, 54321, "It's a Pepper!")
-# solar_system.add_planet(earth)
-
-# # list = solar_system.list_planets
-# # puts list
-
-# found_planet = solar_system.find_planet_by_name("Earth")
-
-# # found_planet is an instance of class Planet
-# puts "#{found_planet}"
-# # # => #<Planet:0x00007fe7c2868ee8>
-
-# # puts found_planet[0].summary
-# puts found_planet.summary
