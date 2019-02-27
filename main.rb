@@ -14,7 +14,7 @@ jupiter = Planet.new("Jupiter", "red, white, and brown", 1.898e27, 7.785e8, "The
 solar_system.add_planet(jupiter)
 
 puts "Hello, please see the the following options for this program.  You can: \nA: List Planets \nB: List Planet Details \nC: Add Planet \nD: Find the Distance Between Two Planets"
-puts "Please enter the corresponding for the action you would like to take.  You can exit by entering 'exit'."
+puts "Please enter the corresponding letter for the action you would like to take.  You can exit by entering 'exit'."
 response = gets.chomp.downcase
 while response != "exit"
   if response == "a"

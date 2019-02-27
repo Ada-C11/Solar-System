@@ -34,7 +34,7 @@ class SolarSystem
 
   def user_adds_planet
     puts "Please complete the following information for the planet you would like added: \nName: "
-    name = gets.chomp
+    name = gets.chomp.capitalize
     puts "Color: "
     color = gets.chomp
     puts "Mass in kg: "
