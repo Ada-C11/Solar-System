@@ -1,4 +1,4 @@
-class Solar_system
+class SolarSystem
   attr_reader :star_name, :planets
 
   def initialize(star_name)
@@ -7,14 +7,26 @@ class Solar_system
   end
 
   def add_planet(planet)
-    @planets << planet.name
+    @planets << planet
   end
 
   def list_planets
     planet_list = "Planets orbiting #{@star_name}:"
     @planets.each_with_index do |planet, index|
-      planet_list += "\n#{index + 1}. #{planet}"
+      planet_list += "\n#{index + 1}. #{planet.name}"
     end
     return planet_list
+  end
+
+  def find_planet_by_name(planet)
+    search_planet = planet.downcase.capitalize!
+
+    @planets.each do |planet|
+      if search_planet == planet.name
+        @found_planet = planet
+      end
+    end
+
+    return @found_planet
   end
 end
