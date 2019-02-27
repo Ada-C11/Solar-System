@@ -89,7 +89,7 @@ def main
     puts "Exit\n\n"
 
     # gets user input
-    command = gets.chomp.downcase.capitalize!
+    command = gets.chomp.capitalize!
   end
 end
 
