@@ -20,6 +20,27 @@ def main
    found_planet = solar_system.find_planet_by_name("earth")
    puts found_planet.summary
 
+   options = [ "list planets", "get planet details", "add a planet", "exit"]
+
+   puts "What would you like to do, please choose from the following options:"
+   puts options
+   user_input = gets.chomp.downcase
+
+   while options.include? user_input
+    case user_input
+    when "list planets"
+      puts solar_system.list_planets
+    when "get planet details"
+      puts solar_system.planet_details.summary
+    when "add a planet"
+      puts solar_system.new_planet
+    when "exit"
+      exit
+end
+
+   puts "What would you like to do next?"
+   user_input = gets.chomp.downcase
+end
 end
 
 main
