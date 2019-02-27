@@ -8,8 +8,13 @@ class SolarSystem
 
   def add_planet(planet)
     raise ArgumentError.new("#{planet.capitalize} is not a Planet") if !is_a_Planet?(planet)
-
-    @planets << planet
+    if planets.any? do |logged_planet|
+      planet.name == logged_planet.name
+    end
+      raise ArgumentError.new("#{planet.name}\'s name is in use.")
+    else
+      @planets << planet
+    end
     return true
   end
 

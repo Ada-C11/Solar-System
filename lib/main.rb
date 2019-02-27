@@ -1,4 +1,3 @@
-require "lolcat"
 require "colorize"
 require_relative "planet.rb"
 require_relative "solar_system.rb"
@@ -7,7 +6,7 @@ def main
   display(load_solar_system_program)
   continue = true
   while continue
-    display(options)
+    puts options
     continue = do_option(get_option)
   end
   display(good_bye)
@@ -18,7 +17,7 @@ def display(string, char = true, lag = 0.03)
     count = 0
     string.each_char do |ch|
       print ch
-      sleep lag if count < 36
+      sleep lag if count < 100
       count += 1
     end
   else
@@ -51,21 +50,19 @@ def create_system(solar_system)
 end
 
 def options
-  string_of_options = "\nEnter ".green + "LIST".cyan.on_blue.italic + " to display all the planets in system.".green \
+  string_of_options = "\n\nEnter ".green + "LIST".cyan.on_blue.italic + " to display all the planets in system.".green \
     + "\nEnter ".green + "ADD ".cyan.on_blue.italic + " to add planets".green \
     + "\nEnter ".green + "CALC".cyan.on_blue.italic + " to calculate the distance between two planets".green \
     + "\nEnter ".green + "INFO".cyan.on_blue.italic + " to display information about a planet".green \
     + "\nEnter ".green + "Q   ".cyan.on_blue.italic + " to quit program\n".green
+  return string_of_options
 end
 
 def get_option
   print "\nPlease Enter Selection: ".cyan
   user_input = gets.chomp.upcase
   return user_input if ["LIST", "ADD", "CALC", "INFO", "Q"].include?(user_input)
-  "Hmm... ".each_char do |ch|
-    print ch
-    sleep 0.09
-  end
+  display("Hmm... ", true, 0.5)
   puts "I don't understand \"#{user_input}\".".red.bold.underline
   sleep 1
   get_option
@@ -81,50 +78,60 @@ def do_option(option_key)
     user_calc_distance
   when "INFO"
     display(user_info_planet.cyan)
+    sleep 1
   when "Q"
     return false
   end
 end
 
-# handle exceptions?
 def user_add_planet
-  puts "To add a planet follow the prompts: "
-  print "Name? "
+  display("\nTo add a planet follow the prompts: \n".yellow)
+  print "Name? ".yellow
   name = gets.chomp.capitalize
-  print "Color? "
+  print "Color? ".yellow
   color = gets.chomp.downcase
-  print "Mass in kg? "
+  print "Mass in kg? ".yellow
   mass = gets.chomp.to_i
-  print "Distance from sun in km? "
+  print "Distance from sun in km? ".yellow
   distance = gets.chomp.to_i
-  print "Fun fact? "
+  print "Fun fact? ".yellow
   fun_fact = gets.chomp
   begin
     solar_system.add_planet(Planet.new(name, color, mass, distance, fun_fact))
+    display("\nCongratulations #{solar_system.planets[-1].name} Succesfully Added!!".cyan.on_blue)
+    puts read_file("./planet.txt").light_magenta
   rescue ArgumentError => error_message
-    puts "Error: #{error_message} \nReselect option from main menu to try again."
+    display("\nError: #{error_message} \nReselect option from main menu to try again.".red.underline.bold)
   end
   return true
 end
 
-# handle exceptions?
 def user_calc_distance
-  print "Enter first planet: "
+  print "\nEnter first planet: ".yellow
   planet1 = get_planet
   return true if !planet1
-  print "Enter second planet: "
+  print "Enter second planet: ".yellow
   planet2 = get_planet
   return true if !planet2
-  print "The distance between #{planet1.name} and #{planet2.name} is "
-  puts "#{solar_system.distance_between(planet1, planet2)} km "
+  begin
+    distance = solar_system.distance_between(planet1, planet2)
+    puts read_file("./distance.txt").blue.bold
+    display("\nDirections from #{planet1.name.upcase} to #{planet2.name.upcase}:".light_magenta)
+    display("ONWARD -> ".cyan.on_blue)
+    display("%0.3e km ".cyan.on_blue % [distance])
+    display("\nIt will take %0.2e light years, expected day of arrival: May 4th".magenta % [distance / 1.057e13])
+    sleep 1
+  rescue ArgumentError => error_message
+    display("\nError: #{error_message} \nReselect option from main menu to try again.".red.underline.bold)
+  end
   return true
 end
 
 def user_info_planet
-  print "\nWhich planet would you like more information on? "
+  print "\nWhich planet would you like more information on? ".yellow
   planet = get_planet
   return planet.summary if planet
-  return "Try using the numeric tags associated with planets from LIST command."
+  return "Try using the numeric tags associated with planets from LIST command.".red
 end
 
 def get_planet
@@ -134,8 +141,8 @@ def get_planet
   rescue ArgumentError
     planet = planet_name.to_i.to_s == planet_name ? solar_system.planets[planet_name.to_i - 1] : nil
     if !solar_system.is_a_Planet?(planet)
-      puts "Hmm.. #{planet_name} is not in the system of #{solar_system.name}"
-      puts "\nReselect option from main menu to try again."
+      display("Hmm... ", true, 0.5)
+      puts "#{planet_name} is not in the system of #{solar_system.name}".cyan
     end
   end
   return planet
@@ -147,6 +154,10 @@ def read_file(file)
     read += f.read
   end
   return read
+end
+
+def good_bye
+  return "Goodbye! Visit the #{solar_system.name} system again soon! Safe Travels!\n".cyan.on_blue
 end
 
 main

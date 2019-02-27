@@ -22,6 +22,9 @@ describe "SolarSystem" do
   let(:mars) {
     Planet.new("mars", "red", 5.9234, 1.2348, "Only planet thats red and dusty")
   }
+  let(:mars2) {
+    Planet.new("mars", "red2", 25.9234, 12.2348, "Onlasdfy planet thats red and dusty")
+  }
   before do
     planets_test = [earth, mars]
     planets_test.each do |planet|
@@ -38,6 +41,12 @@ describe "SolarSystem" do
         sol_system.add_planet("Earther")
       }.must_raise ArgumentError
     end
+
+    it "raises ArgumentError if name is in use by another planet" do
+      expect {
+        sol_system.add_planet(mars2)
+      }.must_raise ArgumentError
+    end
   end
 
   describe "SolarSystem#list_planets" do
@@ -46,7 +55,7 @@ describe "SolarSystem" do
     end
 
     it "returns formatted list of sol_system" do
-      expect(sol_system.list_planets).must_equal "Planets orbiting Sol\n1. Earth\n2. Mars"
+      expect(sol_system.list_planets).must_equal "\nPlanets orbiting Sol\n1. Earth\n2. Mars\n"
     end
   end
 

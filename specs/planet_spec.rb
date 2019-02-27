@@ -36,9 +36,8 @@ describe "Planet" do
     it "returns a string" do
       expect(earth.summary).must_be_kind_of String
     end
-
     it "returns a summary of planet's attributes" do
-      expect(earth.summary).must_equal "#{earth.name} is a #{earth.color} planet that is #{earth.distance_from_sun_km} km from it's sun. It has a mass of #{earth.mass_kg} kg and is known for #{earth.fun_fact}."
+      expect(earth.summary).must_equal "\nEarth is a blue-green planet that is 1.50e+08 km from it's sun. \nIt has a mass of 5.97e+24 kg and \nis known for only planet known to support life."
     end
   end
 

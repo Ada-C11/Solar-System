@@ -10,6 +10,6 @@ class Planet
   end
 
   def summary
-    return "\n#{name} is a #{color} planet that is #{distance_from_sun_km} km from it's sun. \nIt has a mass of #{mass_kg} kg and \nis known for #{fun_fact}."
+    return "\n#{name} is a #{color} planet that is %0.2e km from it's sun. \nIt has a mass of %0.2e kg and \nis known for #{fun_fact}." % [distance_from_sun_km, mass_kg]
   end
 end
