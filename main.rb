@@ -11,7 +11,8 @@ def main
   solar_system.add_planet(pluto)
   solar_system.add_planet(saturn)
 
-  #TODO: Create a method for add planet
+  ask_again = "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
+
   puts "What do you want to do next? \nEnter one: \nLIST (List planets), \nDETAILS (Get planet details), \nDISTANCE (Distance between 2 planets)  \nADD (Add planet) \nEXIT (Exit program)"
   answer = gets.chomp.downcase
 
@@ -19,14 +20,14 @@ def main
     if answer == "list"
       list = solar_system.list_planets
       puts list
-      puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
+      puts ask_again
       answer = gets.chomp.downcase
     elsif answer == "details"
       puts "Which planet?"
       planet_answer = gets.chomp.downcase
       correct_planet_name = solar_system.find_planet_by_name(planet_answer)
       puts correct_planet_name.summary
-      puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
+      puts ask_again
       answer = gets.chomp.downcase
     elsif answer == "distance"
       puts "I need two planets to measure the distance between. What is the first planet?"
@@ -36,11 +37,11 @@ def main
       planet1 = solar_system.find_planet_by_name(planet_answer1)
       planet2 = solar_system.find_planet_by_name(planet_answer2)
       puts "The distance between #{planet_answer1.capitalize} and #{planet_answer2.capitalize} is #{solar_system.distance_between(planet1, planet2)} kms."
-      puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
+      puts ask_again
       answer = gets.chomp.downcase
     elsif answer == "add"
       solar_system.user_add_planet
-      puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
+      puts ask_again
       answer = gets.chomp.downcase
     end
   end
