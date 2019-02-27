@@ -1,14 +1,16 @@
 require_relative 'planet'
 require_relative 'solar_system'
 
+# This method should create two different instances of Planet and print out some 
+# of their attributes.
 def main
     solar_system = SolarSystem.new('Sol')
 
     earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
     jupiter = Planet.new('Jupiter', 'reddish-brown', 1.898e27, 7.783e8, 'Cannot become a star')
-    saturn = Planet.new('Saturn', 'yellowish-brown', 568.34e24, 1.434e8, 'Only planet known to support life')
-    uranus = Planet.new('Uranus', 'blue-green', 8.681e25, 2.871e8, 'Cannot become a star')
-    neptune = Planet.new('Neptune', 'blue', 1.02e26, 4.495e8, 'Cannot become a star')
+    saturn = Planet.new('Saturn', 'yellowish-brown', 568.34e24, 1.434e8, 'Is a flattened ball')
+    uranus = Planet.new('Uranus', 'blue-green', 8.681e25, 2.871e8, 'Makes one trip around the Sun every 84 Earth years')
+    neptune = Planet.new('Neptune', 'blue', 1.02e26, 4.495e8, 'Was named after the Roman god of the Sea')
 
     solar_system.add_planet(earth)
     solar_system.add_planet(jupiter)
