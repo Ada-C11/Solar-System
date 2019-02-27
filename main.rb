@@ -34,7 +34,7 @@ def main
   #will return a summary of the planet you put in the argument
   sol_system.find_planet_by_name_two("maRs").summary
 
-  puts "Would you like a list of planets, planet details, or to exit?"
+  puts "Would you like a list of planets, planet details, to add a planet, or to exit?"
   puts "Enter List to continue or exit to end the program"
 
   # gets user input
