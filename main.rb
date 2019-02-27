@@ -1,8 +1,6 @@
 require_relative 'planet'
 require_relative 'solar_system'
 
-# This method should create two different instances of Planet and print out some 
-# of their attributes.
 def main
     solar_system = SolarSystem.new('Sol')
 
