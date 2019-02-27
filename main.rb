@@ -20,25 +20,30 @@ def main
   solar_system_1.add_planet(playground)
 
   list = solar_system_1.list_planets
-  user_cont_choice = "LIST PLANETS"
-  until user_cont_choice != "LIST PLANETS"
-    puts "Hello! What would you like to do? You can LIST PLANETS or EXIT."
-    user_cont_choice = gets.chomp.upcase
-    if user_cont_choice.upcase == "EXIT"
-      break
+  user_choice = "LIST PLANETS"
+  until user_choice == "EXIT"
+    puts "Hello! What would you like to do? You can LIST PLANETS, ADD A PLANET or EXIT."
+    user_choice = gets.chomp.upcase
+    if user_choice.upcase == "EXIT"
+      break #<-- TRY CHANGING THIS TO EXIT
     end
-    puts list
-    puts "\nWhich planet would you like to learn about? (enter its name)"
-    user_planet_choice = gets.chomp
-    user_choice_planet = solar_system_1.find_planet_by_name(user_planet_choice)
-    puts user_choice_planet.summary
-    puts "-------"
+    if user_choice.upcase == "LIST PLANETS"
+      puts list
+      puts "\nWhich planet would you like to learn about? (enter its name)"
+      user_planet_choice = gets.chomp
+      user_choice_planet = solar_system_1.find_planet_by_name(user_planet_choice)
+      puts user_choice_planet.summary
+      puts "-------"
+    elsif user_choice.upcase == "ADD A PLANET"
+      user_added_planet = gets.chomp
+      puts "You added this planet: #{user_added_planet}"
+    end
   end
 
-  found_planet = solar_system_1.find_planet_by_name("Jupiter")
+  #   found_planet = solar_system_1.find_planet_by_name("Jupiter")
   #   puts found_planet.name
   #   puts found_planet.summary
   #   return "#{jupiter.summary} #{saturn.summary} #{playground.summary}"
 end
 
-main
+puts main
