@@ -1,5 +1,5 @@
 require_relative "planet"
-require_relative "solar_system"
+require_relative "main"
 
 class SolarSystem
   attr_reader :star_name, :planets
