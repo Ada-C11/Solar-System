@@ -25,19 +25,14 @@ class SolarSystem
   def find_planet_by_name(planet_name)
     planets.each do |planet|
       if planet.name.downcase == planet_name.downcase
-        return planet.summary
+        return planet
       end
     end
     return "That's not a planet I have information for"
   end
 
+  # Use .abs to get absolute value of difference so program doesn't output a negative distance
   def distance_between(planet1, planet2)
-    if planet1.distance_from_sun_km > planet2.distance_from_sun_km
-      return planet1.distance_from_sun_km - planet2.distance_from_sun_km
-    elsif planet2.distance_from_sun_km > planet1.distance_from_sun_km
-      return planet2.distance_from_sun_km - planet1.distance_from_sun_km
-    elsif planet1.distance_from_sun_km == planet2.distance_from_sun_km
-      return "There is no distance between these planets"
-    end
+    return (planet1.distance_from_sun_km - planet2.distance_from_sun_km).abs
   end
 end
