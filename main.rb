@@ -48,10 +48,12 @@ def main
       puts "Found planet: #{found_planet}"
       puts "Here are some details about #{found_planet.name}:\n"
       print found_planet.summary
+
     elsif (answer == "add planet")
       solar_system.discovered_planet
+
     else
-      break
+      exit
     end
   end
 
