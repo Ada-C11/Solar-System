@@ -1,4 +1,4 @@
-
+require "colorize"
 require_relative "planet"
 require_relative "solar_system"
 
@@ -22,9 +22,11 @@ def main
   solar_system.add_planet(uranus)
   solar_system.add_planet(neptune)
 
-  puts "What would you like to do next? [list planets] [planet details] [add planet] [exit]"
-  user_input = gets.chomp
-  until user_input == "exit"
+  loop do
+    puts "What would you like to do next?"
+    puts "[list planets] [planet details] [add planet] [compare distances] [exit]"
+    print "> "
+    user_input = gets.chomp
     case user_input.downcase
     when "list planets"
       puts solar_system.list_planets
@@ -32,9 +34,10 @@ def main
       puts solar_system.planet_details
     when "add planet"
       solar_system.new_planet
+    when "compare distances"
+      puts solar_system.compare_distances
     end
-    puts "What would you like to do next? [list planets] [planet details] [add planet] [exit]"
-    user_input = gets.chomp
+    break if user_input == "exit"
   end
 end
 
