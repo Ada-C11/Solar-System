@@ -16,11 +16,10 @@ class SolarSystem
 
     def list_planets
         planet_results = "Planets orbitting #{star_name}: "
-        list = ""
         @planets.each_index do |index|
-            list += "\n#{index + 1}. #{@planets[index].name}"
+            planet_results += "\n#{index + 1}. #{@planets[index].name}"
         end
-        return planet_results + list
+        return planet_results
     end
 
     def find_planet_by_name(name)
@@ -30,5 +29,21 @@ class SolarSystem
             end
         end
         return nil
+    end
+
+    def new_planet
+        puts "What is the name of your planet?"
+        name = gets.chomp.capitalize
+        puts "What is the color of your planet?"
+        color = gets.chomp.downcase
+        puts "How much does your planet weigh in kg?"
+        mass_kg = gets.chomp
+        puts "How far is your planet from the sun in km?"
+        distance_from_sun_kg = gets.chomp
+        puts "What is a fun fact about your planet?"
+        fun_fact = gets.chomp.downcase
+
+        new_planet = Planet.new(name, color, mass_kg, distance_from_sun_kg,fun_fact)
+        add_planet(new_planet)
     end
 end

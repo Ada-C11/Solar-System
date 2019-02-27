@@ -11,15 +11,6 @@ class Planet
         @fun_fact = fun_fact
     end
 
-    def find_planet_by_name(name)
-        @planets.each do |planet|
-            if planet.name.downcase == name.downcase
-                return planet
-            end
-        end
-        return nil
-    end
-
     def summary
         return "Planet #{name} is #{color}.  #{name} weighs #{mass_kg} kg and is #{distance_from_sun_kg} km away from the sun.  Fun fact about #{name}: #{fun_fact}."
     end
