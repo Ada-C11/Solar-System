@@ -34,6 +34,12 @@ class SolarSystem
       planet_choice = gets.chomp
     end
 
+    while find_planet_by_name(planet_choice) == nil
+      puts "Sorry, that's not a valid planet option."
+      print "What planet would you like to know about?: "
+      planet_choice = gets.chomp
+    end
+
     found_planet = find_planet_by_name(planet_choice)
     puts found_planet.summary
   end
@@ -57,21 +63,21 @@ class SolarSystem
 
     print "Enter the mass of your planet in kg: "
     planet_mass = gets.chomp.to_i
-    until planet_mass != "" || planet_mass > 0
+    until planet_mass > 0
       print "Enter the mass of your planet in kg: "
       planet_mass = gets.chomp.to_i
     end
 
     print "Enter the distance of your planet from the sun in km: "
     planet_distance = gets.chomp.to_i
-    until planet_distance != "" || planet_distance > 0
+    until planet_distance > 0
       print "Enter the distance of your planet from the sun in km: "
       planet_distance = gets.chomp.to_i
     end
 
     print "Enter a fun fact about your planet: "
     planet_fact = gets.chomp
-    until planet_face != ""
+    until planet_fact != ""
       print "Enter a fun fact about your planet: "
       planet_face = gets.chomp
     end
