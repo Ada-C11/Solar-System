@@ -1,7 +1,7 @@
 require_relative "planet"
 
 class SolarSystem
-  attr_reader :star_name, :planets
+  attr_reader :star_name, :planets #should keep? if so, need to add to spec
 
   def initialize(star_name)
     @star_name = star_name
@@ -9,6 +9,7 @@ class SolarSystem
   end
 
   def add_planet(planet)
+    raise ArgumentError, "Planet has already been added." if @planets.any? { |i| i.name.downcase == planet.name.downcase }
     @planets.push(planet)
   end
 
@@ -21,23 +22,17 @@ class SolarSystem
   end
 
   def find_planet_by_name(name)
-    found_planets = @planets.select do |planet|
-      planet.name.downcase == name.downcase
+    @planets.each do |planet|
+      return planet if (planet.name).downcase == name.downcase
     end
-
     # if the planet is not found, raise an exception
-    raise ArgumentError, "#{name} is not found." if found_planets.empty?
+    raise ArgumentError, "#{name} is not found."
+  end
 
-    # if there's only one planet
-    return "#{found_planets[0].summary}" if found_planets.length == 1
-
-    # if there are multiple planets with the given name, list them all
-    found_list = "There are multiple planets named #{name}:\n"
-    found_index = 0
-    found_planets.each_with_index do |found_planet, index|
-      found_list += "#{found_index + 1}. #{found_planet.name}: #{found_planet.summary}.\n"
-      found_index += 1
-    end
-    return found_list
+  # Optional: takes two planet names as parameters and returns the distance between them
+  def distance_between(planet_name1, planet_name2)
+    distance_planet1 = find_planet_by_name(planet_name1).distance_from_sun_km
+    distance_planet2 = find_planet_by_name(planet_name2).distance_from_sun_km
+    return (distance_planet1 - distance_planet2).abs
   end
 end
