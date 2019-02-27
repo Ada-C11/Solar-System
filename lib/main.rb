@@ -44,7 +44,7 @@ def main
       input_name = gets.chomp
       puts solar_system.find_planet_by_name(input_name)
     elsif get_input == "add planet"
-      solar_system.add_planet(add_new_planet)
+      solar_system.add_new_planet
       puts "Planet added to the solar system!"
     elsif get_input == "distance between planets"
       puts "What's the first planet you're interested in?"
