@@ -1,7 +1,7 @@
 class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
 
-  def initialize(name, color, mass_kg, distance_from_sun_km, fun_fact)
+  def initialize(name: "", color: "", mass_kg: 0, distance_from_sun_km: 0, fun_fact: "")
     @name = name
     @color = color
     @mass_kg = mass_kg
@@ -10,10 +10,10 @@ class Planet
   end
 
   def summary
-    return "#{@name}: #{@color} in color, mass: #{@mass_kg}kg, distance from sun: #{@distance_from_sun_km}km, fun fact: #{@fun_fact}"
+    return "The planet, #{@name} is #{@color} in color, its mass is #{@mass_kg}kg, has a distance of #{@distance_from_sun_km}km from sun, fun fact: #{@fun_fact}"
   end
 end
 
-ARIEL = Planet.new("Ariel", "blue-ish", 6455783, 308546069, "Ariel has an extensive network of medical-related industries.")
+ARIEL = Planet.new(name: "Ariel", color: "blue-ish", mass_kg: 6455783, distance_from_sun_km: 308546069, fun_fact: "Ariel has an extensive network of medical-related industries.")
 
-LONDINIUM = Planet.new("Londinium", "green-ish", 1236620, 1346380, "Londinium is where the Parliament is housed.")
+LONDINIUM = Planet.new(name: "Londinium", color: "green-ish", mass_kg: 1236620, distance_from_sun_km: 1346380, fun_fact: "Londinium is where the Parliament is housed.")
