@@ -5,14 +5,12 @@ class Planet
     @name = name
     @color = color
     @mass_kg = mass_kg
-    # if @mass_kg < 0
-    #   raise ArgumentError, "Mass must be > 0."
-    # end
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
   end
 
   def summary
-    return "#{name} is a(n) #{color} planet with a mass of #{mass_kg} kg and is #{distance_from_sun_km} km from the sun. Fun fact about #{name}: #{fun_fact}."
+    return "\n#{name} is a(n) #{color} planet with a mass of #{mass_kg} kg and is #{distance_from_sun_km} km from Blingy Star. Fun fact about #{name}: #{fun_fact}.
+\n"
   end
 end

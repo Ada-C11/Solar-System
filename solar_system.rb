@@ -23,9 +23,5 @@ class SolarSystem
   def find_planet_by_name(find_planet)
     repeat_name = @planets.find { |planet_name| planet_name.name == find_planet.capitalize }
     return repeat_name
-
-    # can you use find_all here?
   end
 end
-
-# casecmp
