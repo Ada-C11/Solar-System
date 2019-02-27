@@ -1,7 +1,5 @@
 class SolarSystem
-  attr_reader :star_name
-
-  attr_accessor :planet
+  attr_reader :star_name, :planet
 
   def initialize(star_name)
     @star_name = star_name
