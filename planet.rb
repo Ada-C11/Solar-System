@@ -13,7 +13,6 @@ class Planet
 
   def summary
     table = Terminal::Table.new :headings => ["Name", "Color", "Mass (kg)", "Distance From Sun (km)", "Fun Fact"] do |t|
-      #t << ["Name", "Color", "Mass (kg)", "Distance From Sun (km)", "Fun Fact"]
       t.add_row [@name, @color, @mass_kg, @distance_from_sun_km, @fun_fact]
     end
     return table
