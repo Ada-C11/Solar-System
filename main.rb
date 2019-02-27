@@ -49,9 +49,11 @@ def main
       print "What planet do you want to know about? > "
       planet = gets.chomp.capitalize
       found_planet = solar_system.find_planet_by_name(planet)
+
       if found_planet.length > 1
         puts "\nWoah!  Looks like you've got multiple matches..."
       end
+
       found_planet.each { |planet| puts planet.summary }
     elsif input.include?("add")
       name = get_planet_info("Planet name > ").capitalize
