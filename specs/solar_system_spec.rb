@@ -29,10 +29,9 @@ describe "solar_system" do
 
     it "will take the parameter as a planet" do
       pluto = "Pluto"
-      # For some reason this is not working: expect(new_sol.add_planet(pluto)).must_raise ArgumentError
-      assert_raises ArgumentError do
-        new_sol.add_planet(pluto)
-      end
+      # note to me: when using curly braces, the code inside runs before expect
+      # when using with .must_raise
+      expect { new_sol.add_planet(pluto) }.must_raise ArgumentError
     end
   end
 
