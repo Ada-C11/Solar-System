@@ -1,18 +1,3 @@
-# Wave 1
-# Create a class called Planet
-# Each instance of this class will be a single planet
-
-# Add a constructor to your Planet class
-# Should take at least 5 parameters:
-# - name
-# - color
-# - mass_kg
-# - distance_from_sun_km
-# - fun_fact
-
-# Each parameter should be saved as an instance variable with the same name (e.g. @color).
-# These i. variables should be READABLE from outside the class...but NOT WRITABLE.
-
 require "terminal-table"
 
 class Planet
@@ -27,8 +12,8 @@ class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
 
   def summary
-    table = Terminal::Table.new do |t|
-      t << ["Name", "Color", "Mass (kg)", "Distance From Sun (km)", "Fun Fact"]
+    table = Terminal::Table.new :headings => ["Name", "Color", "Mass (kg)", "Distance From Sun (km)", "Fun Fact"] do |t|
+      #t << ["Name", "Color", "Mass (kg)", "Distance From Sun (km)", "Fun Fact"]
       t.add_row [@name, @color, @mass_kg, @distance_from_sun_km, @fun_fact]
     end
     return table
