@@ -1,22 +1,23 @@
 require_relative "planet"
 require_relative "solar_system"
-# require "pry"
-# def main
-#   earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
-#   puts earth.summary
-#   sol = solarsystem.new("Sol")
-#   sol.add_planet(earth)
-#   list = sol.list_planets
-#   puts list
-#   found_planet = sol.find_planet_by_name("Earth")
-#   # found_planet is an instance of class Planet
-#   puts found_planet
-#   # => #<Planet:0x00007fe7c2868ee8>
-#   puts found_planet.summary
-#   # => Earth is a blue-green planet ...
-# end
 
-def main2
+def get_user_input(criteria)
+  puts "enter planet #{criteria}"
+  return gets.chomp
+end
+
+def user_creates_planet(solarsystem)
+  name = get_user_input("name").capitalize
+  color = get_user_input("color")
+  mass_kg = get_user_input("mass").to_f
+  distance_from_sun_km = get_user_input("distance from sun").to_f
+  fun_fact = get_user_input("fun fact")
+  new_planet = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
+  solarsystem.add_planet(new_planet)
+  return new_planet
+end
+
+def main
   sol = SolarSystem.new("Sol")
   earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
   mars = Planet.new("Mars", "red", 4.962e24, 1.656e8, "Home of Martians")
@@ -26,40 +27,23 @@ def main2
   sol.add_planet(venus)
 
   command = ""
-  until command == "exit"
-    puts "\nPlease type one of the following options: [1] list planets, [2] planet details, [3] add planet, [4] exit\n"
+  until command == "4"
+    puts "\nPlease enter the number corresponding to the options: [1] list planets, [2] planet details, [3] add planet, [4] exit\n"
     command = gets.chomp
+    while ["1", "2", "3", "4"].include?(command) == false
+      puts "Not a valid input. Please enter 1, 2, 3, or 4"
+      command = gets.chomp
+    end
     case command
-    when "list planets"
+    when "1"
       puts sol.list_planets
-    when "planet details"
-      def ask_user_for_planet(solarsystem)
-        puts "Please enter the planet you would like to know more about"
-        puts solarsystem.find_planet_by_name(gets.chomp).summary
-      end
-
-      ask_user_for_planet(sol)
-    when "add planet"
-      def user_creates_planet(solarsystem)
-        puts "enter planet name"
-        name = gets.chomp
-        puts "enter planet color"
-        color = gets.chomp
-        puts "enter planet mass"
-        mass_kg = gets.chomp
-        puts "enter planet distance from sun"
-        distance_from_sun_km = gets.chomp
-        puts "enter fun fact"
-        fun_fact = gets.chomp
-        new_planet = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
-        solarsystem.add_planet(new_planet)
-        return new_planet
-      end
-
+    when "2"
+      planet = sol.find_planet_by_name
+      puts planet.summary
+    when "3"
       user_creates_planet(sol)
-      # binding.pry
     end
   end
 end
 
-main2
+main

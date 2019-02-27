@@ -1,3 +1,4 @@
+
 class SolarSystem
   def initialize(star_name)
     @star_name = star_name
@@ -19,9 +20,18 @@ class SolarSystem
     return list
   end
 
-  def find_planet_by_name(lookup_planet)
+  def find_planet_by_name
+    puts "Enter planet name"
+    lookup_planet = gets.chomp.capitalize
     matching_planets = @planets.select do |planet|
-      lookup_planet.capitalize == planet.name
+      lookup_planet == planet.name
+    end
+    begin
+      raise ArgumentError if matching_planets == []
+    rescue ArgumentError
+      puts "This planet is not found, enter a planet from the list"
+      puts list_planets
+      return find_planet_by_name
     end
     if matching_planets.length > 1
       puts "There are mulitple results with the same name. We picked the first matching result"
