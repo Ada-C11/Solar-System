@@ -52,12 +52,12 @@ def main
       puts found_planet.summary if found_planet.is_a? Planet
 
     elsif user_input == "add planet"
-      name = input_handle('name').capitalize
+      name = input_handle('name')
       color = input_handle('color')
       mass_kg = validate_integer('mass_kg')
       distance_from_sun_km = validate_integer('distance_from_sun_km')
       fun_fact = input_handle('fun_fact')
-      name = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
+      name = Planet.new(name.capitalize, color, mass_kg, distance_from_sun_km, fun_fact)
       solar_system.add_planet(name)
     end
   end

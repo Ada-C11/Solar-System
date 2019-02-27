@@ -37,7 +37,7 @@ class SolarSystem
       end
     end
     if found == false 
-      return "#{name} is not a planet. However, you can create your own planet!"
+      return "#{name.capitalize} is not a planet. However, you can create your own planet!"
     end
   end
 end
