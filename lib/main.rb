@@ -72,31 +72,21 @@ def main
     while true
         puts questions
         input = gets.chomp.downcase
-        if input == "exit" || input.to_i == 5
-            break
-        end
-
-        if input == "list planets" || input.to_i == 1
+        case input
+        when "exit", "5"
+            puts "Goodbye"
+            return
+        when "list planets", "1"
             puts "#{sun.list_planets}"
-            next
-        end
-
-        if input == "planet details" || input.to_i == 2
+        when "planet details", "2"
             ask_planet_details(sun)
-            next
-        end
-
-        if input == "add a planet" || input.to_i == 3
+        when "add a planet", "3"
             add_new_planet(sun)
-            next
-        end
-
-        if input == "find distance between two planets" || input.to_i == 4
+        when "find distance between two planets", "4"
             find_distance_between(sun)
-            next
+        else
+            puts "You chose an invalid option. Please choose again"
         end
-
-        puts "You chose an invalid option. Please choose again"
     end
 end
 
