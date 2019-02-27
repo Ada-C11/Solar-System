@@ -28,7 +28,7 @@ def main
     puts $\
     puts "Choose from the menu:"
     choice = gets.chomp.to_i
-    while choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5
+    while choice != 1 && choice != 2 && choice != 3 && choice != 4 
       puts "Sorry milk-drinker, that's not a valid input. Try again.".colorize(:red)
       choice = gets.chomp.to_i
     end 
@@ -45,14 +45,8 @@ def main
       puts "||::Enter the name of the planet you want to learn about::||".colorize(:magenta)
       puts $\
       puts list
-      discover_input = gets.chomp 
+      discover_input = gets.chomp.capitalize
       searched_planet = solar_system.find_planet_by_name(discover_input)
-
-      if discover_input != @planets
-        puts "Sorry milk-drinker, that's not a valid input. Try again.".colorize(:red)
-        discover_input = gets.chomp
-        searched_planet = solar_system.find_planet_by_name(discover_input)
-      end
 
       if searched_planet
         puts "I had you figured for a scholar. I'll tell you all about #{searched_planet.name}!".colorize(:cyan)
