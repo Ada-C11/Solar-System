@@ -52,4 +52,13 @@ class SolarSystem
   def distance_between(planet1, planet2)
     return (planet1.distance_from_sun_km - planet2.distance_from_sun_km).abs
   end
+
+  def distance_between_by_input
+    puts "Please enter the two planets you would like to find the distance between:"
+    print "Planet 1: "
+    planet1 = self.find_planet_by_name(gets.chomp)
+    print "Planet 2: "
+    planet2 = self.find_planet_by_name(gets.chomp)
+    return self.distance_between(planet1, planet2)
+  end
 end
