@@ -1,15 +1,15 @@
 # wave 1
-require 'pry'
-require 'colorize'
-require 'terminal-table'
+require "pry"
+require "colorize"
+require "terminal-table"
 
 class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
-  
-  def initialize (name: "Planet", color: "Color", mass_kg: "Mass in Kg", distance_from_sun_km: "Distance in km", fun_fact: "This is a fun fact")
+
+  def initialize(name: "Planet", color: "Color", mass_kg: "Mass in Kg", distance_from_sun_km: "Distance in km", fun_fact: "This is a fun fact")
     @name = name
     @color = color
-    @mass_kg = mass_kg 
+    @mass_kg = mass_kg
     @distance_from_sun_km = distance_from_sun_km
     @fun_fact = fun_fact
     @summary = summary
@@ -17,7 +17,7 @@ class Planet
   end
 
   def summary
-    table = Terminal::Table.new :headings => ['Name', 'Color', 'Mass', 'Distance', 'Fun fact'] 
+    table = Terminal::Table.new :headings => ["Name", "Color", "Mass", "Distance", "Fun fact"]
     table.add_row [@name, @color, @mass_kg, @distance_from_sun_km, @fun_fact]
 
     return table
