@@ -99,7 +99,7 @@ def user_add_planet
   begin
     solar_system.add_planet(Planet.new(name, color, mass, distance, fun_fact))
     display("\nCongratulations #{solar_system.planets[-1].name} Succesfully Added!!".cyan.on_blue)
-    puts read_file("./art./planet.txt").light_magenta
+    puts read_file("./art/planet.txt").light_magenta
   rescue ArgumentError => error_message
     display("\nError: #{error_message} \nReselect option from main menu to try again.".red.underline.bold)
   end
@@ -115,7 +115,7 @@ def user_calc_distance
   return true if !planet2
   begin
     distance = solar_system.distance_between(planet1, planet2)
-    puts read_file("./art./distance.txt").blue.bold
+    puts read_file("./art/distance.txt").blue.bold
     display("\nDirections from #{planet1.name.upcase} to #{planet2.name.upcase}:".light_magenta)
     display("ONWARD -> ".cyan.on_blue)
     display("%0.3e km ".cyan.on_blue % [distance])
@@ -157,7 +157,7 @@ def read_file(file)
 end
 
 def good_bye
-  return "\n\nGoodbye! Visit the #{solar_system.name} system again soon! Safe Travels!\n".magenta.bold.italic.underline + read_file("./art./unicorn.txt").light_magenta.bold + "\n"
+  return "\n\nGoodbye! Visit the #{solar_system.name} system again soon! Safe Travels!\n".magenta.bold.italic.underline + read_file("./art/unicorn.txt").light_magenta.bold + "\n"
 end
 
 main
