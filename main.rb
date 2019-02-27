@@ -29,12 +29,12 @@ def main
 
   list = sol_system.list_planets
 
-  puts "one"
   puts sol_system.list_planets_one
   #will return a summary of the planet you put in the argument
-  sol_system.find_planet_by_name_two("maRs").summary
+  # sol_system.find_planet_by_name_two("maRs").summary
 
   puts "Would you like a list of planets, planet details, to add a planet, or to exit?"
+  puts "Enter (list), (details), (add), or (exit)."
   puts "Enter List to continue or exit to end the program"
 
   # gets user input
@@ -59,12 +59,6 @@ def main
   end
 
   puts "Goodbye!"
-
-  # def planet_details(details)
-  #   planet_summary = @planets.each do |planet|
-  #     planet
-  #   end
-  # end
 end
 
 main
