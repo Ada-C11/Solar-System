@@ -18,13 +18,9 @@ class SolarSystem
     return planet_list
   end
 
-  def find_planet_by_name(name)
-    #because the puts statement is in main, I can't have multipe answer can I
-    found = @planets.each { |sol| sol.name.casecmp(name) == 0 }
-    if found.length == 0
-      return "#{name} is not in our solar system"
-    else
-      return found[0]
-    end
-  end
+  def find_planet_by_name(planet_name) I
+    found = @planets.find { |planet|
+    planet.name.upcase == planet_name.upcase
+  }
+    return found   end
 end
