@@ -1,29 +1,6 @@
 require_relative "planet"
 require_relative "solar_system"
 
-def add_new_planet
-  puts "Okay, what's the name of the planet we're missing?"
-  name = gets.chomp
-  puts "Cool, what color is it?"
-  color = gets.chomp
-  puts "What about its mass in kilograms?"
-  mass_kg = gets.chomp
-  until mass_kg.to_f > 0
-    puts "Must be a number greater than zero."
-    mass_kg = gets.chomp
-  end
-  puts "Now I need its distance from the sun in kilometers."
-  distance_from_sun_km = gets.chomp
-  until distance_from_sun_km.to_f > 0
-    puts "Must be a number greater than zero."
-    distance_from_sun_km = gets.chomp
-  end
-  puts "And finally, what's a fun fact about this planet?"
-  fun_fact = gets.chomp
-
-  new_planet = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
-end
-
 def main
   solar_system = SolarSystem.new("Sol")
 
@@ -63,7 +40,9 @@ def main
     elsif get_input == "list planets"
       puts solar_system.list_planets
     elsif get_input == "planet details"
-      puts solar_system.find_planet_by_name
+      puts "Which planet would you like to learn about?"
+      input_name = gets.chomp
+      puts solar_system.find_planet_by_name(input_name)
     elsif get_input == "add planet"
       solar_system.add_planet(add_new_planet)
       puts "Planet added to the solar system!"
@@ -81,3 +60,28 @@ end
 
 puts "Welcome to the solar system!"
 main
+
+# Moved to solar_system.rb for now
+
+# def add_new_planet
+#   puts "Okay, what's the name of the planet we're missing?"
+#   name = gets.chomp
+#   puts "Cool, what color is it?"
+#   color = gets.chomp
+#   puts "What about its mass in kilograms?"
+#   mass_kg = gets.chomp
+#   until mass_kg.to_f > 0
+#     puts "Must be a number greater than zero."
+#     mass_kg = gets.chomp
+#   end
+#   puts "Now I need its distance from the sun in kilometers."
+#   distance_from_sun_km = gets.chomp
+#   until distance_from_sun_km.to_f > 0
+#     puts "Must be a number greater than zero."
+#     distance_from_sun_km = gets.chomp
+#   end
+#   puts "And finally, what's a fun fact about this planet?"
+#   fun_fact = gets.chomp
+
+#   return new_planet = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
+# end
