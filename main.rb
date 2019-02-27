@@ -1,30 +1,34 @@
 require_relative "planet"
 require_relative "solar_system"
+require "colorized_string"
 
 def main
   puts "Please enter the name of your solar system:"
-  solar_input = gets.chomp.to_s
-  solar_system = SolarSystem.new(solar_input)
-  mars = Planet.new("Mars", "Red", 10, 100000, "Mars is mentioned in passing in Octavia Butler's Trilogy, 'Lilith's Brood.'")
-  pluto = Planet.new("Pluto", "Brown", 50, 200000, "Pluto is disgraced.")
-  earth = Planet.new("Earth", "Blue", 25, 600000, "Earth is where fun is consensual.")
+  new_solar_system = gets.chomp
+  solar_system = SolarSystem.new(new_solar_system)
+
+  mars = Planet.new("Mars", "Burnt Orange", 459, 100000, "A future Mars colony appears in Octavia Butler's Trilogy, 'Lilith's Brood.'")
+  pluto = Planet.new("Pluto", "Dirty Brown", 67, 200000, "Pluto is disgraced.")
+  earth = Planet.new("Earth", "Cerulean", 122, 600000, "Earth is where fun is consensual!")
   solar_system.add_planet(mars)
   solar_system.add_planet(pluto)
   solar_system.add_planet(earth)
-  puts "Enter an action:\nlist planets\nplanet details\nadd planet\ndistance between planets\nexit"
-  input = gets.chomp.to_s
-  until input == "exit"
-    if input == "list planets"
-      puts solar_system.list_planets
-    elsif input == "planet details"
-      puts "What planet would you like to know more about?"
-      planet_info = gets.chomp.to_s
-      puts "#{solar_system.find_planet_by_name(planet_info).summary}"
-    elsif input == "add planet"
-      puts "Enter planet name:"
-      name = gets.chomp.to_s
+
+  puts ColorizedString["\n--list planets\n--planet details\n--add planet\n--distance between planets\n--exit\nEnter an action from the above list:"].red
+  action = gets.chomp
+
+  until action == "exit"
+    if action == "list planets"
+      puts ColorizedString["\n#{solar_system.list_planets}"].blue.blink
+    elsif action == "planet details"
+      puts "\nWhat planet would you like to know more about?"
+      planet_info = gets.chomp
+      puts ColorizedString["\n#{solar_system.find_planet_by_name(planet_info).summary}"].green
+    elsif action == "add planet"
+      puts "\nEnter planet name:"
+      name = gets.chomp.capitalize
       puts "What color is #{name}?"
-      color = gets.chomp.to_s
+      color = gets.chomp
       puts "How much does #{name} weigh in kilograms?"
       mass_kg = gets.chomp.to_f
       until mass_kg > 0
@@ -38,26 +42,22 @@ def main
         distance_from_sun_km = gets.chomp.to_f
       end
       puts "What is a fun fact about #{name}?"
-      fun_fact = gets.chomp.to_s
+      fun_fact = gets.chomp
       planet = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
       solar_system.add_planet(planet)
-    elsif input = "distance between planets"
-      puts "Enter the first planet:"
-      first_planet = gets.chomp.to_s
+    elsif action == "distance between planets"
+      puts "\nEnter the first planet:"
+      first_planet = gets.chomp
       planet_1 = solar_system.find_planet_by_name(first_planet)
       puts "Enter the second planet:"
-      second_planet = gets.chomp.to_s
+      second_planet = gets.chomp
       planet_2 = solar_system.find_planet_by_name(second_planet)
       distance_between = solar_system.distance_between(planet_1, planet_2)
-      puts "#{distance_between}"
+      puts ColorizedString["\nThe distance between #{planet_1.name} and #{planet_2.name} is #{distance_between} kilometers."].magenta
     end
-    puts "Enter an action:\nlist planets\nplanet details\nadd planet\ndistance between planets\nexit"
-    input = gets.chomp.to_s
+    puts ColorizedString["\n--list planets\n--planet details\n--add planet\n--distance between planets\n--exit\nWould you like to continue exploring #{new_solar_system}? Enter an action from the list above!"].red
+    action = gets.chomp
   end
 end
 
 main
-
-# Wave 3
-# OPTIONAL: Add error handling to the control loop. What happens if the user enters a bad command,
-#asks for details on a planet that doesn't exist, or enters an bad value for a new planet's mass?
