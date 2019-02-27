@@ -11,6 +11,7 @@ def main
   solar_system.add_planet(pluto)
   solar_system.add_planet(saturn)
 
+  #TODO: Create a method for add planet
   puts "What do you want to do next? \nEnter one: \nLIST (List planets), \nDETAILS (Get planet details), \nDISTANCE (Distance between 2 planets)  \nADD (Add planet) \nEXIT (Exit program)"
   answer = gets.chomp.downcase
 
@@ -38,26 +39,7 @@ def main
       puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
       answer = gets.chomp.downcase
     elsif answer == "add"
-      puts "What is the planet named?"
-      name = gets.chomp.downcase
-      puts "What color is the planet?"
-      color = gets.chomp.downcase
-      puts "What is the mass in kg of the planet?"
-      mass = gets.chomp.to_f
-      until mass.to_f > 0
-        puts "Enter a positive number"
-        mass = gets.chomp.to_f
-      end
-      puts "What is the distance of the planet from the sun in km?"
-      distance = gets.chomp.to_f
-      until distance.to_f > 0
-        puts "Enter a positive number"
-        distance = gets.chomp.to_f
-      end
-      puts "Enter a fun fact about the planet"
-      fun_fact = gets.chomp
-      name = Planet.new(name, color, mass, distance, fun_fact)
-      solar_system.add_planet(name)
+      solar_system.user_add_planet
       puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
       answer = gets.chomp.downcase
     end
