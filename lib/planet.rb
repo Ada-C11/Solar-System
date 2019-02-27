@@ -11,6 +11,6 @@ class Planet
 
   # gets the details of the planet
   def summary
-    return "#{name} is a #{color} planet. Its mass is #{mass_kg}kg, and it is #{distance_from_sun_km}km from the Sun. Fun fact: #{fun_fact}."
+    return "#{name} is a/an #{color} planet. Its mass is #{mass_kg}kg, and it is #{distance_from_sun_km}km from the Sun. Fun fact: #{fun_fact}."
   end
 end
