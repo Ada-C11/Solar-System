@@ -20,24 +20,22 @@ class SolarSystem
     print "Cool, what color is it?\n"
     new_color = gets.chomp
     print "What about its mass in kilograms?\n"
-    new_mass_kg = gets.chomp
-    until new_mass_kg.to_f > 0
+    new_mass_kg = gets.chomp.to_f
+    until new_mass_kg > 0
       print "Must be a number greater than zero.\n"
-      new_mass_kg = gets.chomp
+      new_mass_kg = gets.chomp.to_f
     end
     print "Now I need its distance from the sun in kilometers.\n"
-    new_distance = gets.chomp
-    until new_distance.to_f > 0
+    new_distance = gets.chomp.to_f
+    until new_distance > 0
       print "Must be a number greater than zero.\n"
-      new_distance = gets.chomp
+      new_distance = gets.chomp.to_f
     end
     print "And finally, what's a fun fact about this planet?\n"
     new_fun_fact = gets.chomp
 
     new_planet = Planet.new(new_name, new_color, new_mass_kg, new_distance, new_fun_fact)
     add_planet(new_planet)
-
-    print @planets
   end
 
   def list_planets
@@ -56,7 +54,6 @@ class SolarSystem
     return "Invalid planet."
   end
 
-  # Why won't this method work on planets added via add_new_planet?
   def find_planet_distance_by_name(planet)
     @planets.each do |each_planet|
       if each_planet.name.casecmp(planet) == 0
