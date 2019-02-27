@@ -45,9 +45,9 @@ class SolarSystem
   end
 
   def new_planet
-    puts "Alright, tell me a bit about your planet."
+    puts "\nAlright, tell me a bit about your planet."
 
-    print "\nEnter a name for your planet: "
+    print "Enter a name for your planet: "
     planet_name = gets.chomp
     until planet_name != ""
       print "Enter a name for your planet: "
