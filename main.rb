@@ -1,8 +1,8 @@
 require_relative 'planet'
 require_relative 'solar_systems'
 
-
 def main
+
   solar_system = SolarSystem.new('Sol')
 
   planet1 = Planet.new('Ogle', 'fiery red', 1_273_648, 938_756, 'All the ice is thought to be fresh water.')
@@ -30,27 +30,31 @@ def main
       puts solar_system.list_planets
       puts "\n"
     elsif user_choice == 'B'
-      puts 'Which planets do you want details of?'
+      puts 'Your selected Planet details'
+      puts 'Which planet do you want details of?'
       user_planet_details = gets.chomp
       planet = solar_system.find_planet_by_name(user_planet_details)
       puts planet.summary
       puts "\n"
     elsif user_choice == 'C'
+      puts 'You selected add planet'
       new_planet = create_planet
       solar_system.add_planet(new_planet)
       puts "\n"
     elsif user_choice == 'D'
+      puts 'You selected calculate distance'
       distance = user_distance_calc(solar_system)
       puts "Distance between your 2 planets is #{distance}km"
       puts "\n"
     else
-      puts 'Invalid entry. Exiting program'
+      puts 'Thanks! Exiting program.'
       puts "\n"
       break
     end
   end
 end
 
+# Takes 2 planets and calls the distance between method to calc distance between them
 def user_distance_calc(solar_system)
   puts 'Add first planet'
   user_first = gets.chomp
@@ -59,6 +63,8 @@ def user_distance_calc(solar_system)
   return solar_system.distance_between(user_first, user_second)
 end
 
+# Collects information about a new planet to be created and creates a 
+# new instance of a planet with those attributes
 def create_planet
   puts 'Lets collect some details about this planet:'
   puts 'Add Name'
@@ -67,7 +73,6 @@ def create_planet
   color = gets.chomp
   puts 'Add Mass(kg)'
   mass = gets.chomp.to_i
-  # mass of 0 doesnt exist
   puts 'Add distance from sun(km)'
   distance = gets.chomp.to_i
   puts 'Add a fun fact'

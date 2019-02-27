@@ -12,6 +12,7 @@ class SolarSystem
     @planets.push(planet)
   end
 
+  # method loops through all the instances of planets and stores just the name in a seperate list
   def list_planets
     counter = 1
     list_planets = []
@@ -23,13 +24,15 @@ class SolarSystem
     return list_planets.join("\n")
   end
 
-  # looks through the planets array and finds the instance of calling planet.name that is the same as the planet you entered. Method returns nil if not found
-  # techinically if there are multiple planets with the same name then we can look up another unique value like planet.color and compare that instead
+  # takes the name of a planet as an arguments, uses #find to find the associated 
+  # planet name in the instance array of all planets and returns that planet object with all properties
   def find_planet_by_name(planet_name)
-    planet = @planets.find {|planet| planet.name.upcase == planet_name.upcase}
+    planet = @planets.find {|planet| planet.name.capitalize == planet_name.capitalize}
     return planet
   end
 
+  # takes 2 arguments and calls the find planet method to access the distance 
+  # from sun for each planet and subtracts them to get the distance between them
   def distance_between(first, second)
     first_planet = find_planet_by_name(first)
     second_planet = find_planet_by_name(second)
