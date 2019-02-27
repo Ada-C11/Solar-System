@@ -21,10 +21,11 @@ def main
       puts list
       puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
       answer = gets.chomp.downcase
-    elsif answer == "planet details"
+    elsif answer == "details"
       puts "Which planet?"
       planet_answer = gets.chomp.downcase
-      puts solar_system.find_planet_by_name(planet_answer)
+      correct_planet_name = solar_system.find_planet_by_name(planet_answer)
+      puts correct_planet_name.summary
       puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
       answer = gets.chomp.downcase
     elsif answer == "distance"
@@ -37,7 +38,7 @@ def main
       puts "The distance between #{planet_answer1.capitalize} and #{planet_answer2.capitalize} is #{solar_system.distance_between(planet1, planet2)} kms."
       puts "What do you want to do next? (Enter LIST, DETAILS, DISTANCE, ADD, or EXIT)"
       answer = gets.chomp.downcase
-    elsif answer == "add planet"
+    elsif answer == "add"
       puts "What is the planet named?"
       name = gets.chomp.downcase
       puts "What color is the planet?"
