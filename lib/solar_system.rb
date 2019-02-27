@@ -8,14 +8,15 @@ class SolarSystem
 
   def add_planet(planet)
     raise ArgumentError.new("#{planet.capitalize} is not a Planet") if !is_a_Planet?(planet)
+
     @planets << planet
     return true
   end
 
   def list_planets
-    string_planets = "\nPlanets orbiting #{self.name}"
+    string_planets = "\nPlanets orbiting #{self.name}\n"
     @planets.each_with_index do |planet, i|
-      string_planets += "\n#{i + 1}. #{planet.name}"
+      string_planets += "#{i + 1}. #{planet.name}\n"
     end
     return string_planets
   end

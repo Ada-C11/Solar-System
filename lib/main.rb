@@ -1,3 +1,5 @@
+require "lolcat"
+require "colorize"
 require_relative "planet.rb"
 require_relative "solar_system.rb"
 
@@ -11,16 +13,26 @@ def main
   display(good_bye)
 end
 
-def display(string)
-  puts string
+def display(string, char = true, lag = 0.03)
+  if char
+    count = 0
+    string.each_char do |ch|
+      print ch
+      sleep lag if count < 36
+      count += 1
+    end
+  else
+    puts string
+  end
   return true
 end
 
 def load_solar_system_program
   @solar_system = SolarSystem.new("Err")
+
   create_system(solar_system)
-  return "Welcome to the Solar System Program." \
-           + "\n\nYou are in the Solar System of #{solar_system.name}.\n"
+  return "Welcome to the".cyan + " Solar System Program.".light_magenta.bold \
+           + read_file("./solar.txt").yellow + "\n\nYou are in the Solar System of #{solar_system.name}.\n".cyan
 end
 
 def solar_system
@@ -39,31 +51,36 @@ def create_system(solar_system)
 end
 
 def options
-  return ("\nEnter LIST to display all the planets in system." \
-           + "\nEnter ADD to add planets" \
-           + "\nEnter CALC to calculate the distance between two planets" \
-           + "\nEnter INFO to display information about a planet" \
-           + "\nEnter Q to quit program")
+  string_of_options = "\nEnter ".green + "LIST".cyan.on_blue.italic + " to display all the planets in system.".green \
+    + "\nEnter ".green + "ADD ".cyan.on_blue.italic + " to add planets".green \
+    + "\nEnter ".green + "CALC".cyan.on_blue.italic + " to calculate the distance between two planets".green \
+    + "\nEnter ".green + "INFO".cyan.on_blue.italic + " to display information about a planet".green \
+    + "\nEnter ".green + "Q   ".cyan.on_blue.italic + " to quit program\n".green
 end
 
 def get_option
-  print "\nPlease Enter Selection: "
+  print "\nPlease Enter Selection: ".cyan
   user_input = gets.chomp.upcase
   return user_input if ["LIST", "ADD", "CALC", "INFO", "Q"].include?(user_input)
-  puts "Hmm... I don't understand \"#{user_input}\"."
+  "Hmm... ".each_char do |ch|
+    print ch
+    sleep 0.09
+  end
+  puts "I don't understand \"#{user_input}\".".red.bold.underline
+  sleep 1
   get_option
 end
 
 def do_option(option_key)
   case option_key
   when "LIST"
-    display(solar_system.list_planets)
+    display(solar_system.list_planets.yellow)
   when "ADD"
     user_add_planet
   when "CALC"
     user_calc_distance
   when "INFO"
-    display(user_info_planet)
+    display(user_info_planet.cyan)
   when "Q"
     return false
   end
@@ -84,8 +101,8 @@ def user_add_planet
   fun_fact = gets.chomp
   begin
     solar_system.add_planet(Planet.new(name, color, mass, distance, fun_fact))
-  rescue ArgumentError => e
-    puts "Error: #{e} \nReselect option from main menu to try again."
+  rescue ArgumentError => error_message
+    puts "Error: #{error_message} \nReselect option from main menu to try again."
   end
   return true
 end
@@ -122,6 +139,14 @@ def get_planet
     end
   end
   return planet
+end
+
+def read_file(file)
+  read = ""
+  File.open(file, "r") do |f|
+    read += f.read
+  end
+  return read
 end
 
 main
