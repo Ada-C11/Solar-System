@@ -17,7 +17,7 @@ class Planet
   end
 
   def summary
-    table = Terminal::Table.new :headings => ['name', 'color', 'mass', 'distance', 'fun fact'] 
+    table = Terminal::Table.new :headings => ['Name', 'Color', 'Mass', 'Distance', 'Fun fact'] 
     table.add_row [@name, @color, @mass_kg, @distance_from_sun_km, @fun_fact]
 
     return table

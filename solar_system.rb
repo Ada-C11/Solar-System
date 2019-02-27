@@ -24,35 +24,29 @@ class SolarSystem
 
   def user_adds_planet
     puts "Please enter the details of your new planet: "
-        print "Name: " 
-        new_name = gets.chomp
-        print "Color: "
-        new_color = gets.chomp
-        print "Mass in kg: "
-        mass = gets.chomp
-        print "Distance from #{star_name}: "
-        distance = gets.chomp
-        print "Cool facts about your planet: "
-        fun_deets = gets.chomp
-        new_planet = Planet.new(name: new_name, color: new_color, mass_kg: mass, distance_from_sun_km: distance, fun_fact: fun_deets )
-        add_planet(new_planet)
-        puts "#{new_planet.name} has been added to Sol system"
+      print "Name: " 
+      new_name = gets.chomp.downcase
+      print "Color: "
+      new_color = gets.chomp
+      print "Mass in kg: "
+      mass = gets.chomp
+      print "Distance from #{star_name}: "
+      distance = gets.chomp
+      print "Cool facts about your planet: "
+      fun_deets = gets.chomp
+      new_planet = Planet.new(name: new_name, color: new_color, mass_kg: mass, distance_from_sun_km: distance, fun_fact: fun_deets )
+      add_planet(new_planet)
+      puts "#{new_planet.name} has been added to Sol system"
+      return new_planet
   end
   
   def find_planet_by_name name_query
     not_found = false
-    query = []
-    planets.each do |element|
-      if element.name.downcase == name_query.downcase
-        not_found = true
-        query << element
-      end
-    end
-
-    if !not_found
-      raise ArgumentError, "This planet ain't here!"
-    end
-
-    return query #an array of elements...
+  
+    query = @planets.find { |element| element.name.downcase == name_query.downcase }
+      # if !not_found
+      #   raise ArgumentError, "This planet ain't here!"
+      # end
+      return query #an array of elements...
   end
 end
