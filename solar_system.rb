@@ -42,12 +42,10 @@ class SolarSystem
   end
 
   def find_planet_by_name(planet_string)
-    @planets.each do |planet|
-      if planet.name.include?(planet_string.capitalize)
-        return planet
-      end
+    find_planet = @planets.find(ifnone = nil) do |planet|
+      planet.name.capitalize == planet_string.capitalize
     end
 
-    return nil
+    return find_planet
   end
 end

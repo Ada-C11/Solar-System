@@ -30,8 +30,7 @@ def main
   puts "Welcome to the PlanetDex!"
 
   # user input time
-  exit = "n"
-
+  # fencepost loop
   puts options
   option = gets.chomp
 
@@ -45,7 +44,8 @@ def main
     elsif option.include?("add") || option == "3"
       puts solar_system.new_planet
     elsif option.include?("exit") || option == "4"
-      break
+      puts "Thank you for using the PlanetDex!"
+      exit
     else
       puts "That is not a valid option."
       puts "Please re-enter your option:"
