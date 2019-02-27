@@ -14,4 +14,14 @@ describe "Planet test" do
     # assert
     expect { Planet.new("h", "h", mass, distance, "h") }.must_raise ArgumentError
   end
+
+  it "throw error if distance is negative" do
+    # arrange
+    mass = 0
+    distance = -10.0
+    # act
+
+    # assert
+    expect { Planet.new("", "", mass, distance, "") }.must_raise ArgumentError
+  end
 end
