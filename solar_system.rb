@@ -21,7 +21,7 @@ class SolarSystem
     table = Terminal::Table.new do |t|
       t.title = "Planets orbiting #{@star_name}".colorize(:color => :red) 
       t.rows = rows
-      t.style = {:width => 30, :padding_left => 3, :border_x => "=", :border_i => "x"}  
+      t.style = {:width => 40, :padding_left => 3, :border_x => "=", :border_i => "x"}  
     end
     return table
   end
@@ -37,7 +37,7 @@ class SolarSystem
       end
     end
     if found == false 
-      return "#{name} is not a planet!"
+      return "#{name} is not a planet. However, you can create your own planet!"
     end
   end
 end
