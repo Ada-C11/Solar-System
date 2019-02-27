@@ -1,3 +1,5 @@
+require_relative "planet"
+
 class SolarSystem
   attr_reader :star_name, :planets
 
@@ -27,4 +29,15 @@ class SolarSystem
     end
     return nil
   end
+
+  def distance_between(planet_1, planet_2)
+    distance = (planet_1.distance_from_sun_km - planet_2.distance_from_sun_km).abs
+    return distance
+  end
 end
+
+# mars = Planet.new("Mars", "Red", "3", "100 million", "Mars is mentioned in passing in Octavia Butler's Trilogy, 'Lilith's Brood.'")
+# pluto = Planet.new("Pluto", "Brown", "100", "300 million", "Pluto is disgraced.")
+# earth = Planet.new("Earth", "Blue", "52", "600 million", "Earth is where fun is consensual.")
+
+# puts "#{distance_between(mars, pluto)}"
