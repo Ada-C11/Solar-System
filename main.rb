@@ -30,6 +30,7 @@ def main
 
   loop do
     "Please enter your selection from the above options."
+    input = gets.chomp.to_s
     case
     when input == "1"
       puts solar_system.list_planets
