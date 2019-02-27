@@ -9,7 +9,7 @@ class SolarSystem
   end
 
   def add_planet(planet)
-    @planets.push(planet)
+    @planets << planet
   end
 
   def list_planets
@@ -23,23 +23,14 @@ class SolarSystem
   end
 
   def find_planet_by_name(name)
-    name.capitalize!
-    @planets.each do |i|
-      if (@planets.count { |i| (i.name == name) } > 1)
-        found_planets = []
-        planets.each do |i|
-          if (i.name == name)
-            found_planets << i
-          end
-        end
-        found_planets.each do |i|
-          puts "There's #{found_planets.length} planets with that name. Here's more info about one of them: #{i.summary}"
-        end
-        return found_planets
-      elsif i.name == name
-        return i
+    name.capitalize! # Makes it case insensitive.
+    if @planets.count { |i| (i.name == name) } > 0
+      found_planets = @planets.select { |i| (i.name == name) }
+      found_planets.each do |i|
+        puts "There's #{found_planets.length} planet(s) with that name. Here's more info: #{i.summary}"
       end
+    else
+      puts "Sorry, no planet with that name found."
     end
-    return "Sorry, no planet with that name found."
   end
 end
