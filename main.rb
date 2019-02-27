@@ -27,13 +27,17 @@ end
 
 def main
   solar_system = SolarSystem.new("Sol")
+
   earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
-  mars = Planet.new("Mars", "red", 6.41693e23, 2.279e8, "Robots live here!")
-  mercury = Planet.new("Mercury", "red", 3.3011e23, 5.79e7, "Smallest planet in the solar system")
-  venus = Planet.new("Venus", "orange", 4.8675e24, 1.082e8, "Displays phases like those of the moon")
   solar_system.add_planet(earth)
+
+  mars = Planet.new("Mars", "red", 6.41693e23, 2.279e8, "Robots live here!")
   solar_system.add_planet(mars)
+
+  mercury = Planet.new("Mercury", "red", 3.3011e23, 5.79e7, "Smallest planet in the solar system")
   solar_system.add_planet(mercury)
+
+  venus = Planet.new("Venus", "orange", 4.8675e24, 1.082e8, "Displays phases like those of the moon")
   solar_system.add_planet(venus)
 
   input = options_menu.downcase
