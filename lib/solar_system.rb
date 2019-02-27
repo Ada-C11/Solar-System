@@ -11,7 +11,7 @@ class SolarSystem
   end
 
   def list_planets
-    list = "Planets orbiting #{star_name}"
+    list = "\nPlanets orbiting #{star_name}"
 
     @planets.each_index do |i|
       list += "\n#{i + 1}. #{@planets[i].name}"
@@ -27,24 +27,54 @@ class SolarSystem
   end
 
   def planet_details
-    print "What planet would you like to know about?: "
+    print "\nWhat planet would you like to know about?: "
     planet_choice = gets.chomp
+    until planet_choice != ""
+      print "What planet would you like to know about?: "
+      planet_choice = gets.chomp
+    end
+
     found_planet = find_planet_by_name(planet_choice)
     puts found_planet.summary
   end
 
   def new_planet
     puts "Alright, tell me a bit about your planet."
+
     print "\nEnter a name for your planet: "
     planet_name = gets.chomp
+    until planet_name != ""
+      print "Enter a name for your planet: "
+      planet_name = gets.chomp
+    end
+
     print "Enter a color for your planet: "
     planet_color = gets.chomp
+    until planet_color != ""
+      print "Enter a color for your planet: "
+      planet_color = gets.chomp
+    end
+
     print "Enter the mass of your planet in kg: "
     planet_mass = gets.chomp.to_i
+    until planet_mass != "" || planet_mass > 0
+      print "Enter the mass of your planet in kg: "
+      planet_mass = gets.chomp.to_i
+    end
+
     print "Enter the distance of your planet from the sun in km: "
     planet_distance = gets.chomp.to_i
+    until planet_distance != "" || planet_distance > 0
+      print "Enter the distance of your planet from the sun in km: "
+      planet_distance = gets.chomp.to_i
+    end
+
     print "Enter a fun fact about your planet: "
     planet_fact = gets.chomp
+    until planet_face != ""
+      print "Enter a fun fact about your planet: "
+      planet_face = gets.chomp
+    end
 
     user_planet = Planet.new(planet_name, planet_color, planet_mass, planet_distance, planet_fact)
     add_planet(user_planet)
