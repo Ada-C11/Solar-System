@@ -1,5 +1,6 @@
 class SolarSystem
-  attr_reader :star_name, :planets
+  attr_reader :star_name
+  attr_accessor :planets
 
   def initialize(star_name)
     @star_name = star_name
@@ -25,5 +26,25 @@ class SolarSystem
         return this_planet
       end
     end
+  end
+
+  def add_planet_from_user_input
+    puts "Please enter some details about this planet."
+    print "Name: "
+    @name = gets.chomp.capitalize
+    print "Color: "
+    @color = gets.chomp
+    print "Mass in kilograms: "
+    @mass_kg = gets.to_i
+    print "Distance from its sun: "
+    @distance_from_sun_km = gets.to_i
+    puts "Please enter one fun fact about this planet."
+    @fun_fact = gets.chomp
+
+    return user_added_planet = Planet.new(@name, @color, @mass_kg, @distance_from_sun_km, @fun_fact)
+    # add_planet(user_added_planet)
+    # @planets << planet
+    # return user_added_planet
+    # puts "You added this planet: #{user_added_planet.name}"
   end
 end

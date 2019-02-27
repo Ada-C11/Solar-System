@@ -20,12 +20,12 @@ def main
   solar_system_1.add_planet(playground)
 
   list = solar_system_1.list_planets
-  user_choice = "LIST PLANETS"
+  user_choice = ""
   until user_choice == "EXIT"
     puts "Hello! What would you like to do? You can LIST PLANETS, ADD A PLANET or EXIT."
     user_choice = gets.chomp.upcase
     if user_choice.upcase == "EXIT"
-      break #<-- TRY CHANGING THIS TO EXIT
+      exit
     end
     if user_choice.upcase == "LIST PLANETS"
       puts list
@@ -35,8 +35,10 @@ def main
       puts user_choice_planet.summary
       puts "-------"
     elsif user_choice.upcase == "ADD A PLANET"
-      user_added_planet = gets.chomp
-      puts "You added this planet: #{user_added_planet}"
+      new_planet = solar_system_1.add_planet_from_user_input
+      solar_system_1.planets << new_planet
+    else
+      puts "Oops, that's an invalid input! Please try again."
     end
   end
 
