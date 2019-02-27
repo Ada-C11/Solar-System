@@ -8,33 +8,40 @@ class SolarSystem
     @planets = []
   end
 
-  def add_planet(planet) # Elle's idea
-    @planets << planet # Elle's idea
-    # Create a method SolarSystem#add_planet, which will take an instance
-    # of Planet as a parameter and add it to the list of planets.
-
-    # var = Planet.summary
-    # puts var
-    # @planets << var
+  def add_planet(planet)
+    @planets << planet
   end
 
   def list_planets
-    # which will return (not puts) a string containing a list of all the
-    # planets in the system. The string should be formatted in this style:
-    # ________ somehow print the index and the name of the planet _______
-
-    string = "Planets orbitting #{star_name}\n"
+    string = "\nPlanets orbitting #{star_name}\n"
     @planets.each_with_index do |planet, index|
       string += "#{index + 1}.  #{planet.name}\n"
     end
     return string
   end
 
-  def find_planet_by_name(planet_name)
-    # var = ""
+  def find_planet_by_name(planet_name, match)
     @planets.each do |planet|
-      return planet if planet.name == planet_name
+      # return planet.name == planet_name ? planet : false
+      # return planet if planet.name == planet_name
+      if planet.name == planet_name
+        match = true
+        return planet
+
+        # else
+        #   return
+      end
     end
-    # return planet_name if @planets.include?(planet_name)
+    if match == false
+      return false
+    end
+  end
+
+  def distance_between(planet_q)
+    @planets.each do |planet|
+      if planet.name == planet_q
+        return planet.distance_from_sun_km
+      end
+    end
   end
 end

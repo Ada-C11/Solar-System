@@ -11,20 +11,16 @@ class Planet
   end
 
   def summary
-    return "In a galaxy far away (not start wars) 
+    return "\nIn a galaxy far away (not start wars) 
     there is a planet called #{name}. It appears 
     to be #{color} and its mass is #{mass_kg}. 
     The distance between #{name} and the 
     sun is #{distance_from_sun_km} kms. 
     Something that you might not know is that #{fun_fact}."
   end
-
-  #   Question: Why do we puts in main but not in Planet#summary?
-  #       Because in Planet#summary we are modeling the behavior and state
-  #       for the new instances of the class. In main we actually
-  #       use the state and behavior
 end
 
-#earth = Planet.new("Mars", "Red", 5.972e24, 1.496e8, "Only planet to support life")
-
-#puts earth.name
+#   Question: Why do we puts in main but not in Planet#summary?
+#       Because in Planet#summary we are modeling the behavior and state
+#       for the new instances of the class. In main we actually
+#       use the state and behavior
