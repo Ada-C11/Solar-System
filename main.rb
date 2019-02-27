@@ -1,9 +1,6 @@
 require_relative "planet"
 require_relative "solar_system"
-
-# Restructure `main` to do the following:
-#   1. Create a `SolarSystem` and add some `Planet`s
-#   1. Enter a control loop that repeatedly asks the user what to do next. The two options at this point are `list planets` and `exit`.
+require "pry"
 
 def main
   solar_system = SolarSystem.new("Phunghoule")
@@ -32,15 +29,15 @@ def main
     when "list"
       puts "#{solar_system.list_planets}"
     when "learn"
-      case learn_choice
-      when "bebop"
-        puts "#{solar_system.planets[0].summary}"
-      when "ninou"
-        puts "#{solar_system.planets[1].summary}"
-      when "andrew"
-        puts "#{solar_system.planets[2].summary}"
-      else puts "Error: not a valid selection. Try again: "
-learn_choice = gets.chomp.downcase
+      puts "#{solar_system.list_planets}"
+      puts "Type the name of the planet you want to learn about: "
+      learn_choice = gets.chomp.capitalize!
+
+      solar_system.planets.each_with_index do |planet, index|
+        puts "#{planet.name}"
+        if planet.name == learn_choice
+          puts "#{planet.summary}"
+        end
       end
     when "add"
       solar_system.add_planet_details
