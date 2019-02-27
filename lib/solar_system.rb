@@ -9,6 +9,7 @@ class SolarSystem
   end
 
   def add_planet(planet)
+    raise ArgumentError, "Planet has to be an instance of Planet class" if !planet.is_a?(Planet)
     raise ArgumentError, "Planet has already been added." if @planets.any? { |i| i.name.downcase == planet.name.downcase }
     @planets.push(planet)
   end

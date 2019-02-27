@@ -22,9 +22,17 @@ describe "solar_system" do
 
   describe "add_planet method" do
     new_sol = SolarSystem.new("New Sol")
-    it "will add a planet and return an array of planets" do
+    it "will take a planet and return an array of planets" do
       pluto = Planet.new("Pluto", "pink", 56, 87, "pet-friendly")
       expect(new_sol.add_planet(pluto)).must_be_instance_of Array
+    end
+
+    it "will take the parameter as a planet" do
+      pluto = "Pluto"
+      # For some reason this is not working: expect(new_sol.add_planet(pluto)).must_raise ArgumentError
+      assert_raises ArgumentError do
+        new_sol.add_planet(pluto)
+      end
     end
   end
 
@@ -46,15 +54,14 @@ describe "solar_system" do
     end
   end
 
-  # describe "distance_between method" do
-  #   it "will return the distance between two planets" do
-  #     new_sol = SolarSystem.new("New_Sol")
-  #     pluto = Planet.new("Pluto", "pink", 56, 87, "pet-friendly")
-  #     puffer = Planet.new("Puffer", "yellow", 78, 89, "not a planet")
-  #     new_sol.add_planet(pluto)
-  #     new_sol.add_planet(puffer)
-  #     puts new_sol.distance_between(pluto, puffer)
-  #     expect(new_sol.distance_between(pluto, puffer)).must_equal 2
-  #   end
-  # end
+  describe "distance_between method" do
+    it "will return the distance between two planets" do
+      new_sol = SolarSystem.new("New_Sol")
+      pluto = Planet.new("Pluto", "pink", 56, 87, "pet-friendly")
+      puffer = Planet.new("Puffer", "yellow", 78, 89, "not a planet")
+      new_sol.add_planet(pluto)
+      new_sol.add_planet(puffer)
+      expect(new_sol.distance_between(pluto.name, puffer.name)).must_equal 2
+    end
+  end
 end
