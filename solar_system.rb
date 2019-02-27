@@ -1,7 +1,7 @@
 require_relative 'planet'
 
 class SolarSystem
-  attr_reader = :star_name, :planets
+  attr_reader :star_name, :planets
 
   def initialize(star_name)
     @star_name = star_name
