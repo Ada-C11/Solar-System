@@ -27,24 +27,27 @@ def main
       puts "What is the name of the planet you wish to learn about?"
       name = gets.chomp
       found_planet = solar_system.find_planet_by_name(name)
+      puts found_planet if !found_planet.is_a? Planet
       puts found_planet.summary if found_planet.is_a? Planet
-   
-    elsif user_input == "add planet"
-      puts "What is the name of the planet?"
-      name = gets.chomp.downcase
-      puts "What color is the planet?"
-      color = gets.chomp.downcase
-      puts "What is the mass of the planet in kg?"
-      mass_kg = gets.chomp.to_i
-      puts "What is the distance from the sun in km?"
-      distance_from_sun_km = gets.chomp.to_i
-      puts "Give us a fun fact about the planet!"
-      fun_fact = gets.chomp
 
-      name = Planet.new(name.capitalize, color, mass_kg, distance_from_sun_km, fun_fact)
+    elsif user_input == "add planet"
+      name = input_handle('name').capitalize
+      color = input_handle('color')
+      mass_kg = input_handle('mass_kg').to_i
+      distance_from_sun_km = input_handle('distance_from_sun_km').to_i
+      fun_fact = input_handle('fun_fact')
+      name = Planet.new(name, color, mass_kg, distance_from_sun_km, fun_fact)
       solar_system.add_planet(name)
     end
   end
-
+end
+def input_handle(variable)
+  puts "What is the #{variable} of the planet"
+  variable = gets.chomp.downcase
+  while variable ==''
+    puts "Please type in a valid input"
+    variable = gets.chomp.downcase
+  end
+  return variable
 end
 main
