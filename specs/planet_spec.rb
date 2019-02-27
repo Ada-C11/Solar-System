@@ -4,7 +4,6 @@ require "minitest/skip_dsl"
 
 require_relative "../lib/planet.rb"
 require_relative "../lib/solar_system.rb"
-require_relative "../lib/main.rb"
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
