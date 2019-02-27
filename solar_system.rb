@@ -8,8 +8,8 @@ class SolarSystem
     @planets = []
   end
 
-  def add_planet(planet) # takes an instance of planet
-    planets << planet # add it to list of planets
+  def add_planet(planet) # Takes an instance of planet
+    planets << planet # Adds it to planets array
   end
 
   def list_planets

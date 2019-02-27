@@ -1,4 +1,3 @@
-# main.rb
 require_relative "planet.rb"
 require_relative "solar_system.rb"
 
