@@ -37,6 +37,7 @@ def main
     elsif user_choice.upcase == "ADD A PLANET"
       new_planet = solar_system_1.add_planet_from_user_input
       solar_system_1.planets << new_planet
+      list = solar_system_1.list_planets
     else
       puts "Oops, that's an invalid input! Please try again."
     end
