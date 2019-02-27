@@ -9,36 +9,31 @@ class SolarSystem
     end
 
     def add_planet(planet)
-        if @planets.include?(planet)
-            raise ArgumentError.new("Planet already exists")
+        @planets.each do |p|
+            if p.name.casecmp(planet.name) == 0
+                raise ArgumentError.new("Planet already exists")
+            end
         end
 
         @planets << planet
     end
 
     def list_planets
-        result = "Planets orbitting #{star_name}:"
-        list = ""
+        list = "Planets orbitting #{star_name}:\n"
         @planets.each_index { |i|
-            list += "\n#{i + 1}. #{@planets[i].name}"
+            list += "#{i + 1}. #{@planets[i].name}\n"
         }
-        return result + list
+        return list
     end
 
-    def find_planet_by_name(search_name)
-        is_included = @planets.any? { |planet|
-            planet.name == search_name
-        }
-
-        if !is_included
-            raise ArgumentError.new("There is no such planet")
-        end
-
-        @planets.each do |element|
-            if element.name == search_name.capitalize
-                return element
+    def find_planet_by_name(name)
+        @planets.each do |planet|
+            if planet.name.casecmp(name) == 0
+                return planet
             end
         end
+
+        raise ArgumentError.new("There is no such planet #{name}")
     end
 
     def distance_between(planet1, planet2)
