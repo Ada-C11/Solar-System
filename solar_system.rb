@@ -50,7 +50,7 @@ class SolarSystem
         return planet
       end
     end
-    return raise ArgumentError, "Planet not in solar system"
+    return raise ArgumentError, "Planet does not exist in the Country Music Hall of Planets"
   end
 
   def get_planet_name
@@ -72,6 +72,6 @@ class SolarSystem
     planet1 = get_planet_name
     planet2 = get_planet_name
     distance = planet1.distance_from_sun_km - planet2.distance_from_sun_km
-    puts "\nDistance between #{planet1.name} & #{planet2.name}: #{distance.abs} km."
+    puts "\nDistance between #{planet1.name} and #{planet2.name}: #{distance.abs} km."
   end
 end
