@@ -24,8 +24,9 @@ def main
   puts "Country Music Planetary Menu\n"
   puts "1. List Planets\n"
   puts "2. Planet Information\n"
-  puts "3. Distance Calculator\n"
-  puts "4. Exit\n"
+  puts "3. Add a New Planet\n"
+  puts "4. Distance Calculator\n"
+  puts "5. Exit\n"
 
   loop do
     "Please enter your selection from the above options."
@@ -39,9 +40,12 @@ def main
       solar_system.add_a_planet
       puts "\n...Entered into system. Thank You."
     when input == "4"
+      solar_system.find_distance_between
+      puts "\n...Entered into system. Thank You."
+    when input == "5"
       exit
     when input =~ /[[:alpha:]]/
-      puts "\nError. Invalid input."
+      puts "\nYour response was invalid"
     end
   end
 end

@@ -2,10 +2,10 @@ require_relative "planet"
 require_relative "main"
 
 class SolarSystem
-  attr_reader :star_name, :planets
+  attr_reader :solar_system_name, :planets
 
-  def initialize(star_name)
-    @star_name = star_name
+  def initialize(solar_system_name)
+    @solar_system_name = solar_system_name
     @planets = []
   end
 
@@ -14,11 +14,11 @@ class SolarSystem
   end
 
   def get_info_new_planet
-    print "\nEnter new planet name: "
+    print "\nWhat is your new Planet's name?"
     planet_name = gets.chomp.to_s
-    print "\nDescription of #{planet_name}'s color: "
+    print "\nWhat is #{planet_name}'s color?"
     color = gets.chomp.to_s
-    print "\nDistance of planet from #{@star_name}(km): "
+    print "\nWhat is the distance of planet from #{solar_system_name}(km): "
     distance = gets.chomp.to_f
     print "\nMass of #{planet_name}(kg): "
     mass = gets.chomp.to_f
@@ -65,7 +65,7 @@ class SolarSystem
         return planet.distance
       end
     end
-    return raise ArgumentError, "Planet not in solar system"
+    return raise ArgumentError, "Planet does not exist in the Country Music Hall of Planets"
   end
 
   def find_distance_between
