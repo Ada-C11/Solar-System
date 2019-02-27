@@ -22,7 +22,11 @@ def ask_planet_details(solar_system)
     puts "Which planet do you want to learn about?"
     puts "#{solar_system.list_planets}"
     input_planet = gets.chomp
-    puts "#{solar_system.find_planet_by_name(input_planet).summary}"
+    begin
+        puts "#{solar_system.find_planet_by_name(input_planet).summary}"
+    rescue ArgumentError => e
+        puts e
+    end
 end
 
 def add_new_planet(solar_system)
@@ -41,9 +45,13 @@ def add_new_planet(solar_system)
     puts "Please add some fun facts about your new planet"
     planet_fact = gets.chomp
 
-    new_planet = Planet.new(planet_name, planet_color, planet_mass, planet_distance, planet_fact)
-    solar_system.add_planet(new_planet)
-    puts "Congratulations! You completed adding a new planet"
+    begin
+        new_planet = Planet.new(planet_name, planet_color, planet_mass, planet_distance, planet_fact)
+        solar_system.add_planet(new_planet)
+        puts "Congratulations! You added #{planet_name}"
+    rescue ArgumentError => e
+        puts e
+    end
 end
 
 def find_distance_between(solar_system)
@@ -51,7 +59,11 @@ def find_distance_between(solar_system)
     first_planet = gets.chomp
     puts "What is the name of the second planet?"
     second_planet = gets.chomp
-    puts "The distance between #{first_planet} and #{second_planet} is #{solar_system.distance_between(first_planet, second_planet)} km"
+    begin
+        puts "The distance between #{first_planet} and #{second_planet} is #{solar_system.distance_between(first_planet, second_planet)} km"
+    rescue ArgumentError => e
+        puts e
+    end
 end
 
 def main
@@ -64,7 +76,7 @@ def main
         4 => "Find distance between two planets", 
         5 => "Exit"
     }
-    questions = "What do you want to do next?\n"
+    questions = "\nWhat do you want to do next?\n"
     options.each { |key, value|
         questions += "#{key}. #{value}\n"
     }
