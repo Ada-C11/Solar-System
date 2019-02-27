@@ -35,13 +35,13 @@ class SolarSystem
     return result
   end
 
-  def find_planet_by_name(name)
-    lowercase_name_to_planet_hash = {}
-    @planets.each do |planet|
-      lowercase_name_to_planet_hash[planet.name.downcase] = planet
-    end
-    return lowercase_name_to_planet_hash[name.downcase]
-  end
+  # def find_planet_by_name(name)
+  #   lowercase_name_to_planet_hash = {}
+  #   @planets.each do |planet|
+  #     lowercase_name_to_planet_hash[planet.name.downcase] = planet
+  #   end
+  #   return lowercase_name_to_planet_hash[name.downcase]
+  # end
 
   def find_planet_by_name_two(name)
     return @planets.find do |planet|
