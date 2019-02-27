@@ -1,5 +1,4 @@
-require_relative "main"
-require_relative "solar_system"
+
 
 class Planet
   attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact, :twang_level, :likelihood_to_be_loved_by_yanks

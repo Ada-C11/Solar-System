@@ -1,5 +1,4 @@
-require_relative "planet"
-require_relative "main"
+
 
 class SolarSystem
   attr_reader :solar_system_name, :planets
@@ -44,7 +43,7 @@ class SolarSystem
     return list
   end
 
-  def find_planet_by_name
+  def find_planet_by_name(planet)
     @planets.each do |planet|
       if planet.name == name.capitalize
         return planet

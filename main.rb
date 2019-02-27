@@ -10,7 +10,7 @@ def main
   patsy = Planet.new("Patsy", "chesnut", 70, 40, "enjoys walking after midnight", 3.4, 0.5)
   garth = Planet.new("Garth", "off-white", 83, 45, "is responsible for the the most insufferable variety of country boi", 4.6, 99)
   johnny = Planet.new("Johnny", "coal black", 86, 5, "was a campaigner for Native American rights", 3.6, 91)
-  reba = Planet.new("Reba", "red", 60, "is the only country female solo act to have a No. 1 hit in four straight decades", 5.0, 70)
+  reba = Planet.new("Reba", "red", 60, 10, "is the only country female solo act to have a No. 1 hit in four straight decades", 5.0, 70)
   willie = Planet.new("Willie", "old", 70, 7, "ran into a burning house to save his pound of Columbian grass", 3.8, 15)
 
   solar_system.add_planet(elvis)
