@@ -157,7 +157,7 @@ def read_file(file)
 end
 
 def good_bye
-  return "Goodbye! Visit the #{solar_system.name} system again soon! Safe Travels!\n".cyan.on_blue
+  return "\n\nGoodbye! Visit the #{solar_system.name} system again soon! Safe Travels!\n".magenta.bold.italic.underline + read_file("./unicorn.txt").light_magenta.bold + "\n"
 end
 
 main
