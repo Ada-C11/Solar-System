@@ -27,6 +27,8 @@ class SolarSystem
 
     # if the planet is not found, raise an exception
     raise ArgumentError, "#{name} is not found." if found_planets.empty?
+
+    # if there's only one planet
     return "#{found_planets[0].summary}" if found_planets.length == 1
 
     # if there are multiple planets with the given name, list them all

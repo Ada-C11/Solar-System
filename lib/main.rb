@@ -2,6 +2,7 @@ require_relative "planet"
 require_relative "solar_system"
 
 def main
+  # initializes the solar system's name
   solar_system = SolarSystem.new("Sol")
 
   earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "it's the only planet known to support life")
