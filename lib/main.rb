@@ -3,8 +3,12 @@ require_relative "solar-system"
 
 require "faker"
 require "colorize"
+require "lolize"
 require "terminal-table"
 require "table_flipper"
+require "lolize"
+
+$colorizer = Lolize::Colorizer.new
 
 def add_planet(solar_system)
   # Get user input for new planet's attributes
@@ -87,7 +91,7 @@ def control_loop(solar_system)
   table = Terminal::Table.new :rows => table_rows, :headings => ["Key".colorize(:blue), "Action".colorize(:blue)]
 
   while input != "q"
-    puts "What would you like to do?".colorize(:blue)
+    puts "\nWhat would you like to do?".colorize(:blue)
     puts table
     input = gets.chomp.downcase.to_sym
 
@@ -138,8 +142,9 @@ def main
   end
 
   # Start the control loop.
-  puts "Welcome to the solar system program."
+  $colorizer.write "Welcome to the solar system program."
   control_loop(solar_system)
+  $colorizer.write "Hope you had fun exploring this solar system! Goodbye!\n"
 end
 
 main
