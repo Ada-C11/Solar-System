@@ -1,4 +1,5 @@
 # solar_system.rb
+
 require "terminal-table"
 
 class SolarSystem

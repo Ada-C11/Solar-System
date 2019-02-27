@@ -1,8 +1,5 @@
-# Solar System
-# REMEMBER: table gem is useful here!
+# planet.rb
 
-# Load Planet into pry:
-require "pry"
 require "terminal-table"
 
 class Planet
