@@ -11,7 +11,7 @@ def main
     planet_niv = Planet.new("Planet Niv", "lavender", 510329, 6333, "Planet Niv is currently inhabited by aliens that are fiercly resisting human colonization by destroying all human satelites and spacecrafts.")
     solar_system.add_planet(planet_niv)
 
-    puts "Welcome to our solar system! Type 'list planets' if you would like to see a list of planets that orbit the #{solar_system.star_name}. Type 'planet details' if you would like to learn more about a planet. Type 'add planet' to add a planet. Type 'exit' if you would like to exit. "
+    puts "Welcome to our solar system! Type 'list planets' if you would like to see a list of planets that orbit the #{solar_system.star_name}. Type 'planet details' if you would like to learn more about a planet. Type 'add planet' to add a planet. Type 'planet distances' to find the distance between two planets. Type 'exit' if you would like to exit. "
     input = gets.chomp.to_s
     until input == "exit"
         if input == "list planets"
@@ -30,6 +30,24 @@ def main
                     end    
                         planet_input = gets.chomp.to_s
                 end
+        elsif input == "planet distances"
+
+            puts "To find the distance between two planets, please enter the name of the first planet:"
+            first = gets.chomp.to_s
+            planet_names = solar_system.planets.map{|planet| planet.name.downcase}
+            until planet_names.include?(first.downcase) == true
+                puts "That planet is not in our solar system! Please type in a name of another planet."
+                first = gets.chomp.to_s
+            end
+            puts "Please enter the name of the second planet:"
+            second = gets.chomp.to_s
+            until planet_names.include?(second.downcase) == true
+                puts "That planet is not in our solar system! Please type in a name of another planet."
+                second = gets.chomp.to_s
+            end
+
+            puts solar_system.distance_between(first, second)
+
         elsif input == "add planet"
             
             puts "Thank you for helping us provide accurate information about our solar system community. What is the name of the planet you would like to add?"
@@ -58,11 +76,12 @@ def main
 
         elsif input == "exit"
             break
+            
         else
             puts "Please put one of the options!"
         end
 
-        puts "What would you like to do now? List planets, planet details, add planet, or exit?"
+        puts "What would you like to do now? List planets, planet details, add planet, planet distances, or exit?"
         input = gets.chomp.to_s
     end
 
