@@ -16,13 +16,13 @@ def main
   directions = ""
 
   until directions == "exit"
-    puts "What would you like to do? Enter LIST PLANETS, PLANET DETAILS, ADD PLANET, or EXIT."
+    puts "Please enter list planets to see all the planets, planet details to learn more about each planet, or add planet to enter a new planet.
     directions = gets.chomp.downcase
-    if directions == "list planets"
+    if directions == "list planets"EXIT
       list = solar_system.list_planets
       puts list
     elsif directions == "planet details"
-      puts "Which planet are you interested in?"
+      puts "Please enter the planet name you'd like to see details for?"
       show_details = gets.chomp
       found_planet = solar_system.find_planet_by_name(show_details)
       puts found_planet.summary
@@ -30,7 +30,7 @@ def main
       planet_new = add_new_planet
       solar_system.add_planet(planet_new)
     else
-      puts "\nGood bye!"
+      puts "\nThanks!"
     end
   end
 end
