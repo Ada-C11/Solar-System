@@ -25,4 +25,15 @@ class SolarSystem
     @planets.map{|p| return p if p.name == planet}
   end
 
+  def distance_between(planet_1, planet_2)
+    planet_1_dist = (find_planet_by_name(planet_1)).distance_from_sun_km
+    planet_2_dist = find_planet_by_name(planet_2).distance_from_sun_km
+    if planet_1_dist > planet_2_dist
+      distance =  planet_1_dist - planet_2_dist
+    else
+      distance = planet_2_dist - planet_1_dist
+    end
+    return distance
+  end
+
 end

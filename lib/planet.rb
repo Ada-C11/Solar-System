@@ -32,10 +32,7 @@ class Planet
     table = Terminal::Table.new :rows => rows
 
     return table
-    # return "Name: #{@name}\t Color: #{@color}\t Mass in kg: #{@mass_kg}\t Distance from the sun in km: #{@distance_from_sun_km}\nFun fact: #{@fun_fact}"
   end
 
 end
 
-# earth = Planet.new('Earth', 'blue-green', 5.972e24, 1.496e8, 'Only planet known to support life')
-# puts earth.name
