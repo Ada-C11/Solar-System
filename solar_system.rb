@@ -48,6 +48,6 @@ class SolarSystem
       end
     end
 
-    return "No matches found"
+    return nil
   end
 end

@@ -5,11 +5,12 @@ require_relative "solar_system.rb"
 
 # option menu
 def options
-  return "Options available to you...
+  return "
+  Options available to you...
   1. See a LIST of all the planets on file
   2. See a specific planet's DETAILS
   3. ADD a planet
-  4. Quit\n
+  4. EXIT\n
   Please enter your option:"
 end
 
@@ -29,27 +30,29 @@ def main
   puts "Welcome to the PlanetDex!"
 
   # user input time
-  exit = "N"
+  exit = "n"
 
   puts options
   option = gets.chomp
 
-  while exit == "N"
+  loop do
     if option.include?("list") || option == "1"
       puts solar_system.list_planets
     elsif option.include?("detail") || option == "2"
       puts "Which planet would you like to learn about?"
       planet = gets.chomp.downcase
       puts solar_system.find_planet_by_name(planet).summary
-    elsif option.include?("add") || option == "3" # looping bug!
+    elsif option.include?("add") || option == "3"
       puts solar_system.new_planet
     elsif option.include?("exit") || option == "4"
-      puts "Are you sure you want to quit? (Y/N) "
-      exit = gets.chomp.upcase
+      break
     else
       puts "That is not a valid option."
       puts "Please re-enter your option:"
     end
+
+    puts options
+    option = gets.chomp
   end
 end
 
