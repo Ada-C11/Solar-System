@@ -12,50 +12,24 @@ def main
   solar_system.add_planet(saturn)
   solar_system.add_planet(mars)
 
-  list = solar_system.list_planets
-
   puts "Welcome to the Solar System Simulator!"
 
-  print "\nWhat would you like to do next? (list planets, planet details, exit): "
+  print "\nWhat would you like to do next? (list planets, planet details, add planet, exit): "
   user_choice = gets.chomp
 
-  while user_choice = gets.chomp # loop while getting user input
+  until user_choice == "exit"
     case user_choice
     when "list planets"
+      list = solar_system.list_planets
       puts list
-    when "exit"
-      puts "Thanks for stopping by!"
-      break
     when "planet details"
-      print "What planet would you like to know about?: "
-      planet_choice = gets.chomp
-      found_planet = solar_system.find_planet_by_name(planet_choice)
-      puts found_planet.summary
-    else
-      print "What would you like to do next? (list planets, planet details, exit): "
+      solar_system.planet_details
+    when "add planet"
+      solar_system.new_planet
     end
+    print "\nWhat would you like to do next? (list planets, planet details, add planet, exit): "
+    user_choice = gets.chomp
   end
-
-  #   earth = Planet.new("Earth", "blue-green", 5.972e24, 1.496e8, "Only planet known to support life")
-  #   #   puts earth.summary
-
-  #   saturn = Planet.new("Saturn", "brownish", 6.01e24, 2.4e8, "some fact")
-  #   #   puts saturn.summary
-
-  #   solar_system = SolarSystem.new("Sol")
-  #   solar_system.add_planet(earth)
-  #   solar_system.add_planet(saturn)
-
-  #   list = solar_system.list_planets
-  #   puts list
-
-  #   found_planet = solar_system.find_planet_by_name("Earth")
-
-  #   # found_planet is an instance of class Planet
-  #   puts found_planet
-  #   # => #<Planet:0x00007fe7c2868ee8>
-
-  #   puts found_planet.summary
 end
 
 main

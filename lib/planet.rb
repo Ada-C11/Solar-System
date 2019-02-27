@@ -16,6 +16,6 @@ class Planet
   end
 
   def summary
-    return "The planet #{name} is #{color} in color. It weighs #{mass_kg} kg and is #{distance_from_sun_km} km from the Sun. Here is a fun fact about #{name}: #{fun_fact}!"
+    return "\nThe planet #{name} is #{color} in color. It weighs #{mass_kg} kg and is #{distance_from_sun_km} km from the Sun. Here is a fun fact about #{name}: #{fun_fact}!"
   end
 end
