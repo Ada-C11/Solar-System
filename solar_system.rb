@@ -9,10 +9,10 @@ class SolarSystem
     @planets = Array.new
   end
 
-  # Take an instance of Planet as a parameter and add it to the list of planets.
+  # Take an instance of Planet as a parameter and add it to the list of planets.exit
   def add_planet(planet)
-    planets = @planets.map { |i| i.name.downcase }
-    if planets.include?(planet.name.downcase)
+    # planets = @planets.map { |i| i.name.downcase }
+    if @planets.include?(planet.name.downcase)
       raise ArgumentError.new("Planet already exists. A solar system cannot have duplicate planets")
     end
     @planets.push(planet)
