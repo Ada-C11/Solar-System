@@ -13,3 +13,4 @@ attr_reader :name, :color, :mass_kg, :distance_from_sun_km, :fun_fact
         return "The planet of #{name} is the color #{color} and weighs #{mass_kg} in kg. You might also find it intereesting that it is #{distance_from_sun_km} km away from Earth. The best part of planet #{name} is that it is #{fun_fact}."
     end
 end
+#push!
