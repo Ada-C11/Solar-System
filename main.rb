@@ -4,7 +4,7 @@ require 'faker'
 require 'ruby_figlet'
 require 'colorize'
 def colors(string)
-  string.chars.map {|char| char.colorize([:red, :cyan, :green, :blue].sample)}.join
+  string.chars.map {|char| char.colorize([:light_red, :light_cyan, :light_green, :light_blue].sample)}.join
 end
 
 def user_add_planet(solar_system)
@@ -50,7 +50,7 @@ def main
   loooop = true
   while loooop == true do
     puts
-    puts colors("---------------------------------------------------------")
+    puts colors("-----------------------------------------------------------")
     puts
     puts "What would you like to do next?\n"
     puts "1. List Planets".colorize(:green)
@@ -74,21 +74,21 @@ def main
       else
         puts "That is not a valid choice.\n\n".colorize(:red)
       end
-      puts colors("---------------------------------------------------------")
+      puts colors("------------------------------------------------------------")
       sleep 1
     end
 end
 puts "Welcome to ...\n\n"
 sleep 0.5
-puts colors("       ▀▄   ▄▀        ▄▄▄████▄▄▄        ▄██▄         ▀▄   ▄▀              ▀▄   ▄▀          ▀▄   ▄▀")
+puts colors("    ▀▄   ▄▀         ▀▄   ▄▀       ▀▄   ▄▀        ▀▄   ▄▀")
 sleep 0.5
-puts colors("       ▄█▀███▀█▄      ███▀▀██▀▀███     ▄█▀██▀█▄      ▄█▀███▀█▄            ▄█▀███▀█▄        ▄█▀███▀█▄")
+puts colors("   ▄█▀███▀█▄       ▄█▀███▀█▄     ▄█▀███▀█▄      ▄█▀███▀█▄")
 sleep 0.6
-puts colors("      █▀███████▀█     ▀▀███▀▀███▀▀     ▀█▀██▀█▀     █▀███████▀█          █▀███████▀█      █▀███████▀█")
+puts colors("  █▀███████▀█    ▀▀███▀▀███▀▀   █▀███████▀█    █▀███████▀█")
 sleep 0.7
-puts colors("      ▀ ▀▄▄ ▄▄▀ ▀      ▀█▄ ▀▀ ▄█▀      ▀▄    ▄▀     ▀ ▀▄   ▄▀ ▀          ▀ ▀▄▄ ▄▄▀          ▀▄    ▄▀    <3")
+puts colors("  ▀ ▀▄▄ ▄▄▀ ▀      ▀█▄  ▄█▀        ▀▄  ▄▀      ▀ ▀▄▄ ▄▄▀ ▀   <3")
 puts "\n\n"
-space_title = RubyFiglet::Figlet.new "o u t e r * s p a c e", 'basic'
+space_title = RubyFiglet::Figlet.new "* Solar *\nSYSTEM", 'pebbles'
 space_title.show
 puts "\n"
 main

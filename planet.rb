@@ -1,6 +1,6 @@
 require 'faker'
 def autofactoid(planet_name)
-  return ["On #{planet_name}, an atmospheric event called a #{Faker::Games::Pokemon.move} is a rare but spectacular sensory experience, causing a thick, soupy #{Faker::Color.color_name} cloud of #{Faker::Coffee.notes}-scented mist to roll over the surface of the planet",
+  return ["On #{planet_name}, an atmospheric event called a #{Faker::Games::Pokemon.move} is a rare but spectacular sensory experience causing a thick, soupy #{Faker::Color.color_name} cloud of #{Faker::Coffee.notes}-scented mist to roll over the surface of the planet",
     "#{planet_name} was first spotted by an unnamed #{Faker::Military.marines_rank} working for the #{Faker::Space.agency} who originally named it #{Faker::Movies::Hobbit.character} in honor of the office dog. The name was only changed to #{planet_name} in #{rand(1900...1999)}", "#{Faker::GreekPhilosophers.name} famously postulated that #{planet_name} was merely a rumor"].sample
 end
 
