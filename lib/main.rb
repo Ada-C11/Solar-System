@@ -43,10 +43,10 @@ end
 
 def measure_distance(solar_system)
   # Get the names of planets and store the planet objects in variables
-  puts "\nWhat is the first planet?".colorize(:blue)
+  puts "\nWhat is the name of the first planet?".colorize(:blue)
   planet1_name = gets.chomp
   planet1 = solar_system.find_planet_by_name(planet1_name)
-  puts "What is the second planet?".colorize(:blue)
+  puts "What is the name of the second planet?".colorize(:blue)
   planet2_name = gets.chomp
   planet2 = solar_system.find_planet_by_name(planet2_name)
 
