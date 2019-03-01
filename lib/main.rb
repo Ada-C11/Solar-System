@@ -6,7 +6,6 @@ require "colorize"
 require "lolize"
 require "terminal-table"
 require "table_flipper"
-require "lolize"
 
 $colorizer = Lolize::Colorizer.new
 
