@@ -30,7 +30,7 @@ def main
         elsif user_choice == "add planet"
             solar_system.new_planet
         else
-            puts "Please enter one of the following options: list planets, planet details, or exit!"
+            puts "Please enter one of the following options: list planets, planet details, add planets, or exit!"
             user_choice = gets.chomp.downcase
         end
         puts "What would you like to do next: list planets, planet details, or exit?"
