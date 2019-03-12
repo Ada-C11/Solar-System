@@ -71,6 +71,6 @@ class SolarSystem
     planet1 = get_planet_name
     planet2 = get_planet_name
     distance = planet1.distance_from_sun_km - planet2.distance_from_sun_km
-    # puts "\nDistance between #{planet1.name} and #{planet2.name}: #{distance.abs} km."
+    puts "\nDistance between #{planet1.name} and #{planet2.name}: #{distance.abs} km."
   end
 end
