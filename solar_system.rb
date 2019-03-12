@@ -25,10 +25,8 @@ class SolarSystem
     fun_fact = gets.chomp.to_s
     print "\nPlease rate the planet's twang on a scale of 0-5.0 #{planet_name}: "
     twang_level = gets.chomp.to_f
-    print "\nPlease rate the planet's likelihood to be beloved in New England, on a scale of 0-100 #{planet_name}: "
-    likelihood_to_be_loved_by_yanks = gets.chomp.to_s
 
-    new_planet = Planet.new(planet_name, color, distance, mass, fun_fact, twang_level, likelihood_to_be_loved_by_yanks)
+    new_planet = Planet.new(planet_name, color, distance, mass, fun_fact, twang_level)
 
     add_planet(new_planet)
     print "\nGenerating new data"
