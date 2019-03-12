@@ -38,7 +38,7 @@ def main
       planet = solar_system.get_planet_name
       puts planet.summary
     when input == "3"
-      solar_system.add_a_planet
+      solar_system.add_planet
       puts "\n...Entered into system. Thank You."
     when input == "4"
       solar_system.find_distance_between

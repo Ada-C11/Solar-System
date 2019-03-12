@@ -8,8 +8,8 @@ class SolarSystem
     @planets = []
   end
 
-  def add_planet(planet)
-    @planets << planet
+  def add_planet(new_planet)
+    @planets << new_planet
   end
 
   def get_info_new_planet
@@ -43,9 +43,9 @@ class SolarSystem
     return list
   end
 
-  def find_planet_by_name(planet)
+  def find_planet_by_name(planet_name)
     @planets.each do |planet|
-      if planet.name == name.capitalize
+      if planet.name == planet_name.capitalize
         return planet
       end
     end
