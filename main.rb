@@ -42,7 +42,7 @@ def main
       puts "\n...Entered into system. Thank You."
     when input == "4"
       solar_system.find_distance_between
-      puts "\n...Entered into system. Thank You."
+      puts "\nDistance between #{planet1.name} and #{planet2.name}: #{distance.abs} km."
     when input == "5"
       exit
     when input =~ /[[:alpha:]]/
